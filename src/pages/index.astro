@@ -1,6 +1,7 @@
 ---
 import "$lib/styles/app.css";
 import { Button } from "$lib/components/ui/button";
+import LandingPage from "../modules/LandingPage.svelte";
 
 // Welcome to Astro! Everything between these triple-dash code fences
 // is your "component frontmatter". It never runs in the browser.
@@ -16,7 +17,7 @@ console.log("This runs in your terminal, not the browser!");
     <title>Buzooka</title>
     <meta
       name="description"
-      content="#1 Startup Studio - Launch an MVP. Faster!"
+      content="#1 Startup Studio - Launch MVPs Faster!"
     />
     <!-- <link
       href="https://framerusercontent.com/images/T8cqFYtWheQPGqJRl35Uq5KyRE.png"
@@ -33,7 +34,7 @@ console.log("This runs in your terminal, not the browser!");
     <meta property="og:title" content="Buzooka" />
     <meta
       property="og:description"
-      content="#1 Startup Studio - Launch an MVP. Faster!"
+      content="#1 Startup Studio - Launch MVPs Faster!"
     />
     <!-- <meta
       property="og:image"
@@ -44,7 +45,7 @@ console.log("This runs in your terminal, not the browser!");
     <meta name="twitter:title" content="Buzooka" />
     <meta
       name="twitter:description"
-      content="#1 Startup Studio - Launch an MVP. Faster!"
+      content="#1 Startup Studio - Launch MVPs Faster!"
     />
     <!-- <meta
       name="twitter:image"
@@ -58,10 +59,6 @@ console.log("This runs in your terminal, not the browser!");
     <meta property="og:url" content="https://buzooka.in/" />
   </head>
   <body>
-    <h1 class="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
-      Buzooka
-    </h1>
-
-    <Button>Launch Now</Button>
+    <LandingPage client:load />
   </body>
 </html>
