@@ -1,5 +1,7 @@
 <script lang="ts">
+    import { fly, blur, draw, crossfade, slide } from "svelte/transition";
     import { Button } from "$lib/components/ui/button";
+    import Slideshow from "$lib/components/custom/slideshow/slideshow.svelte";
     import {
         Card,
         CardContent,
@@ -15,7 +17,10 @@
         Users,
         HardDrive,
         GitBranch,
+        ArrowRight,
     } from "lucide-svelte";
+    import { Badge } from "$lib/components/ui/badge";
+    import { onMount } from "svelte";
 
     const features = [
         {
@@ -65,15 +70,38 @@
             ],
         },
     ];
+
+    let id = 1;
+
+    onMount(() => {
+        setInterval(() => {
+            if (id > 0 && id < 3) {
+                id = id + 1;
+            } else {
+                id = 1;
+            }
+        }, 3000);
+    });
+
+    const [send, receive] = crossfade({});
 </script>
 
-<div class="flex flex-col min-h-screen">
+<div
+    class="flex flex-col min-h-screen"
+    style="--dot-bg: white;--dot-color: #888;--dot-size: 1px;--dot-space: 22px; background:
+linear-gradient(90deg, var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
+linear-gradient(var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
+var(--dot-color);"
+>
     <header class="px-4 lg:px-6 h-14 flex items-center">
-        <a href="/" class="flex items-center justify-center">
-            <Rocket class="h-6 w-6 mr-2" />
-            <span class="font-bold">Buzooka</span>
+        <div class="flex items-center justify-center flex-1"></div>
+        <a
+            href="/"
+            class="flex items-center justify-center flex-1 relative top-[100px]"
+        >
+            <img alt="Buzooka" src="/buzooka-logo.svg" width="300" />
         </a>
-        <nav class="ml-auto flex gap-4 sm:gap-6">
+        <nav class="ml-auto flex gap-4 sm:gap-6 flex-1 justify-end">
             <a
                 href="#features"
                 class="text-sm font-medium hover:underline underline-offset-4"
@@ -87,21 +115,58 @@
             <a
                 href="#hire"
                 class="text-sm font-medium hover:underline underline-offset-4"
-                >Hire</a
+                >Sign Up</a
             >
         </nav>
     </header>
 
     <main class="flex-1">
-        <section class="w-full py-12 md:py-24 lg:py-32 xl:py-48">
+        <section
+            class="w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-[linear-gradient(90deg,_var(--dot-bg)_calc(var(--dot-space)_-_var(--dot-size)),_transparent_1%)_center_/_var(--dot-space)_var(--dot-space),_linear-gradient(var(--dot-bg)_calc(var(--dot-space)_-_var(--dot-size)),_transparent_1%)_center_/_var(--dot-space)_var(--dot-space),_var(--dot-color)]"
+        >
             <div class="container px-4 md:px-6">
                 <div class="flex flex-col items-center space-y-4 text-center">
                     <div class="space-y-2">
                         <h1
-                            class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none"
+                            class="text-2xl font-thin tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none block w-[600px]"
                         >
-                            Launch your MVP, Faster!
+                            Launch your MVP,<br />
+                            <div
+                                class="relative h-24 text-center flex items-center justify-center"
+                            >
+                                {#if id === 1}
+                                    <span
+                                        transition:blur={{
+                                            duration: 200,
+                                        }}
+                                        class="leading-normal absolute font-mono text-6xl text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-pink-500"
+                                    >
+                                        Faster!
+                                    </span>
+                                {/if}
+                                {#if id === 2}
+                                    <span
+                                        transition:blur={{
+                                            duration: 200,
+                                        }}
+                                        class="leading-normal absolute font-mono text-6xl text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-pink-500"
+                                    >
+                                        in Days!
+                                    </span>
+                                {/if}
+                                {#if id === 3}
+                                    <span
+                                        transition:blur={{
+                                            duration: 200,
+                                        }}
+                                        class="leading-normal absolute font-mono text-6xl text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-pink-500"
+                                    >
+                                        Make an Impact!
+                                    </span>
+                                {/if}
+                            </div>
                         </h1>
+
                         <p
                             class="mx-auto max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400"
                         >
@@ -126,14 +191,13 @@
                 <h2
                     class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center mb-8"
                 >
-                    Set Up Your Tech Stack in Minutes
+                    How?
                 </h2>
                 <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
                     {#each features as feature}
                         <Card>
                             <CardHeader>
-                                <svelte:component
-                                    this={feature.icon}
+                                <feature.icon
                                     class="h-8 w-8 mb-2 text-primary"
                                 />
                                 <CardTitle>{feature.title}</CardTitle>
