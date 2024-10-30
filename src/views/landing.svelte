@@ -1,7 +1,7 @@
 <script lang="ts">
     import { fly, blur, draw, crossfade, slide } from "svelte/transition";
     import { Button } from "$lib/components/ui/button";
-    import Slideshow from "$lib/components/custom/slideshow/slideshow.svelte";
+    import { Input } from "$lib/components/ui/input/index.js";
     import {
         Card,
         CardContent,
@@ -27,17 +27,17 @@
             icon: GitBranch,
             title: "Bootstrap the repo",
             description:
-                "Generate your project repository with best practices and optimal structure in just a few clicks.",
+                "Choose a template, and generate your repository with best practices and optimal structure in just a few clicks.",
         },
         {
             icon: HardDrive,
             title: "Provisioning Cloud Resources",
             description:
-                "Automatically set up your cloud infrastructure, saving you time and ensuring scalability from day one.",
+                "Automatically set up your cloud infrastructure apt for your apps, saving you time and ensuring scalability from day one.",
         },
         {
             icon: Zap,
-            title: "Setup CI/CD Pipeline",
+            title: "CI/CD Pipeline",
             description:
                 "Get a fully configured CI/CD pipeline to streamline your development and deployment processes.",
         },
@@ -97,9 +97,9 @@ var(--dot-color);"
         <div class="flex items-center justify-center flex-1"></div>
         <a
             href="/"
-            class="flex items-center justify-center flex-1 relative top-[100px]"
+            class="flex items-center justify-center flex-1 relative top-[16px]"
         >
-            <img alt="Buzooka" src="/buzooka-logo.svg" width="300" />
+            <img alt="Buzooka" src="/buzooka-logo.svg" width="200" />
         </a>
         <nav class="ml-auto flex gap-4 sm:gap-6 flex-1 justify-end">
             <a
@@ -113,24 +113,31 @@ var(--dot-color);"
                 >Pricing</a
             >
             <a
-                href="#hire"
-                class="text-sm font-medium hover:underline underline-offset-4"
-                >Sign Up</a
+                href="#features"
+                class="text-sm underline font-medium hover:underline underline-offset-4"
+                >Join Squad</a
             >
         </nav>
     </header>
 
     <main class="flex-1">
         <section
-            class="w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-[linear-gradient(90deg,_var(--dot-bg)_calc(var(--dot-space)_-_var(--dot-size)),_transparent_1%)_center_/_var(--dot-space)_var(--dot-space),_linear-gradient(var(--dot-bg)_calc(var(--dot-space)_-_var(--dot-size)),_transparent_1%)_center_/_var(--dot-space)_var(--dot-space),_var(--dot-color)]"
+            class=" mt-50 w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-[linear-gradient(90deg,_var(--dot-bg)_calc(var(--dot-space)_-_var(--dot-size)),_transparent_1%)_center_/_var(--dot-space)_var(--dot-space),_linear-gradient(var(--dot-bg)_calc(var(--dot-space)_-_var(--dot-size)),_transparent_1%)_center_/_var(--dot-space)_var(--dot-space),_var(--dot-color)]"
         >
             <div class="container px-4 md:px-6">
                 <div class="flex flex-col items-center space-y-4 text-center">
-                    <div class="space-y-2">
+                    <div class="space-y-6 mb-4">
                         <h1
-                            class="text-2xl font-thin tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none block w-[600px]"
+                            class="text-sm uppercase font-mono font-medium text-slate-600"
                         >
-                            Launch your MVP,<br />
+                            Tools for Product Development
+                        </h1>
+                        <h2
+                            class="text-2xl font-sans sm:text-4xl md:text-5xl lg:text-6xl/none block w-[600px] pt-0"
+                        >
+                            <span class="italic font-thin text-slate-600"
+                                >Launch your <mark class="px-3">MVP</mark> ,</span
+                            ><br />
                             <div
                                 class="relative h-24 text-center flex items-center justify-center"
                             >
@@ -141,7 +148,7 @@ var(--dot-color);"
                                         }}
                                         class="leading-normal absolute font-mono text-6xl text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-pink-500"
                                     >
-                                        Faster!
+                                        faster!
                                     </span>
                                 {/if}
                                 {#if id === 2}
@@ -151,7 +158,7 @@ var(--dot-color);"
                                         }}
                                         class="leading-normal absolute font-mono text-6xl text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-pink-500"
                                     >
-                                        in Days!
+                                        Make an impact
                                     </span>
                                 {/if}
                                 {#if id === 3}
@@ -161,23 +168,36 @@ var(--dot-color);"
                                         }}
                                         class="leading-normal absolute font-mono text-6xl text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-pink-500"
                                     >
-                                        Make an Impact!
+                                        in just days!
                                     </span>
                                 {/if}
                             </div>
-                        </h1>
+                        </h2>
 
-                        <p
-                            class="mx-auto max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400"
+                        <h3
+                            class="mx-auto italic font-thin max-w-[700px] text-slate-600 md:text-xl dark:text-gray-400 pt-8"
                         >
-                            Code, Cloud, and CI/CD, Simplified.
-                        </p>
+                            <span class="font-medium">Code</span>,
+                            <span class="font-medium">Cloud</span>, and
+                            <span class="font-medium">CI/CD</span> simplified.
+                        </h3>
                     </div>
-                    <div class="space-x-4">
-                        <Button size="lg">Launch Now</Button>
-                        <Button variant="outline" size="lg"
-                            >Book a Consultation</Button
+                    <div class="flex gap-0">
+                        <Input
+                            type="email"
+                            placeholder="Email"
+                            class="max-w-xs w-[300px] rounded-none rounded-l-lg border-slate-700"
+                        />
+                        <Button
+                            size="xs"
+                            class="px-8 rounded-none rounded-r-lg border-solid border-[1px] border-l-0 border-slate-700"
                         >
+                            <span
+                                class="leading-normal font-mono font-medium text-transparent bg-slate-950 bg-clip-text bg-gradient-to-r from-cyan-100 to-pink-100 hover:text-white"
+                            >
+                                Join Squad
+                            </span>
+                        </Button>
                     </div>
                 </div>
             </div>
@@ -185,38 +205,149 @@ var(--dot-color);"
 
         <section
             id="features"
-            class="w-full py-12 md:py-24 lg:py-32 bg-gray-100 dark:bg-gray-800"
+            class="w-full py-12 md:py-12 lg:py-16 bg-gradient-to-r from-cyan-50 to-pink-50 dark:bg-gray-800"
         >
             <div class="container px-4 md:px-6">
                 <h2
-                    class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center mb-8"
+                    class="text-3xl italic font-thin text-slate-600 sm:text-4xl md:text-5xl text-center mb-8"
                 >
                     How?
                 </h2>
                 <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
-                    {#each features as feature}
-                        <Card>
-                            <CardHeader>
-                                <feature.icon
-                                    class="h-8 w-8 mb-2 text-primary"
+                    <Card>
+                        <CardHeader>
+                            <div class="flex gap-4">
+                                <img
+                                    alt="React"
+                                    src="/react-logo.svg"
+                                    width="30"
+                                    class="mb-2"
                                 />
-                                <CardTitle>{feature.title}</CardTitle>
-                            </CardHeader>
-                            <CardContent>
-                                {feature.description}
-                            </CardContent>
-                        </Card>
-                    {/each}
+                                <img
+                                    alt="Svelte"
+                                    src="/svelte-logo.svg"
+                                    width="30"
+                                    class="mb-2"
+                                />
+                                <img
+                                    alt="Node"
+                                    src="/node-logo.svg"
+                                    width="30"
+                                    class="mb-2"
+                                />
+                                <img
+                                    alt="Typescript"
+                                    src="/ts-logo.svg"
+                                    width="30"
+                                    class="mb-2"
+                                />
+                                <img
+                                    alt="Vue"
+                                    src="/vue-logo.svg"
+                                    width="30"
+                                    class="mb-2"
+                                />
+                                <img
+                                    alt="Python"
+                                    src="/python-logo.svg"
+                                    width="30"
+                                    class="mb-2"
+                                />
+                                <img
+                                    alt="Fluttr"
+                                    src="/flutter-logo.svg"
+                                    width="30"
+                                    class="mb-2"
+                                />
+                            </div>
+                            <CardTitle class="italic text-slate-600 font-normal"
+                                >{features[0].title}</CardTitle
+                            >
+                        </CardHeader>
+                        <CardContent>
+                            {features[0].description}
+                        </CardContent>
+                    </Card>
+
+                    <Card>
+                        <CardHeader>
+                            <div class="flex gap-4">
+                                <img
+                                    alt="AWS"
+                                    src="/aws-logo.svg"
+                                    width="40"
+                                    class="mb-2"
+                                />
+                                <img
+                                    alt="GCP"
+                                    src="/gcp-logo.svg"
+                                    width="40"
+                                    class="mb-2"
+                                />
+                                <img
+                                    alt="Digital Ocean"
+                                    src="/do-logo.svg"
+                                    width="30"
+                                    class="mb-2"
+                                />
+                                <img
+                                    alt="Netlify"
+                                    src="/netlify-logo.svg"
+                                    width="30"
+                                    class="mb-2"
+                                />
+                            </div>
+                            <CardTitle class="italic text-slate-600 font-normal"
+                                >{features[1].title}</CardTitle
+                            >
+                        </CardHeader>
+                        <CardContent>
+                            {features[1].description}
+                        </CardContent>
+                    </Card>
+
+                    <Card>
+                        <CardHeader>
+                            <img
+                                alt="React"
+                                src="/react-logo.svg"
+                                width="30"
+                                class="mb-2"
+                            />
+                            <CardTitle class="italic text-slate-600 font-normal"
+                                >{features[2].title}</CardTitle
+                            >
+                        </CardHeader>
+                        <CardContent>
+                            {features[2].description}
+                        </CardContent>
+                    </Card>
                 </div>
             </div>
         </section>
 
-        <section class="w-full py-12 md:py-24 lg:py-32">
+        <section class="w-full py-12 md:py-12 lg:py-16">
             <div class="container px-4 md:px-6">
                 <h2
-                    class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center mb-8"
+                    class="text-3xl font-thin text-slate-600 sm:text-4xl md:text-5xl pl-8"
                 >
-                    Who are you?
+                    <span
+                        class="leading-normal text-6xl text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-pink-500"
+                    >
+                        Minimize setup time.<br />Maximize development time.
+                    </span>
+                </h2>
+            </div>
+        </section>
+
+        <section
+            class="w-full py-12 md:py-12 lg:py-16 bg-gradient-to-r from-cyan-50 to-pink-50 dark:bg-gray-800"
+        >
+            <div class="container px-4 md:px-6">
+                <h2
+                    class="text-3xl italic font-thin text-slate-600 sm:text-4xl md:text-5xl text-center mb-8"
+                >
+                    Who is this for?
                 </h2>
                 <div class="grid gap-6 md:grid-cols-3">
                     {#each ["Founders", "Businesses", "Developers"] as audience}
@@ -244,46 +375,10 @@ var(--dot-color);"
             </div>
         </section>
 
-        <section
-            class="w-full py-12 md:py-24 lg:py-32 bg-gray-100 dark:bg-gray-800"
-        >
-            <div class="container px-4 md:px-6">
-                <h2
-                    class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center mb-8"
-                >
-                    How to?
-                </h2>
-                <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-                    {#each ["Choose Your Stack", "Configure Your Project", "Launch and Iterate"] as step}
-                        <Card>
-                            <CardHeader>
-                                <CardTitle>{step}</CardTitle>
-                            </CardHeader>
-                            <CardContent>
-                                {#if step === "Choose Your Stack"}
-                                    Select from our curated list of modern tech
-                                    stacks tailored for different types of
-                                    projects.
-                                {:else if step === "Configure Your Project"}
-                                    Use our intuitive interface to set up your
-                                    repository, cloud resources, and CI/CD
-                                    pipeline.
-                                {:else}
-                                    Deploy your MVP with a single click and
-                                    start gathering feedback to iterate and
-                                    improve.
-                                {/if}
-                            </CardContent>
-                        </Card>
-                    {/each}
-                </div>
-            </div>
-        </section>
-
         <section id="pricing" class="w-full py-12 md:py-24 lg:py-32">
             <div class="container px-4 md:px-6">
                 <h2
-                    class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center mb-8"
+                    class="text-3xl italic font-thin text-slate-600 sm:text-4xl md:text-5xl text-center mb-8"
                 >
                     Product Pricing
                 </h2>
@@ -327,11 +422,11 @@ var(--dot-color);"
 
         <section
             id="hire"
-            class="w-full py-12 md:py-24 lg:py-32 bg-gray-100 dark:bg-gray-800"
+            class="w-full py-12 md:py-12 lg:py-16 bg-gradient-to-r from-cyan-50 to-pink-50 dark:bg-gray-800"
         >
             <div class="container px-4 md:px-6">
                 <h2
-                    class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center mb-8"
+                    class="text-3xl italic font-thin text-slate-600 sm:text-4xl md:text-5xl text-center mb-8"
                 >
                     Need extra help?
                 </h2>
@@ -375,26 +470,42 @@ var(--dot-color);"
         </section>
 
         <section
-            class="w-full py-12 md:py-24 lg:py-32 bg-primary text-primary-foreground"
+            class="w-full py-12 md:py-12 lg:py-16 bg-primary text-primary-foreground"
+            style="--dot-bg: hsl(217, 33%, 10%);--dot-color: #888;--dot-size: 1px;--dot-space: 22px; background:
+    linear-gradient(90deg, var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
+    linear-gradient(var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
+    var(--dot-color);"
         >
             <div class="container px-4 md:px-6">
-                <div class="flex flex-col items-center space-y-4 text-center">
-                    <div class="space-y-2">
+                <div class="flex flex-col items-center space-y-16 text-center">
+                    <div class="space-y-4">
                         <h2
-                            class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl"
+                            class="text-3xl italic font-thin text-slate-300 sm:text-4xl md:text-5xl text-center mb-8"
                         >
                             Need a walkthrough? Let's connect!
                         </h2>
                         <p
-                            class="mx-auto max-w-[700px] text-primary-foreground/80 md:text-xl"
+                            class="mx-auto max-w-[700px] font-thin text-slate-200 md:text-xl mb-16"
                         >
-                            Book a consultation with our experts to see how
-                            Buzooka can accelerate your MVP launch.
+                            Book a consultation and accelerate your MVP launch
                         </p>
                     </div>
-                    <div class="w-full max-w-sm space-y-2">
-                        <Button class="w-full" size="lg" variant="secondary">
-                            Book a Consultation
+
+                    <div class="flex gap-0">
+                        <Input
+                            type="email"
+                            placeholder="Email"
+                            class="max-w-xs w-[300px] rounded-none rounded-l-lg border-slate-700"
+                        />
+                        <Button
+                            size="xs"
+                            class="px-8 rounded-none rounded-r-lg border-solid border-[1px] border-l-0 border-slate-700"
+                        >
+                            <span
+                                class="leading-normal font-mono font-medium bg-slate-950 text-transparent bg-clip-text bg-gradient-to-r from-cyan-100 to-pink-100 hover:text-white"
+                            >
+                                Join Squad
+                            </span>
                         </Button>
                     </div>
                 </div>
@@ -403,9 +514,9 @@ var(--dot-color);"
     </main>
 
     <footer
-        class="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t"
+        class="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 bg-slate-950"
     >
-        <p class="text-xs text-gray-500 dark:text-gray-400">
+        <p class="text-xs text-slate-100 dark:text-gray-400">
             © 2024 Buzooka. All rights reserved.
         </p>
         <nav class="sm:ml-auto flex gap-4 sm:gap-6">
