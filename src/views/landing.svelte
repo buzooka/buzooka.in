@@ -118,7 +118,12 @@ var(--dot-color);"
             href="/"
             class="flex items-left justify-start flex-1 relative top-[0px] left-[24px]"
         >
-            <img alt="Buzooka" src="/buzooka.svg" width="200" />
+            <img
+                alt="Buzooka"
+                src="/buzooka.svg"
+                height="44px"
+                style="height: 44px;"
+            />
         </a>
     </div>
     <!-- <a
@@ -130,17 +135,17 @@ var(--dot-color);"
     <nav class="ml-auto flex gap-4 sm:gap-6 flex-1 justify-end">
         <a
             href="#features"
-            class="text-sm font-medium hover:underline underline-offset-4"
+            class="text-sm font-medium hover:underline underline-offset-4 py-3"
             >Features</a
         >
         <a
             href="#pricing"
-            class="text-sm font-medium hover:underline underline-offset-4"
+            class="text-sm font-medium hover:underline underline-offset-4 py-3"
             >Pricing</a
         >
         <a
             href="#features"
-            class="text-sm underline font-medium hover:underline underline-offset-4"
+            class="text-sm underline font-medium hover:underline underline-offset-4 py-3"
             >Join Squad</a
         >
     </nav>
@@ -221,14 +226,14 @@ var(--dot-color);"
                         <Input
                             type="email"
                             placeholder="Email"
-                            class="max-w-xs w-[300px] rounded-none rounded-l-lg border-slate-700"
+                            class="max-w-xs w-[300px] h-[47px] rounded-none rounded-l-lg outline-0 border-slate-700 bg-white placeholder-shown:bg-cyan-50 text-slate-950 font-bold"
                         />
                         <Button
                             size="xs"
-                            class="px-8 rounded-none rounded-r-lg border-solid border-[1px] border-l-0 border-slate-700"
+                            class="px-9 py-3 rounded-none rounded-r-lg border-solid border-[1px] border-l-0 border-slate-700"
                         >
                             <span
-                                class="leading-normal font-mono font-medium text-transparent bg-slate-950 bg-clip-text bg-gradient-to-r from-cyan-100 to-pink-100 hover:text-white"
+                                class="leading-normal font-mono font-bold text-transparent bg-slate-950 bg-clip-text bg-gradient-to-r from-cyan-100 to-pink-100"
                             >
                                 Join Squad
                             </span>
@@ -377,7 +382,7 @@ var(--dot-color);"
 
         <section class="w-full py-12 md:py-12 lg:py-16">
             <div class="container px-4 md:px-6">
-                <h2
+                <p
                     class="text-3xl font-thin text-slate-600 sm:text-4xl md:text-5xl pl-8"
                 >
                     <span
@@ -385,7 +390,7 @@ var(--dot-color);"
                     >
                         Minimize setup time.<br />Maximize development time.
                     </span>
-                </h2>
+                </p>
             </div>
         </section>
 
@@ -441,7 +446,7 @@ var(--dot-color);"
                                 >
                             </CardHeader>
                             <CardContent class="flex-1">
-                                <p class="text-2xl font-bold">
+                                <p class="text-2xl font-bold leading-normal">
                                     ${plan.annualPrice}/year
                                     <span class="text-sm text-cyan-600"
                                         >(save {Math.round(
@@ -452,7 +457,7 @@ var(--dot-color);"
                                         )}%)</span
                                     >
                                 </p>
-                                <p class="text-sm text-gray-500">
+                                <p class="text-sm text-gray-500 leading-normal">
                                     or ${plan.price}/month
                                 </p>
                                 <ul class="mt-4 space-y-2">
@@ -493,8 +498,10 @@ var(--dot-color);"
                             >
                         </CardHeader>
                         <CardContent>
-                            <p class="text-2xl font-bold">$999/week</p>
-                            <p class="text-sm text-gray-500">
+                            <p class="text-2xl font-bold leading-normal">
+                                $999/week
+                            </p>
+                            <p class="text-sm text-gray-600 leading-normal">
                                 One-time consultation included with Annual
                                 Subscription
                             </p>
@@ -514,8 +521,10 @@ var(--dot-color);"
                             >
                         </CardHeader>
                         <CardContent>
-                            <p class="text-2xl font-bold">$699/week</p>
-                            <p class="text-sm text-gray-500">
+                            <p class="text-2xl font-bold leading-normal">
+                                $699/week
+                            </p>
+                            <p class="text-sm text-gray-600 leading-normal">
                                 Competitively priced
                             </p>
                             <p class="mt-4">
@@ -560,7 +569,7 @@ var(--dot-color);"
                             Let us know your interest!
                         </h2>
                         <p
-                            class="mx-auto max-w-[700px] text-slate-200 md:text-xl mb-8 font-normal"
+                            class="mx-auto max-w-[700px] text-slate-200 md:text-xl mb-8 font-normal md:leading-normal"
                         >
                             Subscribe to updates!
                         </p>
@@ -569,15 +578,13 @@ var(--dot-color);"
                         <Input
                             type="email"
                             placeholder="Email"
-                            class="max-w-xs w-[300px] rounded-none rounded-l-lg border-slate-700"
+                            class="max-w-xs w-[300px] h-[47px] rounded-none rounded-l-lg border-slate-700 focus-visible:outline-0 text-slate-50 font-bold placeholder:text-slate-100 bg-cyan-700 bg-slate-900 placeholder-shown:bg-cyan-700 focus-visible:bg-slate-900 focus-visible:bg-slate-900"
                         />
                         <Button
                             size="xs"
-                            class="px-8 rounded-none rounded-r-lg border-solid border-[1px] border-l-0 border-slate-700 bg-gradient-to-r from-cyan-500 to-pink-500 hover:from-cyan-300 hover:to-pink-300 font-bold transition-all duration-500 ease-in"
+                            class="px-8 rounded-none rounded-r-lg border-solid border-[1px] border-l-0 border-slate-700 bg-gradient-to-r from-cyan-100 to-pink-100 hover:from-cyan-300 hover:to-pink-300 font-bold transition-all duration-500 ease-in py-3"
                         >
-                            <span
-                                class="leading-normal font-mono text-slate-900"
-                            >
+                            <span class="leading-normal font-mono text-black">
                                 Join Squad
                             </span>
                         </Button>
@@ -588,18 +595,18 @@ var(--dot-color);"
     </main>
 
     <footer
-        class="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 bg-slate-950"
+        class="flex gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 bg-slate-950"
     >
-        <p class="text-xs text-slate-100 dark:text-gray-400">
+        <p class="text-xs text-slate-100 dark:text-gray-400 leading-normal">
             © 2024 Buzooka. All rights reserved.
         </p>
-        <nav class="sm:ml-auto flex gap-4 sm:gap-6">
+        <!-- <nav class="sm:ml-auto flex gap-4 sm:gap-6">
             <a href="#" class="text-xs hover:underline underline-offset-4"
                 >Terms of Service</a
             >
             <a href="#" class="text-xs hover:underline underline-offset-4"
                 >Privacy Policy</a
             >
-        </nav>
+        </nav> -->
     </footer>
 </div>

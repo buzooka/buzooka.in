@@ -14,6 +14,6 @@
 	
 </script>
 
-<p class={cn("text-muted-foreground text-sm", className)} {...rest}>
+<p class={cn("text-muted-foreground text-sm leading-normal", className)} {...rest}>
 	{@render children?.()}
 </p>
