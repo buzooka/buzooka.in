@@ -5,6 +5,7 @@
     import {
         Card,
         CardContent,
+        CardDescription,
         CardFooter,
         CardHeader,
         CardTitle,
@@ -19,54 +20,73 @@
         GitBranch,
         ArrowRight,
     } from "lucide-svelte";
-    import { Badge } from "$lib/components/ui/badge";
     import { onMount } from "svelte";
 
     const features = [
         {
-            icon: GitBranch,
             title: "Bootstrap the repo",
             description:
-                "Choose a template, and generate your repository with best practices and optimal structure in just a few clicks.",
+                "Choose a template, and generate your multi-app repositories with best practices and optimal structure in just a few clicks. Includes Mobile, Desktop, Web, Services, DB & Workers",
         },
         {
-            icon: HardDrive,
             title: "Provisioning Cloud Resources",
             description:
-                "Automatically set up your cloud infrastructure apt for your apps, saving you time and ensuring scalability from day one.",
+                "Automatically set up your cloud infrastructure apt for your apps, saving you time and ensuring scalability from day one. Choose which cloud provider you would like to use - AWS, GCP, Azure, Digital Ocean, Netlify.",
         },
         {
-            icon: Zap,
             title: "CI/CD Pipeline",
             description:
-                "Get a fully configured CI/CD pipeline to streamline your development and deployment processes.",
+                "Get a fully configured CI/CD pipeline to streamline your development and deployment processes. Choose between blue/green deployment, canary deployment",
         },
     ];
 
     const pricingPlans = [
         {
-            title: "Repo Generation",
-            price: 19,
-            annualPrice: 108,
+            title: "Scout",
+            subtitle: "Devs, Prototyping",
+            price: 39,
+            annualPrice: 399,
             features: [
-                "1 project included",
-                "Add projects: $12/month or $72/year",
+                "Unlimited Projects",
+                "Upto 5 Apps per project",
+                "Repo Generation",
+                "Both Pre-built & Custom Templates",
+                "Free one-time consultation call",
             ],
         },
         {
-            title: "Repo + Cloud Provisioning",
-            price: 39,
-            annualPrice: 348,
-            features: ["1 project included", "Cloud infrastructure setup"],
+            title: "Gunner",
+            subtitle: "Founders, Startups",
+            price: 69,
+            annualPrice: 699,
+            features: [
+                "Unlimited Projects",
+                "Upto 10 Apps per project",
+                "Repo Generation",
+                "Both Pre-built & Custom Templates",
+                "Cloud infrastructure setup",
+                "Manual App Deployments",
+                "Cloud infrastructure teardown",
+                "Free one-time consultation call",
+            ],
         },
         {
-            title: "Repo + Cloud + CI/CD",
-            price: 59,
-            annualPrice: 588,
+            title: "Squadron",
+            subtitle: "Startups, Enterprise",
+            price: 89,
+            annualPrice: 999,
             features: [
-                "1 project included",
+                "Unlimited Projects",
+                "Upto 100 Apps per project",
+                "Repo Generation",
+                "Both Pre-built & Custom Templates",
                 "Cloud infrastructure setup",
-                "CI/CD pipeline configuration",
+                "Manual App Deployments",
+                "Cloud infrastructure teardown",
+                "CI/CD pipeline configuration setup",
+                "Deployment Strategy Configuration",
+                "Automatic App Deployments",
+                "Free one-time consultation call",
             ],
         },
     ];
@@ -86,6 +106,45 @@
     const [send, receive] = crossfade({});
 </script>
 
+<header
+    class="px-4 lg:px-6 h-14 flex items-center py-[32px] pt-[34px] pb-[32px] sticky top-0"
+    style="--dot-bg: white;--dot-color: #888;--dot-size: 1px;--dot-space: 22px; background:
+linear-gradient(90deg, var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
+linear-gradient(var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
+var(--dot-color);"
+>
+    <div class="flex flex-1">
+        <a
+            href="/"
+            class="flex items-left justify-start flex-1 relative top-[0px] left-[24px]"
+        >
+            <img alt="Buzooka" src="/buzooka.svg" width="200" />
+        </a>
+    </div>
+    <!-- <a
+        href="/"
+        class="flex items-center justify-center flex-1 relative top-[-8px] left-[0px]"
+    >
+        <img alt="Buzooka" src="/buzooka-logo.svg" width="200" />
+    </a> -->
+    <nav class="ml-auto flex gap-4 sm:gap-6 flex-1 justify-end">
+        <a
+            href="#features"
+            class="text-sm font-medium hover:underline underline-offset-4"
+            >Features</a
+        >
+        <a
+            href="#pricing"
+            class="text-sm font-medium hover:underline underline-offset-4"
+            >Pricing</a
+        >
+        <a
+            href="#features"
+            class="text-sm underline font-medium hover:underline underline-offset-4"
+            >Join Squad</a
+        >
+    </nav>
+</header>
 <div
     class="flex flex-col min-h-screen"
     style="--dot-bg: white;--dot-color: #888;--dot-size: 1px;--dot-space: 22px; background:
@@ -93,44 +152,20 @@ linear-gradient(90deg, var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), t
 linear-gradient(var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
 var(--dot-color);"
 >
-    <header class="px-4 lg:px-6 h-14 flex items-center">
-        <div class="flex items-center justify-center flex-1"></div>
-        <a
-            href="/"
-            class="flex items-center justify-center flex-1 relative top-[16px]"
-        >
-            <img alt="Buzooka" src="/buzooka-logo.svg" width="200" />
-        </a>
-        <nav class="ml-auto flex gap-4 sm:gap-6 flex-1 justify-end">
-            <a
-                href="#features"
-                class="text-sm font-medium hover:underline underline-offset-4"
-                >Features</a
-            >
-            <a
-                href="#pricing"
-                class="text-sm font-medium hover:underline underline-offset-4"
-                >Pricing</a
-            >
-            <a
-                href="#features"
-                class="text-sm underline font-medium hover:underline underline-offset-4"
-                >Join Squad</a
-            >
-        </nav>
-    </header>
-
     <main class="flex-1">
         <section
-            class=" mt-50 w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-[linear-gradient(90deg,_var(--dot-bg)_calc(var(--dot-space)_-_var(--dot-size)),_transparent_1%)_center_/_var(--dot-space)_var(--dot-space),_linear-gradient(var(--dot-bg)_calc(var(--dot-space)_-_var(--dot-size)),_transparent_1%)_center_/_var(--dot-space)_var(--dot-space),_var(--dot-color)]"
+            class="h-[80vh] mt-50 w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-[linear-gradient(90deg,_var(--dot-bg)_calc(var(--dot-space)_-_var(--dot-size)),_transparent_1%)_center_/_var(--dot-space)_var(--dot-space),_linear-gradient(var(--dot-bg)_calc(var(--dot-space)_-_var(--dot-size)),_transparent_1%)_center_/_var(--dot-space)_var(--dot-space),_var(--dot-color)]"
         >
-            <div class="container px-4 md:px-6">
+            <div
+                class="container px-4 md:px-6 absolute left-[50%] -translate-x-1/2"
+            >
                 <div class="flex flex-col items-center space-y-4 text-center">
                     <div class="space-y-6 mb-4">
                         <h1
                             class="text-sm uppercase font-mono font-medium text-slate-600"
                         >
-                            Tools for Product Development
+                            <span class="font-bold">A Startup Studio</span> - Tools
+                            for Product Development
                         </h1>
                         <h2
                             class="text-2xl font-sans sm:text-4xl md:text-5xl lg:text-6xl/none block w-[600px] pt-0"
@@ -158,7 +193,7 @@ var(--dot-color);"
                                         }}
                                         class="leading-normal absolute font-mono text-6xl text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-pink-500"
                                     >
-                                        Make an impact
+                                        make an impact
                                     </span>
                                 {/if}
                                 {#if id === 3}
@@ -260,9 +295,7 @@ var(--dot-color);"
                                     class="mb-2"
                                 />
                             </div>
-                            <CardTitle class="italic text-slate-600 font-normal"
-                                >{features[0].title}</CardTitle
-                            >
+                            <CardTitle>{features[0].title}</CardTitle>
                         </CardHeader>
                         <CardContent>
                             {features[0].description}
@@ -275,13 +308,13 @@ var(--dot-color);"
                                 <img
                                     alt="AWS"
                                     src="/aws-logo.svg"
-                                    width="40"
+                                    width="30"
                                     class="mb-2"
                                 />
                                 <img
                                     alt="GCP"
                                     src="/gcp-logo.svg"
-                                    width="40"
+                                    width="30"
                                     class="mb-2"
                                 />
                                 <img
@@ -297,9 +330,7 @@ var(--dot-color);"
                                     class="mb-2"
                                 />
                             </div>
-                            <CardTitle class="italic text-slate-600 font-normal"
-                                >{features[1].title}</CardTitle
-                            >
+                            <CardTitle>{features[1].title}</CardTitle>
                         </CardHeader>
                         <CardContent>
                             {features[1].description}
@@ -308,15 +339,33 @@ var(--dot-color);"
 
                     <Card>
                         <CardHeader>
-                            <img
-                                alt="React"
-                                src="/react-logo.svg"
-                                width="30"
-                                class="mb-2"
-                            />
-                            <CardTitle class="italic text-slate-600 font-normal"
-                                >{features[2].title}</CardTitle
-                            >
+                            <div class="flex gap-4">
+                                <img
+                                    alt="Linux"
+                                    src="/linux-logo.svg"
+                                    width="30"
+                                    class="mb-2"
+                                />
+                                <img
+                                    alt="Docker"
+                                    src="/docker-logo.svg"
+                                    width="30"
+                                    class="mb-2"
+                                />
+                                <img
+                                    alt="Mobile"
+                                    src="/mobile-logo.svg"
+                                    width="30"
+                                    class="mb-2"
+                                />
+                                <img
+                                    alt="Terraform"
+                                    src="/terraform-logo.svg"
+                                    width="30"
+                                    class="mb-2"
+                                />
+                            </div>
+                            <CardTitle>{features[2].title}</CardTitle>
                         </CardHeader>
                         <CardContent>
                             {features[2].description}
@@ -350,7 +399,7 @@ var(--dot-color);"
                     Who is this for?
                 </h2>
                 <div class="grid gap-6 md:grid-cols-3">
-                    {#each ["Founders", "Businesses", "Developers"] as audience}
+                    {#each ["Developers", "Founders", "Businesses"] as audience}
                         <Card>
                             <CardHeader>
                                 <CardTitle>{audience}</CardTitle>
@@ -375,7 +424,7 @@ var(--dot-color);"
             </div>
         </section>
 
-        <section id="pricing" class="w-full py-12 md:py-24 lg:py-32">
+        <section id="pricing" class="w-full py-12 md:py-12 lg:py-16">
             <div class="container px-4 md:px-6">
                 <h2
                     class="text-3xl italic font-thin text-slate-600 sm:text-4xl md:text-5xl text-center mb-8"
@@ -384,21 +433,27 @@ var(--dot-color);"
                 </h2>
                 <div class="grid gap-6 lg:grid-cols-3">
                     {#each pricingPlans as plan}
-                        <Card>
+                        <Card class="flex flex-col">
                             <CardHeader>
                                 <CardTitle>{plan.title}</CardTitle>
+                                <CardDescription
+                                    >{plan.subtitle}</CardDescription
+                                >
                             </CardHeader>
-                            <CardContent>
-                                <p class="text-3xl font-bold">
-                                    ${plan.price}/month
+                            <CardContent class="flex-1">
+                                <p class="text-2xl font-bold">
+                                    ${plan.annualPrice}/year
+                                    <span class="text-sm text-cyan-600"
+                                        >(save {Math.round(
+                                            (1 -
+                                                plan.annualPrice /
+                                                    (plan.price * 12)) *
+                                                100,
+                                        )}%)</span
+                                    >
                                 </p>
                                 <p class="text-sm text-gray-500">
-                                    or ${plan.annualPrice}/year (save {Math.round(
-                                        (1 -
-                                            plan.annualPrice /
-                                                (plan.price * 12)) *
-                                            100,
-                                    )}%)
+                                    or ${plan.price}/month
                                 </p>
                                 <ul class="mt-4 space-y-2">
                                     {#each plan.features as feature}
@@ -411,9 +466,9 @@ var(--dot-color);"
                                     {/each}
                                 </ul>
                             </CardContent>
-                            <CardFooter>
+                            <!-- <CardFooter>
                                 <Button class="w-full">Choose Plan</Button>
-                            </CardFooter>
+                            </CardFooter> -->
                         </Card>
                     {/each}
                 </div>
@@ -433,12 +488,14 @@ var(--dot-color);"
                 <div class="grid gap-6 md:grid-cols-2">
                     <Card>
                         <CardHeader>
-                            <CardTitle>Hire an Architect</CardTitle>
+                            <CardTitle class="font-normal"
+                                >Hire an Architect</CardTitle
+                            >
                         </CardHeader>
                         <CardContent>
-                            <p class="text-3xl font-bold">$199/project</p>
+                            <p class="text-2xl font-bold">$999/week</p>
                             <p class="text-sm text-gray-500">
-                                Free one-time consultation with Annual
+                                One-time consultation included with Annual
                                 Subscription
                             </p>
                             <p class="mt-4">
@@ -446,24 +503,29 @@ var(--dot-color);"
                                 set your project up for success!
                             </p>
                         </CardContent>
-                        <CardFooter>
+                        <!-- <CardFooter>
                             <Button class="w-full">Book an Architect</Button>
-                        </CardFooter>
+                        </CardFooter> -->
                     </Card>
                     <Card>
                         <CardHeader>
-                            <CardTitle>Hire a Developer</CardTitle>
+                            <CardTitle class="font-normal"
+                                >Hire a Developer</CardTitle
+                            >
                         </CardHeader>
                         <CardContent>
-                            <p class="text-3xl font-bold">$699/week</p>
+                            <p class="text-2xl font-bold">$699/week</p>
+                            <p class="text-sm text-gray-500">
+                                Competitively priced
+                            </p>
                             <p class="mt-4">
                                 Need people to work on the app features? Hire
                                 our trusted devs to work on your project!
                             </p>
                         </CardContent>
-                        <CardFooter>
+                        <!-- <CardFooter>
                             <Button class="w-full">Hire a Developer</Button>
-                        </CardFooter>
+                        </CardFooter> -->
                     </Card>
                 </div>
             </div>
@@ -478,7 +540,7 @@ var(--dot-color);"
         >
             <div class="container px-4 md:px-6">
                 <div class="flex flex-col items-center space-y-16 text-center">
-                    <div class="space-y-4">
+                    <!-- <div class="space-y-4">
                         <h2
                             class="text-3xl italic font-thin text-slate-300 sm:text-4xl md:text-5xl text-center mb-8"
                         >
@@ -489,8 +551,20 @@ var(--dot-color);"
                         >
                             Book a consultation and accelerate your MVP launch
                         </p>
-                    </div>
+                    </div> -->
 
+                    <div class="space-y-4">
+                        <h2
+                            class="text-3xl italic font-thin text-slate-300 sm:text-4xl md:text-5xl text-center mb-4"
+                        >
+                            Let us know your interest!
+                        </h2>
+                        <p
+                            class="mx-auto max-w-[700px] text-slate-200 md:text-xl mb-8 font-normal"
+                        >
+                            Subscribe to updates!
+                        </p>
+                    </div>
                     <div class="flex gap-0">
                         <Input
                             type="email"
@@ -499,10 +573,10 @@ var(--dot-color);"
                         />
                         <Button
                             size="xs"
-                            class="px-8 rounded-none rounded-r-lg border-solid border-[1px] border-l-0 border-slate-700"
+                            class="px-8 rounded-none rounded-r-lg border-solid border-[1px] border-l-0 border-slate-700 bg-gradient-to-r from-cyan-500 to-pink-500 hover:from-cyan-300 hover:to-pink-300 font-bold transition-all duration-500 ease-in"
                         >
                             <span
-                                class="leading-normal font-mono font-medium bg-slate-950 text-transparent bg-clip-text bg-gradient-to-r from-cyan-100 to-pink-100 hover:text-white"
+                                class="leading-normal font-mono text-slate-900"
                             >
                                 Join Squad
                             </span>

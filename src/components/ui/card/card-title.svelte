@@ -20,7 +20,7 @@
 
 <svelte:element
 	this={tag}
-	class={cn("text-lg font-semibold leading-none tracking-tight", className)}
+	class={cn("text-lg font-mono font-semibold leading-none tracking-tight text-cyan-700", className)}
 	{...rest}
 >
 	{@render children?.()}
