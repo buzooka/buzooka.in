@@ -115,8 +115,6 @@
         Accept: "application/json",
       },
     });
-
-    window.location.pathname = "/waitlist";
   };
 </script>
 
@@ -174,80 +172,27 @@ var(--dot-color);"
     >
       <div class="container px-4 md:px-6 absolute left-[50%] -translate-x-1/2">
         <div class="flex flex-col items-center space-y-4 text-center">
-          <div class="space-y-6 mb-4">
-            <h1 class="text-sm uppercase font-mono font-medium text-slate-600">
-              <span class="font-bold">A Startup Studio</span> - Tools for Product
-              Development
-            </h1>
-            <h2
-              class="text-2xl font-sans sm:text-4xl md:text-5xl lg:text-6xl/none block w-[600px] pt-0"
-            >
-              <span class="italic font-thin text-slate-600"
-                >Launch your <mark class="px-3">MVP</mark> ,</span
-              ><br />
-              <div
-                class="relative h-24 text-center flex items-center justify-center"
-              >
-                {#if id === 1}
-                  <span
-                    transition:blur={{
-                      duration: 200,
-                    }}
-                    class="leading-normal absolute font-mono text-6xl text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-pink-500"
-                  >
-                    faster!
-                  </span>
-                {/if}
-                {#if id === 2}
-                  <span
-                    transition:blur={{
-                      duration: 200,
-                    }}
-                    class="leading-normal absolute font-mono text-6xl text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-pink-500"
-                  >
-                    make an impact
-                  </span>
-                {/if}
-                {#if id === 3}
-                  <span
-                    transition:blur={{
-                      duration: 200,
-                    }}
-                    class="leading-normal absolute font-mono text-6xl text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-pink-500"
-                  >
-                    in just days!
-                  </span>
-                {/if}
-              </div>
-            </h2>
-
+          <div>
             <h3
-              class="mx-auto italic font-thin max-w-[700px] text-slate-600 md:text-xl dark:text-gray-400 pt-8"
-            >
-              <span class="font-medium">Code</span>,
-              <span class="font-medium">Cloud</span>, and
-              <span class="font-medium">CI/CD</span> simplified.
-            </h3>
-          </div>
-          <form class="flex gap-0" on:submit={handleSubmit}>
-            <Input
-              name="email"
-              type="email"
-              placeholder="Email"
-              class="max-w-xs w-[300px] h-[47px] rounded-none rounded-l-lg outline-0 border-slate-700 bg-white placeholder-shown:bg-cyan-50 text-slate-950 font-bold"
-            />
-            <Button
-              type="submit"
-              size="xs"
-              class="px-9 py-3 rounded-none rounded-r-lg border-solid border-[1px] border-l-0 border-slate-700"
+              class="mx-auto mt-16 italic font-thin max-w-[700px] text-slate-600 md:text-5xl dark:text-gray-400 pt-10 leading-normal text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-pink-500"
             >
               <span
-                class="leading-normal font-mono font-bold text-transparent bg-slate-950 bg-clip-text bg-gradient-to-r from-cyan-100 to-pink-100"
+                class="text-5xl font-light text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-pink-500"
+                >Hurray!</span
               >
-                Join Squad
-              </span>
-            </Button>
-          </form>
+              <span class="text-5xl text-slate-600"
+                >You have joined the <span class="underline font-light"
+                  >Squad!</span
+                ></span
+              >
+            </h3>
+
+            <h4
+              class="text-xl uppercase font-mono font-medium text-slate-600 mt-[90px] animate-typewriter"
+            >
+              You will get a call up for active duty. Be Ready.
+            </h4>
+          </div>
         </div>
       </div>
     </section>
@@ -524,25 +469,23 @@ var(--dot-color);"
 
           <div class="space-y-1">
             <h2
-              class="text-3xl italic font-thin text-slate-300 sm:text-4xl md:text-5xl text-center mb-20"
+              class="text-3xl italic font-thin text-slate-300 sm:text-4xl md:text-5xl text-center mb-20 mt-20"
             >
               You are only limited by your imagination!
             </h2>
-            <p
+            <!-- <p
               class="mx-auto max-w-[700px] text-slate-200 text-2xl mt-8 mb-8 font-handwriting md:leading-normal italic"
             >
               Become an early bird!
-            </p>
+            </p> -->
           </div>
-          <form class="flex gap-0" on:submit={handleSubmit}>
+          <!-- <div class="flex gap-0">
             <Input
-              name="email"
               type="email"
               placeholder="Email"
               class="max-w-xs w-[300px] h-[47px] rounded-none rounded-l-lg border-slate-700 focus-visible:outline-0 text-slate-50 font-bold placeholder:text-slate-100 bg-cyan-950 bg-slate-900 placeholder-shown:bg-cyan-950 focus-visible:bg-slate-900 focus-visible:bg-slate-900"
             />
             <Button
-              type="submit"
               size="xs"
               class="px-8 rounded-none rounded-r-lg border-solid border-[1px] border-l-0 border-slate-700 bg-gradient-to-r from-cyan-100 to-pink-100 hover:from-cyan-300 hover:to-pink-300 font-bold transition-all duration-500 ease-in py-3"
             >
@@ -550,7 +493,7 @@ var(--dot-color);"
                 Join Squad
               </span>
             </Button>
-          </form>
+          </div> -->
         </div>
       </div>
     </section>

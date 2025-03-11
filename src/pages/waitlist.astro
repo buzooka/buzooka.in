@@ -1,0 +1,71 @@
+---
+import "$lib/styles/app.css";
+import WaitlistView from "../views/waitlist.svelte";
+
+// Welcome to Astro! Everything between these triple-dash code fences
+// is your "component frontmatter". It never runs in the browser.
+console.log("This runs in your terminal, not the browser!");
+---
+
+<!doctype html>
+<!-- Below is your "component template." It's just HTML, but with
+    some magic sprinkled in to help you build great templates. -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content="Buzooka 1.0.0" />
+    <title>Buzooka</title>
+    <meta
+      name="description"
+      content="#1 Startup Studio - Launch MVPs Faster!"
+    />
+    <link
+      href="/buzooka-icon.svg"
+      rel="icon"
+      media="(prefers-color-scheme: light)"
+    />
+    <!-- <link
+      href="https://framerusercontent.com/images/T8cqFYtWheQPGqJRl35Uq5KyRE.png"
+      rel="icon"
+      media="(prefers-color-scheme: dark)"
+    /> -->
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Buzooka" />
+    <meta
+      property="og:description"
+      content="#1 Startup Studio - Launch MVPs Faster!"
+    />
+    <!-- <meta
+      property="og:image"
+      content="https://framerusercontent.com/assets/QZjJz9s1cLLrXgcgSMVlXbX5eA.png"
+    /> -->
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Buzooka" />
+    <meta
+      name="twitter:description"
+      content="#1 Startup Studio - Launch MVPs Faster!"
+    />
+    <!-- <meta
+      name="twitter:image"
+      content="https://framerusercontent.com/assets/QZjJz9s1cLLrXgcgSMVlXbX5eA.png"
+    /> -->
+
+    <!-- <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin /> -->
+
+    <meta name="robots" content="max-image-preview:large" />
+    <link rel="canonical" href="https://buzooka.in/" />
+    <meta property="og:url" content="https://buzooka.in/" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Mansalva&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <WaitlistView client:load />
+  </body>
+</html>
