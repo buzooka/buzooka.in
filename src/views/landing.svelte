@@ -560,7 +560,7 @@ var(--dot-color);"
     class="flex gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 bg-slate-950"
   >
     <p class="text-xs text-slate-100 dark:text-gray-400 leading-normal">
-      © 2025 Buzooka. All rights reserved.
+      © 2025 Biolocal Technologies (OPC) Private Limited. All rights reserved.
     </p>
     <!-- <nav class="sm:ml-auto flex gap-4 sm:gap-6">
             <a href="#" class="text-xs hover:underline underline-offset-4"
