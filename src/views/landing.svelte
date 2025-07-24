@@ -1,83 +1,69 @@
 <script lang="ts">
-  import { blur, crossfade } from "svelte/transition";
-  import { CheckCircle } from "lucide-svelte";
-  import { onMount } from "svelte";
-  import { Button } from "$lib/components/ui/button";
-  import { Input } from "$lib/components/ui/input/index.js";
+  import { blur, crossfade } from 'svelte/transition';
+  import { CheckCircle } from 'lucide-svelte';
+  import { onMount } from 'svelte';
+  import { Button } from '$lib/components/ui/button';
+  import { Input } from '$lib/components/ui/input/index.js';
   import {
     Card,
     CardContent,
     CardDescription,
     CardHeader,
     CardTitle,
-  } from "$lib/components/ui/card";
-  import { waitlistSchema } from "$lib/schema/email-waitlist.ts";
+  } from '$lib/components/ui/card';
+  import { waitlistSchema } from '$lib/schema/email-waitlist.ts';
 
   const features = [
     {
-      title: "Bootstrap the repo",
+      title: 'Bootstrap the repo',
       description:
-        "Choose a template, and generate your multi-app repositories with best practices and optimal structure in just a few clicks. Includes Mobile, Desktop, Web, Services, DB & Workers",
+        'Choose a template, and generate your multi-app repositories with best practices and optimal structure in just a few clicks. Includes Mobile, Desktop, Web, Services, DB & Workers',
     },
     {
-      title: "Provision Cloud Resources",
+      title: 'Provision Cloud Resources',
       description:
-        "Automatically set up your cloud infrastructure apt for your apps, saving you time and ensuring scalability from day one. Choose which cloud provider you would like to use - AWS, GCP, Azure, Digital Ocean, Netlify.",
+        'Automatically set up your cloud infrastructure apt for your apps, saving you time and ensuring scalability from day one. Choose which cloud provider you would like to use - AWS, GCP, Azure, Digital Ocean, Netlify.',
     },
     {
-      title: "Setup CI/CD Pipeline",
+      title: 'Setup CI/CD Pipeline',
       description:
-        "Get a fully configured CI/CD pipeline to streamline your development and deployment processes. Choose between blue/green deployment, canary deployment",
+        'Get a fully configured CI/CD pipeline to streamline your development and deployment processes. Choose between blue/green deployment, canary deployment',
     },
   ];
 
   const pricingPlans = [
     {
-      title: "Scout",
-      subtitle: "Devs, Prototyping",
+      title: 'Scout',
+      subtitle: 'Devs, Prototyping',
       price: 39,
       annualPrice: 399,
       features: [
-        "Unlimited Projects",
-        "Upto 5 Apps per project",
-        "Repo Generation",
-        "Both Pre-built & Custom Templates",
-        "Free one-time consultation call",
+        'Unlimited Projects',
+        'Unlimited Apps',
+        'Repo Generation',
+        'AI Friendly Repos',
+        'Cloud Provisioning',
+        'App Deployments',
+        'Free One-Time Consultation',
+        'Hire Devs',
       ],
     },
     {
-      title: "Gunner",
-      subtitle: "Founders, Startups",
+      title: 'Gunner',
+      subtitle: 'Founders, Startups',
       price: 69,
       annualPrice: 699,
-      features: [
-        "Unlimited Projects",
-        "Upto 10 Apps per project",
-        "Repo Generation",
-        "Both Pre-built & Custom Templates",
-        "Cloud infrastructure setup",
-        "Manual App Deployments",
-        "Cloud infrastructure teardown",
-        "Free one-time consultation call",
-      ],
+      features: ['All Scout Features', 'Priority Support', 'Hire AI Agents'],
     },
     {
-      title: "Squadron",
-      subtitle: "Startups, Enterprise",
+      title: 'Squadron',
+      subtitle: 'Startups, Enterprise',
       price: 89,
       annualPrice: 999,
       features: [
-        "Unlimited Projects",
-        "Upto 100 Apps per project",
-        "Repo Generation",
-        "Both Pre-built & Custom Templates",
-        "Cloud infrastructure setup",
-        "Manual App Deployments",
-        "Cloud infrastructure teardown",
-        "CI/CD pipeline configuration setup",
-        "Deployment Strategy Configuration",
-        "Automatic App Deployments",
-        "Free one-time consultation call",
+        'All Gunner features',
+        'Custom Integrations',
+        'Dedicated Account Manager',
       ],
     },
   ];
@@ -108,15 +94,15 @@
       console.log(error);
     }
 
-    fetch("https://formspree.io/f/maneyjyk", {
-      method: "POST",
+    fetch('https://formspree.io/f/maneyjyk', {
+      method: 'POST',
       body,
       headers: {
-        Accept: "application/json",
+        Accept: 'application/json',
       },
     });
 
-    window.location.pathname = "/waitlist";
+    window.location.pathname = '/waitlist';
   };
 </script>
 
@@ -367,16 +353,16 @@ var(--dot-color);"
           Who is this for?
         </h2>
         <div class="grid gap-6 md:grid-cols-3">
-          {#each ["Developers", "Founders", "Businesses"] as audience}
+          {#each ['Developers', 'Founders', 'Businesses'] as audience}
             <Card>
               <CardHeader>
                 <CardTitle>{audience}</CardTitle>
               </CardHeader>
               <CardContent>
-                {#if audience === "Founders"}
+                {#if audience === 'Founders'}
                   Launch your startup idea quickly and efficiently, focusing on
                   your product instead of infrastructure.
-                {:else if audience === "Businesses"}
+                {:else if audience === 'Businesses'}
                   Accelerate your digital transformation with rapid MVP
                   development and deployment.
                 {:else}
