@@ -108,14 +108,17 @@
 </script>
 
 <header
-  class="px-4 lg:px-6 h-14 flex items-center py-[32px] pt-[34px] pb-[30px] sticky top-0"
+  class="px-4 lg:px-6 h-14 flex items-center pt-[32px] pb-[29px] sticky top-0 z-50"
   style="--dot-bg: white;--dot-color: #888;--dot-size: 1px;--dot-space: 22px; background:
 linear-gradient(90deg, var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
 linear-gradient(var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
 var(--dot-color);"
 >
   <div class="flex flex-1">
-    <a href="/" class="items-left justify-start relative top-[0px] left-[24px]">
+    <a
+      href="/"
+      class="items-left justify-start relative top-[0px] sm:left-[12px] lg:left-[24px]"
+    >
       <img
         alt="Buzooka"
         src="/buzooka.svg"
@@ -133,12 +136,12 @@ var(--dot-color);"
   <nav class="ml-auto flex gap-4 sm:gap-6 flex-1 justify-end">
     <a
       href="#features"
-      class="text-sm font-medium hover:underline underline-offset-4 py-3"
+      class="text-sm font-medium hover:underline underline-offset-4 py-3 hidden sm:block"
       >What</a
     >
     <a
       href="#pricing"
-      class="text-sm font-medium hover:underline underline-offset-4 py-3"
+      class="text-sm font-medium hover:underline underline-offset-4 py-3 hidden sm:block"
       >Plans</a
     >
     <a
@@ -157,9 +160,9 @@ var(--dot-color);"
 >
   <main class="flex-1">
     <section
-      class="h-[80vh] mt-50 w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-[linear-gradient(90deg,_var(--dot-bg)_calc(var(--dot-space)_-_var(--dot-size)),_transparent_1%)_center_/_var(--dot-space)_var(--dot-space),_linear-gradient(var(--dot-bg)_calc(var(--dot-space)_-_var(--dot-size)),_transparent_1%)_center_/_var(--dot-space)_var(--dot-space),_var(--dot-color)]"
+      class="h-auto mt-12 sm:mt-20 w-full py-12 md:py-24 lg:py-32 xl:py-48"
     >
-      <div class="container px-4 md:px-6 absolute left-[50%] -translate-x-1/2">
+      <div class="container px-4 md:px-6">
         <div class="flex flex-col items-center space-y-4 text-center">
           <div class="space-y-6 mb-4">
             <h1 class="text-sm uppercase font-mono font-medium text-slate-600">
@@ -167,7 +170,7 @@ var(--dot-color);"
               Development
             </h1>
             <h2
-              class="text-2xl font-sans sm:text-4xl md:text-5xl lg:text-6xl/none block w-[600px] pt-0"
+              class="text-2xl font-sans sm:text-4xl md:text-5xl lg:text-6xl/none block w-full sm:w-[600px] pt-0"
             >
               <span class="italic font-thin text-slate-600"
                 >Launch your <mark class="px-3">MVP</mark> ,</span
@@ -180,7 +183,7 @@ var(--dot-color);"
                     transition:blur={{
                       duration: 200,
                     }}
-                    class="leading-normal absolute font-mono text-6xl text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-pink-500"
+                    class="leading-normal absolute font-mono text-4xl sm:text-6xl text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-pink-500"
                   >
                     faster!
                   </span>
@@ -190,7 +193,7 @@ var(--dot-color);"
                     transition:blur={{
                       duration: 200,
                     }}
-                    class="leading-normal absolute font-mono text-6xl text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-pink-500"
+                    class="leading-normal absolute font-mono text-4xl sm:text-6xl text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-pink-500"
                   >
                     make an impact
                   </span>
@@ -200,7 +203,7 @@ var(--dot-color);"
                     transition:blur={{
                       duration: 200,
                     }}
-                    class="leading-normal absolute font-mono text-6xl text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-pink-500"
+                    class="leading-normal absolute font-mono text-4xl sm:text-6xl text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-pink-500"
                   >
                     in just days!
                   </span>
@@ -216,17 +219,20 @@ var(--dot-color);"
               <span class="font-medium">CI/CD</span> simplified.
             </h3>
           </div>
-          <form class="flex gap-0" on:submit={handleSubmit}>
+          <form
+            class="flex flex-col sm:flex-row gap-2 sm:gap-0"
+            on:submit={handleSubmit}
+          >
             <Input
               name="email"
               type="email"
               placeholder="Email"
-              class="max-w-xs w-[300px] h-[47px] rounded-none rounded-l-lg outline-0 border-slate-700 bg-white placeholder-shown:bg-cyan-50 text-slate-950 font-bold"
+              class="max-w-xs w-[300px] h-[47px] rounded-lg sm:rounded-none sm:rounded-l-lg outline-0 border-slate-700 bg-white placeholder-shown:bg-cyan-50 text-slate-950 font-bold"
             />
             <Button
               type="submit"
               size="xs"
-              class="px-9 py-3 rounded-none rounded-r-lg border-solid border-[1px] border-l-0 border-slate-700"
+              class="px-9 py-3 rounded-lg sm:rounded-none sm:rounded-r-lg border-solid border-[1px] sm:border-l-0 border-slate-700"
             >
               <span
                 class="leading-normal font-mono font-bold text-transparent bg-slate-950 bg-clip-text bg-gradient-to-r from-cyan-100 to-pink-100"
@@ -252,7 +258,7 @@ var(--dot-color);"
         <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
           <Card>
             <CardHeader>
-              <div class="flex gap-6 mb-4">
+              <div class="flex flex-wrap gap-6 mb-4">
                 <img alt="React" src="/react.svg" width="30" class="mb-2" />
                 <img
                   alt="Svelte"
@@ -285,7 +291,7 @@ var(--dot-color);"
 
           <Card>
             <CardHeader>
-              <div class="flex gap-6 mb-4">
+              <div class="flex flex-wrap gap-6 mb-4">
                 <img alt="AWS" src="/aws.svg" width="30" class="mb-2" />
                 <img alt="GCP" src="/gcp.svg" width="30" class="mb-2" />
                 <img alt="Azure" src="/azure.svg" width="30" class="mb-2" />
@@ -306,7 +312,7 @@ var(--dot-color);"
 
           <Card>
             <CardHeader>
-              <div class="flex gap-6 mb-4">
+              <div class="flex flex-wrap gap-6 mb-4">
                 <img alt="Git" src="/git.svg" width="30" class="mb-2" />
                 <img alt="Linux" src="/ubuntu.svg" width="30" class="mb-2" />
                 <img alt="Docker" src="/docker.svg" width="30" class="mb-2" />
@@ -333,10 +339,10 @@ var(--dot-color);"
     <section class="w-full py-12 md:py-12 lg:py-16">
       <div class="container px-4 md:px-6">
         <p
-          class="text-3xl font-thin text-slate-600 sm:text-4xl md:text-5xl pl-8"
+          class="text-3xl font-thin text-slate-600 sm:text-4xl md:text-5xl text-center sm:text-left pl-0 sm:pl-8"
         >
           <span
-            class="leading-normal text-6xl text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-pink-500"
+            class="leading-normal text-4xl sm:text-6xl text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-pink-500"
           >
             Minimize setup time.<br />Maximize development time.
           </span>
@@ -521,17 +527,20 @@ var(--dot-color);"
               Become an early bird!
             </p>
           </div>
-          <form class="flex gap-0" on:submit={handleSubmit}>
+          <form
+            class="flex flex-col sm:flex-row gap-2 sm:gap-0"
+            on:submit={handleSubmit}
+          >
             <Input
               name="email"
               type="email"
               placeholder="Email"
-              class="max-w-xs w-[300px] h-[47px] rounded-none rounded-l-lg border-slate-700 focus-visible:outline-0 text-slate-50 font-bold placeholder:text-slate-100 bg-cyan-950 bg-slate-900 placeholder-shown:bg-cyan-950 focus-visible:bg-slate-900 focus-visible:bg-slate-900"
+              class="max-w-xs w-[300px] h-[47px] rounded-lg sm:rounded-none sm:rounded-l-lg border-slate-700 focus-visible:outline-0 text-slate-50 font-bold placeholder:text-slate-100 bg-cyan-950 bg-slate-900 placeholder-shown:bg-cyan-950 focus-visible:bg-slate-900 focus-visible:bg-slate-900"
             />
             <Button
               type="submit"
               size="xs"
-              class="px-8 rounded-none rounded-r-lg border-solid border-[1px] border-l-0 border-slate-700 bg-gradient-to-r from-cyan-100 to-pink-100 hover:from-cyan-300 hover:to-pink-300 font-bold transition-all duration-500 ease-in py-3"
+              class="px-8 rounded-lg sm:rounded-none sm:rounded-r-lg border-solid border-[1px] sm:border-l-0 border-slate-700 bg-gradient-to-r from-cyan-100 to-pink-100 hover:from-cyan-300 hover:to-pink-300 font-bold transition-all duration-500 ease-in py-3"
             >
               <span class="leading-normal font-mono text-black">
                 Join Squad
@@ -544,9 +553,11 @@ var(--dot-color);"
   </main>
 
   <footer
-    class="flex gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 bg-slate-950"
+    class="flex flex-col sm:flex-row gap-2 py-6 w-full shrink-0 items-center px-4 md:px-6 bg-slate-950"
   >
-    <p class="text-xs text-slate-100 dark:text-gray-400 leading-normal">
+    <p
+      class="text-xs text-slate-100 dark:text-gray-400 leading-normal text-center sm:text-left"
+    >
       © 2025 Biolocal Technologies (OPC) Private Limited. All rights reserved.
     </p>
     <!-- <nav class="sm:ml-auto flex gap-4 sm:gap-6">
