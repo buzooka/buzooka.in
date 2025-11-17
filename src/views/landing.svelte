@@ -15,29 +15,30 @@
 
   const features = [
     {
-      title: 'Bootstrap the repo',
+      title: 'Instant Codebase Generation',
       description:
-        'Choose a template, and generate your multi-app repositories with best practices and optimal structure in just a few clicks. Includes Mobile, Desktop, Web, Services, DB & Workers',
+        'Choose a template (React, Svelte, Node, Python, etc.) and generate a perfectly structured, production-ready codebase in minutes. Includes Mobile, Web, and Service layers.',
     },
     {
-      title: 'Provision Cloud Resources',
+      title: 'One-Click Cloud Hosting',
       description:
-        'Automatically set up your cloud infrastructure apt for your apps, saving you time and ensuring scalability from day one. Choose which cloud provider you would like to use - AWS, GCP, Azure, Digital Ocean, Netlify.',
+        'Automatically set up scalable cloud infrastructure on providers like AWS, GCP, or Netlify. Eliminate guesswork over servers, scaling, and database connections.',
     },
     {
-      title: 'Setup CI/CD Pipeline',
+      title: 'Automatic Deployment (CI/CD)',
       description:
-        'Get a fully configured CI/CD pipeline to streamline your development and deployment processes. Choose between blue/green deployment, canary deployment',
+        'Get a fully configured Continuous Integration/Continuous Deployment pipeline. Push & Launch: when you commit a new feature, the pipeline automatically tests and deploys it live.',
     },
   ];
 
   const pricingPlans = [
     {
-      title: 'Scout',
-      subtitle: 'Devs, Prototyping',
-      price: 39,
-      annualPrice: 399,
+      title: 'Solo Scout',
+      subtitle: 'Prototyping, Initial Launch',
+      price: 29,
+      annualPrice: 348,
       features: [
+        'AI Architect',
         'Unlimited Projects',
         'Unlimited Nodes',
         'Unlimited Connections',
@@ -46,26 +47,63 @@
         'Cloud Provisioning',
         'Node Deployments',
         'Free One-Time Consultation',
-        'Hire Devs',
       ],
     },
     {
-      title: 'Gunner',
-      subtitle: 'Founders, Startups',
-      price: 69,
-      annualPrice: 699,
-      features: ['All Scout Features', 'Priority Support', 'Hire AI Agents'],
+      title: 'Founder Gunner',
+      subtitle: 'Early-Stage Growth, Scaling',
+      price: 49,
+      annualPrice: 588,
+      features: [
+        'All Scout Features',
+        'Priority Support',
+        'Hire AI Developers',
+      ],
     },
     {
       title: 'Squadron',
       subtitle: 'Startups, Enterprise',
-      price: 89,
-      annualPrice: 999,
+      price: 'As per requirement',
+      annualPrice: 'Custom',
       features: [
-        'All Gunner features',
+        'All Gunner Features',
         'Custom Integrations',
         'Dedicated Account Manager',
       ],
+    },
+  ];
+
+  // Array for the 'Who is this for?' section, updated to the solopreneur focus
+  const audienceList = [
+    {
+      title: 'The Solo Builder',
+      content:
+        "You're trading your limited time for frustrating DevOps setup. Buzooka is the powerful tool that lets you launch faster and cheaper than ever before.",
+    },
+    {
+      title: 'The Non-Technical Founder',
+      content:
+        'Launch your high-quality product without needing a co-founder or a costly architect. Focus on your product vision, not complex configurations.',
+    },
+    {
+      title: 'The Side-Project Hustler',
+      content:
+        'Validate your idea quickly and reliably. Get a professional, scalable stack ready for prime time without spending weekends on boilerplate.',
+    },
+    {
+      title: 'Enterprise Teams',
+      content:
+        'Dont spend endless hours to build internal dashboards and tracking tools. Create production apps that work.',
+    },
+    {
+      title: 'Technnical Founder',
+      content:
+        'Get things done faster. Make your devs spend all their time and effort into making the product a market fit. Not technical stuff.',
+    },
+    {
+      title: 'Business Development Teams',
+      content:
+        'Get fully managed automated product development services. Spend time growing your business. Let us handle the rest.',
     },
   ];
 
@@ -86,7 +124,7 @@
   const handleSubmit = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    const body = new FormData(event.target);
+    const body = new FormData(e.target);
     const bodyObject = Object.fromEntries(body);
     try {
       const res = waitlistSchema.parse(bodyObject);
@@ -127,12 +165,6 @@ var(--dot-color);"
       />
     </a>
   </div>
-  <!-- <a
-        href="/"
-        class="flex items-center justify-center flex-1 relative top-[-8px] left-[0px]"
-    >
-        <img alt="Buzooka" src="/buzooka-logo.svg" width="200" />
-    </a> -->
   <nav class="ml-auto flex gap-4 sm:gap-6 flex-1 justify-end">
     <a
       href="#features"
@@ -360,22 +392,13 @@ var(--dot-color);"
           Who is this for?
         </h2>
         <div class="grid gap-6 md:grid-cols-3">
-          {#each ['Developers', 'Founders', 'Businesses'] as audience}
+          {#each audienceList as audience}
             <Card>
               <CardHeader>
-                <CardTitle>{audience}</CardTitle>
+                <CardTitle>{audience.title}</CardTitle>
               </CardHeader>
               <CardContent>
-                {#if audience === 'Founders'}
-                  Launch your startup idea quickly and efficiently, focusing on
-                  your product instead of infrastructure.
-                {:else if audience === 'Businesses'}
-                  Accelerate your digital transformation with rapid MVP
-                  development and deployment.
-                {:else}
-                  Streamline your workflow and focus on writing great code, not
-                  configuring environments.
-                {/if}
+                {audience.content}
               </CardContent>
             </Card>
           {/each}
@@ -398,20 +421,6 @@ var(--dot-color);"
                 <CardDescription>{plan.subtitle}</CardDescription>
               </CardHeader>
               <CardContent class="flex-1">
-                <!-- <p class="text-2xl font-bold leading-normal">
-                                    ${plan.annualPrice}/year
-                                    <span class="text-sm text-cyan-600"
-                                        >(save {Math.round(
-                                            (1 -
-                                                plan.annualPrice /
-                                                    (plan.price * 12)) *
-                                                100,
-                                        )}%)</span
-                                    >
-                                </p>
-                                <p class="text-sm text-gray-500 leading-normal">
-                                    or ${plan.price}/month
-                                </p> -->
                 <ul class="space-y-2">
                   {#each plan.features as feature}
                     <li class="flex items-center">
@@ -421,9 +430,6 @@ var(--dot-color);"
                   {/each}
                 </ul>
               </CardContent>
-              <!-- <CardFooter>
-                                <Button class="w-full">Choose Plan</Button>
-                            </CardFooter> -->
             </Card>
           {/each}
         </div>
@@ -449,44 +455,28 @@ var(--dot-color);"
         <div class="grid gap-6 md:grid-cols-2">
           <Card>
             <CardHeader>
-              <CardTitle class="font-normal">Hire an Architect</CardTitle>
+              <CardTitle class="font-normal">Architect on Demand</CardTitle
+              >
             </CardHeader>
             <CardContent>
-              <!-- <p class="text-2xl font-bold leading-normal">
-                                $999/week
-                            </p> -->
-              <!-- <p class="text-sm text-gray-600 leading-normal">
-                                One-time consultation included with Annual
-                                Subscription
-                            </p> -->
               <p>
-                Not sure how it works? Let our expert architect set your project
-                up for success!
+                Get a one-time, expert consultation to ensure your solo project
+                is structurally sound for growth. Startup fighting tech debt before
+                it starts!
               </p>
             </CardContent>
-            <!-- <CardFooter>
-                            <Button class="w-full">Book an Architect</Button>
-                        </CardFooter> -->
           </Card>
           <Card>
             <CardHeader>
-              <CardTitle class="font-normal">Hire a Developer</CardTitle>
+              <CardTitle class="font-normal">Developer on Demand</CardTitle>
             </CardHeader>
             <CardContent>
-              <!-- <p class="text-2xl font-bold leading-normal">
-                                $699/week
-                            </p> -->
-              <!-- <p class="text-sm text-gray-600 leading-normal">
-                                Shortdev
-                            </p> -->
               <p>
-                Short of hands to work on the app features? Hire our trusted
-                devs to work for you!
+                Short on time to finish that last key feature? Hire one of our
+                trusted developers for feature-specific help, without the
+                commitment of a full-time hire.
               </p>
             </CardContent>
-            <!-- <CardFooter>
-                            <Button class="w-full">Hire a Developer</Button>
-                        </CardFooter> -->
           </Card>
         </div>
       </div>
@@ -502,19 +492,6 @@ var(--dot-color);"
     >
       <div class="container px-4 md:px-6">
         <div class="flex flex-col items-center space-y-8 text-center">
-          <!-- <div class="space-y-4">
-                        <h2
-                            class="text-3xl italic font-thin text-slate-300 sm:text-4xl md:text-5xl text-center mb-8"
-                        >
-                            Need a walkthrough? Let's connect!
-                        </h2>
-                        <p
-                            class="mx-auto max-w-[700px] font-thin text-slate-200 md:text-xl mb-16"
-                        >
-                            Book a consultation and accelerate your MVP launch
-                        </p>
-                    </div> -->
-
           <div class="space-y-1">
             <h2
               class="text-3xl italic font-thin text-slate-300 sm:text-4xl md:text-5xl text-center mb-20"
@@ -560,13 +537,5 @@ var(--dot-color);"
     >
       © 2025 Biolocal Technologies (OPC) Private Limited. All rights reserved.
     </p>
-    <!-- <nav class="sm:ml-auto flex gap-4 sm:gap-6">
-            <a href="#" class="text-xs hover:underline underline-offset-4"
-                >Terms of Service</a
-            >
-            <a href="#" class="text-xs hover:underline underline-offset-4"
-                >Privacy Policy</a
-            >
-        </nav> -->
   </footer>
 </div>
