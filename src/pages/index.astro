@@ -4,7 +4,7 @@ import LandingPage from '../views/landing.svelte';
 
 // Welcome to Astro! Everything between these triple-dash code fences
 // is your "component frontmatter". It never runs in the browser.
-console.log('This runs in your terminal, not the browser!');
+const isProd = import.meta.env.PROD;
 ---
 
 <!doctype html>
@@ -73,6 +73,16 @@ console.log('This runs in your terminal, not the browser!');
 
       gtag('config', 'G-DHWTZBR9RX');
     </script>
+
+    {
+      isProd && (
+        <script
+          defer
+          src="https://cloud.umami.is/script.js"
+          data-website-id="f6382def-d5e7-46da-973e-55c22f5210b9"
+        />
+      )
+    }
   </head>
   <body>
     <LandingPage client:load />
