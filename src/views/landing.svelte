@@ -1,6 +1,7 @@
 <script lang="ts">
-  import { blur, crossfade } from 'svelte/transition';
+  import { blur, crossfade, slide, fade } from 'svelte/transition';
   import DiagramWidget from '../components/DiagramWidget.svelte';
+  import AnimatedDiagramWidget from '../components/AnimatedDiagramWidget.svelte';
   import {
     CheckCircle,
     ArrowUp,
@@ -9,6 +10,7 @@
     Linkedin,
     Github,
     Globe,
+    Loader2,
   } from 'lucide-svelte';
   import MicButton from '../components/MicButton.svelte';
   import { onMount } from 'svelte';
@@ -24,7 +26,7 @@
 
   let promptText = '';
   let promptInput: HTMLTextAreaElement;
-  let placeholderText = 'Describe the product you want to build';
+  let placeholderText = 'Describe the product you want to architect';
 
   const placeholders = [
     'Describe the product you want to build',
@@ -32,7 +34,7 @@
     'A social network for vintage car enthusiasts',
     'An inventory management system for a small bakery',
     'A mobile app for tracking daily water intake',
-    'Create a Google Search clone',
+    'Architect a Google Search clone',
   ];
 
   const features = [
@@ -47,7 +49,7 @@
         'Automatically set up scalable cloud infrastructure on providers like AWS, GCP, or Netlify. Eliminate guesswork over servers, scaling, and database connections.',
     },
     {
-      title: 'Automatic Deployment (CI/CD)',
+      title: 'On-Demand Deployment (CI/CD)',
       description:
         'Get a fully configured Continuous Integration/Continuous Deployment pipeline. Push & Launch: when you commit a new feature, the pipeline automatically tests and deploys it live.',
     },
@@ -79,7 +81,7 @@
         'Node Deployments',
         'Free One-Time Consultation',
       ],
-      cta: 'Join',
+      cta: 'Join Squad',
       disabled: false,
     },
     {
@@ -132,13 +134,26 @@
 
   let id = 1;
 
+  const strategyItems = [
+    'Strategy',
+    'Possibilities',
+    'Improvements',
+    'Culture',
+    'Interests',
+  ];
+  let currentStrategyIndex = 0;
+
   onMount(() => {
     setInterval(() => {
-      if (id > 0 && id < 4) {
+      if (id > 0 && id < 6) {
         id = id + 1;
       } else {
         id = 1;
       }
+    }, 3000);
+
+    setInterval(() => {
+      currentStrategyIndex = (currentStrategyIndex + 1) % strategyItems.length;
     }, 3000);
 
     let index = 0;
@@ -172,6 +187,26 @@
 
     window.location.pathname = '/waitlist';
   };
+
+  let isNavigating = false;
+
+  const handleGenerateBlueprint = (e: SubmitEvent) => {
+    e.preventDefault();
+    const target = e.currentTarget as HTMLFormElement;
+    const formData = new FormData(target);
+    const prompt = formData.get('prompt') as string;
+
+    if (prompt) {
+      isNavigating = true;
+      setTimeout(() => {
+        window.open(
+          `https://dash.buzooka.in/login?prompt=${encodeURIComponent(prompt)}`,
+          '_blank',
+        );
+        isNavigating = false;
+      }, 600);
+    }
+  };
 </script>
 
 <header
@@ -194,7 +229,7 @@ var(--dot-color);"
       />
     </a>
   </div>
-  <nav class="ml-auto flex gap-4 sm:gap-6 flex-1 justify-end">
+  <nav class="ml-auto flex gap-4 sm:gap-6 flex-1 justify-end items-center">
     <a
       href="#features"
       class="text-sm font-medium hover:underline underline-offset-4 py-3 hidden sm:block"
@@ -203,12 +238,12 @@ var(--dot-color);"
     <a
       href="#pricing"
       class="text-sm font-medium hover:underline underline-offset-4 py-3 hidden sm:block"
-      >Plans</a
+      >Pricing</a
     >
-    <button
-      on:click={() => promptInput?.focus()}
-      class="text-sm underline font-medium hover:underline underline-offset-4 py-3"
-      >Create</button
+    <a
+      href="#schedule"
+      class="text-sm font-medium hover:underline underline-offset-4 py-3 hidden sm:block"
+      >Book a Call</a
     >
     <a
       href="https://status.buzooka.in"
@@ -225,6 +260,13 @@ var(--dot-color);"
         />
       </div>
     </a>
+    <a
+      href="https://dash.buzooka.in/login"
+      target="_blank"
+      class="text-sm font-medium bg-slate-900 text-white px-4 py-2 rounded-lg hover:bg-slate-800 transition-colors"
+    >
+      Log In
+    </a>
   </nav>
 </header>
 <div
@@ -236,7 +278,7 @@ var(--dot-color);"
 >
   <main class="flex-1">
     <section
-      class="relative h-auto mt-10 sm:mt-20 w-full py-12 md:py-24 lg:py-32"
+      class="relative h-auto mt-20 sm:mt-24 w-full py-12 md:py-24 lg:py-40"
     >
       <div class="container px-4 md:px-6 relative z-30">
         <div class="flex flex-col items-center space-y-4 text-center">
@@ -246,13 +288,13 @@ var(--dot-color);"
               Development
             </h1>
             <h2
-              class="text-2xl font-sans sm:text-4xl md:text-5xl lg:text-5xl/none block w-full sm:w-[600px] pt-0"
+              class="text-2xl font-sans sm:text-4xl md:text-5xl lg:text-5xl/none block w-full sm:w-[700px] mx-auto pt-0"
             >
               <span class="italic font-thin text-slate-600"
                 >Launch your <mark class="px-3">MVP</mark> ,</span
               ><br />
               <div
-                class="relative h-24 text-center flex items-center justify-center"
+                class="relative h-20 text-center flex items-center justify-center"
               >
                 {#if id === 1}
                   <span
@@ -261,7 +303,7 @@ var(--dot-color);"
                     }}
                     class="leading-normal absolute font-mono text-4xl/2 sm:text-5xl/2 text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-pink-500"
                   >
-                    in just DAYS!
+                    the RIGHT way
                   </span>
                 {/if}
                 {#if id === 2}
@@ -271,7 +313,7 @@ var(--dot-color);"
                     }}
                     class="leading-normal absolute font-mono text-4xl/2 sm:text-5xl/2 text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-pink-500"
                   >
-                    Own the CODE
+                    with REAL architecture
                   </span>
                 {/if}
                 {#if id === 3}
@@ -281,10 +323,30 @@ var(--dot-color);"
                     }}
                     class="leading-normal absolute font-mono text-4xl/2 sm:text-5xl/2 text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-pink-500"
                   >
-                    Bring Your Own Cloud
+                    with AI enabled repos
                   </span>
                 {/if}
                 {#if id === 4}
+                  <span
+                    transition:blur={{
+                      duration: 200,
+                    }}
+                    class="leading-normal absolute font-mono text-4xl/2 sm:text-5xl/2 text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-pink-500"
+                  >
+                    Own the CODE
+                  </span>
+                {/if}
+                {#if id === 5}
+                  <span
+                    transition:blur={{
+                      duration: 200,
+                    }}
+                    class="leading-normal absolute font-mono text-4xl/2 sm:text-5xl/2 text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-pink-500"
+                  >
+                    Bring Your Own Cloud
+                  </span>
+                {/if}
+                {#if id === 6}
                   <span
                     transition:blur={{
                       duration: 200,
@@ -298,7 +360,7 @@ var(--dot-color);"
             </h2>
 
             <h3
-              class="mx-auto italic font-thin max-w-[700px] text-slate-600 md:text-lg dark:text-gray-400 pt-8"
+              class="mx-auto italic font-thin max-w-[700px] text-slate-600 md:text-lg dark:text-gray-400 pt-4"
             >
               <span class="font-medium">Code</span>,
               <span class="font-medium">Cloud</span>, and
@@ -336,98 +398,113 @@ var(--dot-color);"
               ></div>
             </div>
 
-            <form
-              class="relative bg-white rounded-2xl shadow-xl flex flex-col"
-              on:submit={(e) => {
-                e.preventDefault();
-                const target = e.currentTarget as HTMLFormElement;
-                const formData = new FormData(target);
-                const prompt = formData.get('prompt') as string;
-                if (prompt) {
-                  window.location.href = `https://dash.buzooka.localhost/login?prompt=${encodeURIComponent(prompt)}`;
-                }
-              }}
+            <div
+              class="relative bg-white rounded-2xl transition-all duration-600 ease-in-out overflow-hidden mx-auto"
+              class:shadow-xl={!isNavigating}
+              class:shadow-none={isNavigating}
+              style={isNavigating ? 'width: 0; opacity: 0;' : 'width: 100%;'}
             >
-              <textarea
-                name="prompt"
-                bind:this={promptInput}
-                bind:value={promptText}
-                placeholder={placeholderText}
-                class="w-full min-h-[80px] focus:min-h-[160px] p-4 text-md bg-transparent border-0 focus:ring-0 resize-none placeholder:text-slate-400 text-slate-900 outline-none transition-all duration-300 ease-in-out"
-              ></textarea>
-
-              <div class="flex justify-between items-center px-4 pb-4">
-                <div class="flex gap-2">
-                  <button
-                    type="button"
-                    class="p-2 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-lg transition-colors"
-                  >
-                    <Paperclip size={20} />
-                  </button>
-                  <MicButton
-                    on:text={(e) => {
-                      const transcript = e.detail;
-                      if (!transcript) return;
-                      promptText =
-                        promptText + (promptText ? ' ' : '') + transcript;
-                    }}
-                  />
-                </div>
-                <span
-                  class="inline-block rounded-[10px] bg-gradient-to-tr from-cyan-500 to-pink-500 p-0.5 transition-colors ease-in hover:focus:bg-gradient-to-bl hover:focus:from-cyan-400 hover:focus:to-pink-400 dark:from-cyan-900 dark:to-pink-900 dark:hover:focus:from-cyan-700 dark:hover:focus:to-pink-700"
+              {#if isNavigating}
+                <div
+                  class="absolute inset-0 flex items-center justify-center pointer-events-none"
+                  in:fade={{ duration: 200, delay: 100 }}
                 >
-                  <Button
-                    type="submit"
-                    size="icon"
-                    class="px-3 h-10 w-auto rounded-lg bg-slate-900 transition-all duration-300 ease-in-out flex items-center justify-center create-btn"
+                  <Loader2 class="w-6 h-6 animate-spin text-slate-400" />
+                </div>
+              {/if}
+
+              {#if !isNavigating}
+                <form
+                  class="relative bg-transparent flex flex-col"
+                  transition:slide={{ duration: 600 }}
+                  on:submit={handleGenerateBlueprint}
+                >
+                  <textarea
+                    name="prompt"
+                    bind:this={promptInput}
+                    bind:value={promptText}
+                    placeholder={placeholderText}
+                    class="w-full min-h-[80px] focus:min-h-[160px] p-4 text-md bg-transparent border-0 focus:ring-0 resize-none placeholder:text-slate-400 text-slate-900 outline-none transition-all duration-300 ease-in-out"
+                    out:fade={{ duration: 200 }}
+                  ></textarea>
+
+                  <div
+                    class="flex justify-between items-center px-4 pb-4"
+                    out:fade={{ duration: 200 }}
                   >
-                    Create
-                    <img
-                      alt="Create"
-                      src="/buzooka-ai-icon-light.svg"
-                      width="24"
-                      class="ml-1 create-btn-icon"
-                    />
-                  </Button>
-                </span>
-              </div>
-            </form>
+                    <div class="flex gap-2">
+                      <button
+                        type="button"
+                        class="p-2 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-lg transition-colors"
+                      >
+                        <Paperclip size={20} />
+                      </button>
+                      <MicButton
+                        on:text={(e) => {
+                          const transcript = e.detail;
+                          if (!transcript) return;
+                          promptText =
+                            promptText + (promptText ? ' ' : '') + transcript;
+                        }}
+                      />
+                    </div>
+                    <span
+                      class="inline-block rounded-[10px] bg-gradient-to-tr from-cyan-500 to-pink-500 p-0.5 transition-colors ease-in hover:focus:bg-gradient-to-bl hover:focus:from-cyan-400 hover:focus:to-pink-400 dark:from-cyan-900 dark:to-pink-900 dark:hover:focus:from-cyan-700 dark:hover:focus:to-pink-700"
+                    >
+                      <Button
+                        type="submit"
+                        size="icon"
+                        class="px-3 h-10 w-auto rounded-lg bg-slate-900 transition-all duration-300 ease-in-out flex items-center justify-center create-btn"
+                      >
+                        Generate Blueprint
+                        <img
+                          alt="Create"
+                          src="/buzooka-ai-icon-light.svg"
+                          width="24"
+                          class="ml-1 create-btn-icon"
+                        />
+                      </Button>
+                    </span>
+                  </div>
+                </form>
+              {/if}
+            </div>
           </div>
         </div>
       </div>
 
       <div
-        class="absolute top-32 lg:-left-20 xl:left-10 w-[500px] h-[300px] opacity-60 hover:opacity-100 transition-all duration-300 hover:scale-105 rotate-[5deg] hidden lg:block z-10 scale-75 xl:scale-100"
+        class="absolute top-32 lg:-left-20 xl:left-0 w-[500px] h-[300px] opacity-60 hover:opacity-100 transition-all duration-300 hover:scale-105 rotate-[5deg] hidden lg:block z-10 scale-[0.7] xl:scale-[0.9]"
       >
         <DiagramWidget type="google" />
       </div>
 
       <div
-        class="absolute top-10 lg:-right-40 xl:-right-20 w-[500px] h-[300px] opacity-60 hover:opacity-100 transition-all duration-300 hover:scale-105 rotate-[-20deg] hidden lg:block z-10 scale-75 xl:scale-100"
+        class="absolute top-10 lg:-right-40 xl:-right-20 w-[500px] h-[300px] opacity-60 hover:opacity-100 transition-all duration-300 hover:scale-105 rotate-[-20deg] hidden lg:block z-10 scale-[0.7] xl:scale-[0.9]"
       >
         <DiagramWidget type="netflix" />
       </div>
 
       <div
-        class="absolute top-2/3 lg:-left-40 xl:left-20 -translate-y-1/2 w-[500px] h-[300px] opacity-60 hover:opacity-100 transition-all duration-300 hover:scale-105 rotate-[10deg] hidden lg:block z-10 scale-75 xl:scale-100"
+        class="absolute top-2/3 lg:-left-40 xl:-left-10 -translate-y-1/2 w-[500px] h-[300px] opacity-60 hover:opacity-100 transition-all duration-300 hover:scale-105 rotate-[10deg] hidden lg:block z-10 scale-[0.7] xl:scale-[0.9]"
       >
         <DiagramWidget type="uber" />
       </div>
 
       <div
-        class="absolute bottom-2 lg:-right-40 xl:right-8 -translate-y-1/2 w-[500px] h-[300px] opacity-60 hover:opacity-100 transition-all duration-300 hover:scale-105 -rotate-3 hidden lg:block z-10 scale-75 xl:scale-100"
+        class="absolute bottom-2 lg:-right-40 xl:-right-10 -translate-y-1/2 w-[500px] h-[300px] opacity-60 hover:opacity-100 transition-all duration-300 hover:scale-105 -rotate-3 hidden lg:block z-10 scale-[0.7] xl:scale-[0.9]"
       >
         <DiagramWidget type="openai" />
       </div>
 
       <div
-        class="absolute -bottom-20 lg:-left-40 xl:left-2 w-[500px] h-[300px] opacity-60 hover:opacity-100 transition-all duration-300 hover:scale-105 -rotate-16 hidden lg:block z-10 scale-75 xl:scale-100"
+        class="absolute -bottom-20 lg:-left-40 xl:-left-10 w-[500px] h-[300px] opacity-60 hover:opacity-100 transition-all duration-300 hover:scale-105 -rotate-16 hidden lg:block z-10 scale-[0.7] xl:scale-[0.9]"
       >
         <DiagramWidget type="amazon" />
       </div>
 
       <div
-        class="absolute -bottom-20 lg:-right-40 xl:-right-2 w-[500px] h-[300px] opacity-60 hover:opacity-100 transition-all duration-300 hover:scale-105 rotate-12 hidden lg:block z-10 scale-75 xl:scale-100"
+        class="absolute -bottom-20 lg:-right-40 xl:-right-10 w-[500px] h-[300px] opacity-60 hover:opacity-100 transition-all duration-300 hover:scale-105 rotate-12 hidden lg:block z-10 scale-[0.7] xl:scale-[0.9]"
       >
         <DiagramWidget type="x" />
       </div>
@@ -647,7 +724,7 @@ var(--dot-color);"
                       ? 'bg-gradient-to-r from-cyan-100 to-pink-100'
                       : ''}"
                   ></div>
-                  <ul class="space-y-2">
+                  <ul class="space-y-1">
                     {#each plan.features as feature}
                       <li class="flex items-start">
                         <div
@@ -679,14 +756,11 @@ var(--dot-color);"
                       {plan.cta}
                     </Button>
                   {:else}
-                    <div
-                      class="w-full p-[2px] rounded-xl bg-gradient-to-r from-cyan-500 to-pink-500"
-                    >
+                    <div class="w-full p-[3px] rounded-xl animated-gradient-bg">
                       <Button
                         class="w-full h-[46px] rounded-[10px] bg-slate-900 hover:bg-slate-800 text-white border-0 font-medium transition-all duration-300"
                         on:click={() => {
-                          const element = document.getElementById('join-squad');
-                          element?.scrollIntoView({ behavior: 'smooth' });
+                          window.open('https://dash.buzooka.in', '_blank');
                         }}
                       >
                         {plan.cta}
@@ -702,36 +776,124 @@ var(--dot-color);"
     </section>
 
     <section
-      id="schedule"
-      class="w-full py-12 md:py-12 lg:py-16 bg-gradient-to-r from-cyan-50 to-pink-50 dark:bg-gray-800"
+      id="nudge-message"
+      class="w-full py-12 md:py-12 lg:py-16 text-white animated-gradient-bg"
     >
-      <div class="container px-4 md:px-6 text-center">
-        <h2
-          class="text-3xl italic font-thin text-slate-600 sm:text-4xl md:text-5xl text-center mb-2"
-        >
-          Schedule a Call
-        </h2>
-        <p class="text-slate-600 mb-8 max-w-2xl mx-auto">
-          Connect with an expert. Get expert advice.
-        </p>
-        <Button
-          class="gap-2 bg-slate-900 text-white rounded-lg hover:bg-slate-800 h-12 px-6 text-md"
-          on:click={() =>
-            (window.location.href =
-              'mailto:hello@buzooka.in?subject=Consultation Request')}
-        >
-          Book Consultation Call<Calendar class="w-5 h-5" />
-        </Button>
+      <div class="container px-4 md:px-6">
+        <div class="flex flex-col items-center space-y-8 text-center">
+          <div class="space-y-1">
+            <h2
+              class="text-3xl italic font-thin text-white sm:text-4xl md:text-5xl text-center mb-0"
+            >
+              You are only limited by your imagination!
+            </h2>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      id="schedule"
+      class="w-full py-16 md:py-20 lg:py-24 bg-gradient-to-r from-cyan-50 to-pink-50 dark:bg-gray-800 overflow-hidden"
+    >
+      <div class="container px-4 md:px-6">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <!-- Left: Illustration - Desktop Only -->
+          <div class="hidden lg:flex justify-start items-center">
+            <div class="relative">
+              <div
+                class="absolute -inset-4 bg-gradient-to-r from-cyan-200/30 to-pink-200/30 rounded-full blur-3xl"
+              ></div>
+              <div class="w-[600px] h-[350px] relative z-10">
+                <AnimatedDiagramWidget type="consultation" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Text Content -->
+          <div class="space-y-6 text-left">
+            <div class="inline-block">
+              <span
+                class="px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full text-sm font-medium text-slate-600 border border-slate-200"
+              >
+                Expert Guidance
+              </span>
+            </div>
+            <h2
+              class="text-4xl italic font-thin text-slate-600 sm:text-5xl md:text-6xl leading-tight"
+            >
+              Let's build<br />
+              <span
+                class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-pink-600"
+              >
+                together
+              </span>
+            </h2>
+            <p class="text-lg text-slate-600 max-w-xl leading-relaxed">
+              Connect with our expert consultants for personalized guidance on
+              your project. From architecture to deployment, we're here to help
+              you succeed.
+            </p>
+
+            <!-- Illustration - Mobile Only -->
+            <div class="lg:hidden flex justify-center py-8">
+              <div class="w-full h-[300px] relative z-10 overflow-hidden">
+                <AnimatedDiagramWidget type="consultation" />
+              </div>
+            </div>
+
+            <div class="inline-flex flex-col gap-3">
+              <div
+                class="inline-flex w-auto p-[3px] rounded-xl animated-gradient-bg"
+              >
+                <Button
+                  class="gap-2 bg-slate-900 text-white rounded-lg hover:bg-slate-800 h-14 px-8 text-base font-medium"
+                  on:click={() =>
+                    (window.location.href =
+                      'mailto:hello@buzooka.in?subject=Consultation Request')}
+                >
+                  Book Consultation Call<Calendar class="w-5 h-5" />
+                </Button>
+              </div>
+              <div class="flex items-center gap-2 text-sm text-slate-500">
+                <svg
+                  class="w-5 h-5 text-green-500"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+                <span>Free 30-min session</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
     <section id="contact" class="w-full py-12 md:py-12 lg:py-16">
       <div class="container px-4 md:px-6">
         <h2
-          class="text-3xl italic font-thin text-slate-600 sm:text-4xl md:text-5xl text-center mb-12"
+          class="text-4xl italic font-thin text-slate-600 sm:text-5xl md:text-6xl text-left mb-12 h-20 flex items-center justify-start gap-4"
         >
-          Let's Talk!
+          Talk
+          <div
+            class="relative w-[400px] h-full flex items-center justify-start"
+          >
+            {#key currentStrategyIndex}
+              <span
+                transition:blur={{ duration: 300 }}
+                class="absolute inset-y-0 left-0 flex items-center text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-pink-600 truncate"
+              >
+                {strategyItems[currentStrategyIndex]}!
+              </span>
+            {/key}
+          </div>
         </h2>
-        <div class="flex justify-center gap-6">
+        <div class="flex justify-start gap-6 ml-2">
           <a
             href="https://x.com/buzooka"
             target="_blank"
@@ -777,7 +939,7 @@ var(--dot-color);"
         <h2
           class="text-3xl italic font-thin text-slate-600 sm:text-4xl md:text-5xl text-center mb-4"
         >
-          Need extra help?
+          Need additional support?
         </h2>
 
         <p
@@ -827,7 +989,7 @@ var(--dot-color);"
             <h2
               class="text-3xl italic font-thin text-slate-300 sm:text-4xl md:text-5xl text-center mb-0"
             >
-              You are only limited by your imagination!
+              Go Further, Together
             </h2>
           </div>
         </div>
@@ -847,6 +1009,24 @@ var(--dot-color);"
 </div>
 
 <style>
+  @property --gradient-angle {
+    syntax: '<angle>';
+    inherits: false;
+    initial-value: 135deg;
+  }
+
+  @property --gradient-x {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 50%;
+  }
+
+  @property --gradient-y {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 50%;
+  }
+
   :global(.create-btn:hover) .create-btn-icon,
   :global(.create-btn:focus) .create-btn-icon,
   :global(.create-btn:focus-visible) .create-btn-icon {
@@ -901,6 +1081,60 @@ var(--dot-color);"
     }
     100% {
       opacity: 0;
+    }
+  }
+
+  .animated-gradient-bg {
+    --gradient-angle: 135deg;
+    --gradient-x: 50%;
+    --gradient-y: 50%;
+    background-color: #06b6d4;
+    background-image: radial-gradient(
+        circle,
+        rgba(0, 0, 0, 0.15) 1.5px,
+        transparent 1.5px
+      ),
+      linear-gradient(var(--gradient-angle), #06b6d4 0%, #ec4899 100%);
+    background-size:
+      22px 22px,
+      100% 400%;
+    background-position:
+      0 0,
+      var(--gradient-x) var(--gradient-y);
+    animation:
+      gradient-rotate 12s ease infinite,
+      gradient-move 8s ease infinite;
+  }
+
+  @keyframes gradient-rotate {
+    0% {
+      --gradient-angle: 135deg;
+    }
+    100% {
+      --gradient-angle: 495deg;
+    }
+  }
+
+  @keyframes gradient-move {
+    0% {
+      --gradient-x: 50%;
+      --gradient-y: 50%;
+    }
+    25% {
+      --gradient-x: 0%;
+      --gradient-y: 100%;
+    }
+    50% {
+      --gradient-x: 100%;
+      --gradient-y: 0%;
+    }
+    75% {
+      --gradient-x: 0%;
+      --gradient-y: 0%;
+    }
+    100% {
+      --gradient-x: 50%;
+      --gradient-y: 50%;
     }
   }
 </style>

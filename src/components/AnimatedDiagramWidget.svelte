@@ -15,12 +15,64 @@
     MessageSquare,
     Zap,
     Map,
+    Calendar,
+    User,
+    Bell,
+    Clock,
   } from 'lucide-svelte';
+  import { onMount } from 'svelte';
 
-  export let type: 'google' | 'netflix' | 'uber' | 'amazon' | 'openai' | 'x' =
-    'google';
+  export let type:
+    | 'google'
+    | 'netflix'
+    | 'uber'
+    | 'amazon'
+    | 'openai'
+    | 'x'
+    | 'consultation' = 'google';
 
   const presets = {
+    consultation: {
+      nodes: [
+        {
+          id: '1',
+          type: 'web',
+          label: 'Your Request',
+          x: 0,
+          y: 100,
+          icon: User,
+        },
+        {
+          id: '2',
+          type: 'service',
+          label: 'Scheduler',
+          x: 250,
+          y: 100,
+          icon: Clock,
+        },
+        {
+          id: '3',
+          type: 'service',
+          label: 'Calendar',
+          x: 500,
+          y: 50,
+          icon: Calendar,
+        },
+        {
+          id: '4',
+          type: 'service',
+          label: 'Notification',
+          x: 500,
+          y: 150,
+          icon: Bell,
+        },
+      ],
+      edges: [
+        { source: '1', target: '2' },
+        { source: '2', target: '3' },
+        { source: '2', target: '4' },
+      ],
+    },
     google: {
       nodes: [
         {
@@ -224,7 +276,7 @@
       edges: [
         { source: '1', target: '2' },
         { source: '2', target: '3' },
-        { source: '4', target: '3' }, // Arrow points to API usually
+        { source: '4', target: '3' },
       ],
     },
     x: {
@@ -273,15 +325,22 @@
 
   $: data = presets[type];
 
+  // Animation state
+  let currentEdgeIndex = -1;
+  let drawProgress = 0;
+  let cursorX = 0;
+  let cursorY = 0;
+  let showCursor = false;
+  let isAnimating = false;
+
   // Helper to calculate path
   function getPath(sourceId, targetId) {
     const s = data.nodes.find((n) => n.id === sourceId);
     const t = data.nodes.find((n) => n.id === targetId);
     if (!s || !t) return '';
 
-    // Simple bezier from right of source to left of target
-    const sx = s.x + 180; // Node width is 180 (scaled)
-    const sy = s.y + 42; // Node height center
+    const sx = s.x + 180;
+    const sy = s.y + 42;
     const tx = t.x;
     const ty = t.y + 42;
 
@@ -292,6 +351,107 @@
 
     return `M ${sx} ${sy} C ${c1x} ${c1y} ${c2x} ${c2y} ${tx} ${ty}`;
   }
+
+  // Get point along path at progress (0 to 1)
+  function getPointAtProgress(sourceId, targetId, progress) {
+    const s = data.nodes.find((n) => n.id === sourceId);
+    const t = data.nodes.find((n) => n.id === targetId);
+    if (!s || !t) return { x: 0, y: 0 };
+
+    const sx = s.x + 180;
+    const sy = s.y + 42;
+    const tx = t.x;
+    const ty = t.y + 42;
+
+    const c1x = sx + (tx - sx) / 2;
+    const c1y = sy;
+    const c2x = sx + (tx - sx) / 2;
+    const c2y = ty - (ty - sy) / 4;
+
+    // Cubic Bezier formula
+    const t1 = 1 - progress;
+    const x =
+      t1 * t1 * t1 * sx +
+      3 * t1 * t1 * progress * c1x +
+      3 * t1 * progress * progress * c2x +
+      progress * progress * progress * tx;
+    const y =
+      t1 * t1 * t1 * sy +
+      3 * t1 * t1 * progress * c1y +
+      3 * t1 * progress * progress * c2y +
+      progress * progress * progress * ty;
+
+    return { x, y };
+  }
+
+  function animateConnections() {
+    if (isAnimating) return;
+    isAnimating = true;
+    currentEdgeIndex = -1;
+    drawProgress = 0;
+    showCursor = false;
+
+    const totalEdges = data.edges.length;
+    let edgeIndex = 0;
+
+    function animateEdge() {
+      if (edgeIndex >= totalEdges) {
+        // Reset after a pause
+        setTimeout(() => {
+          isAnimating = false;
+          currentEdgeIndex = -1;
+          showCursor = false;
+          // Restart animation
+          setTimeout(animateConnections, 1000);
+        }, 2000);
+        return;
+      }
+
+      currentEdgeIndex = edgeIndex;
+      const edge = data.edges[edgeIndex];
+      const s = data.nodes.find((n) => n.id === edge.source);
+
+      // Start cursor at source connection point
+      const startPoint = getPointAtProgress(edge.source, edge.target, 0);
+      cursorX = startPoint.x;
+      cursorY = startPoint.y;
+      showCursor = true;
+      drawProgress = 0;
+
+      // Animate drawing the line
+      const duration = 1000; // 1 second per edge
+      const startTime = Date.now();
+
+      function draw() {
+        const elapsed = Date.now() - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        drawProgress = progress;
+
+        const point = getPointAtProgress(edge.source, edge.target, progress);
+        cursorX = point.x;
+        cursorY = point.y;
+
+        if (progress < 1) {
+          requestAnimationFrame(draw);
+        } else {
+          // Move to next edge after a small pause
+          setTimeout(() => {
+            edgeIndex++;
+            animateEdge();
+          }, 300);
+        }
+      }
+
+      requestAnimationFrame(draw);
+    }
+
+    // Start first edge animation after a delay
+    setTimeout(() => animateEdge(), 500);
+  }
+
+  onMount(() => {
+    animateConnections();
+  });
 </script>
 
 <div class="relative w-full h-full bg-transparent p-8">
@@ -304,7 +464,7 @@
     >
       <defs>
         <marker
-          id="arrowhead"
+          id="arrowhead-animated"
           viewBox="0 0 10 7"
           markerWidth="7.5"
           markerHeight="5.25"
@@ -315,16 +475,63 @@
           <polygon points="0 0, 10 3.5, 0 7" fill="#94a3b8" />
         </marker>
       </defs>
-      {#each data.edges as edge}
+
+      <!-- Draw completed edges -->
+      {#each data.edges as edge, index}
+        {#if index < currentEdgeIndex}
+          <path
+            d={getPath(edge.source, edge.target)}
+            fill="none"
+            stroke="#94a3b8"
+            stroke-width="2"
+            marker-end="url(#arrowhead-animated)"
+          />
+        {/if}
+      {/each}
+
+      <!-- Draw current edge being animated -->
+      {#if currentEdgeIndex >= 0 && currentEdgeIndex < data.edges.length}
+        {@const edge = data.edges[currentEdgeIndex]}
+        {@const fullPath = getPath(edge.source, edge.target)}
         <path
-          d={getPath(edge.source, edge.target)}
+          d={fullPath}
           fill="none"
           stroke="#94a3b8"
           stroke-width="2"
-          marker-end="url(#arrowhead)"
+          stroke-dasharray="1000"
+          stroke-dashoffset={1000 * (1 - drawProgress)}
+          marker-end={drawProgress > 0.95 ? 'url(#arrowhead-animated)' : ''}
+          style="transition: none;"
         />
-      {/each}
+      {/if}
     </svg>
+
+    <!-- Animated Cursor -->
+    {#if showCursor}
+      <div
+        class="absolute pointer-events-none"
+        style="left: {cursorX}px; top: {cursorY}px; z-index: 50; transform: translate(-12px, -12px);"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="white"
+          stroke="rgb(71, 85, 105)"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M18 11V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2" />
+          <path d="M14 10V4a2 2 0 0 0-2-2a2 2 0 0 0-2 2v2" />
+          <path d="M10 10.5V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2v8" />
+          <path
+            d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"
+          />
+        </svg>
+      </div>
+    {/if}
 
     {#each data.nodes as node}
       <div
