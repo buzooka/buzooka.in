@@ -849,8 +849,7 @@ var(--dot-color);"
                 <Button
                   class="gap-2 bg-slate-900 text-white rounded-lg hover:bg-slate-800 h-14 px-8 text-base font-medium"
                   on:click={() =>
-                    (window.location.href =
-                      'mailto:hello@buzooka.in?subject=Consultation Request')}
+                    window.open('https://cal.com/buzooka/30min', '_blank')}
                 >
                   Book Consultation Call<Calendar class="w-5 h-5" />
                 </Button>
