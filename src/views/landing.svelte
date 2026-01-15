@@ -1,7 +1,9 @@
 <script lang="ts">
+  import { cn } from '$lib/utils';
   import { blur, crossfade, slide, fade } from 'svelte/transition';
   import DiagramWidget from '../components/DiagramWidget.svelte';
   import AnimatedDiagramWidget from '../components/AnimatedDiagramWidget.svelte';
+  import { presets } from '$lib/config/presets';
   import {
     CheckCircle,
     ArrowUp,
@@ -399,9 +401,10 @@ var(--dot-color);"
             </div>
 
             <div
-              class="relative bg-white rounded-2xl transition-all duration-600 ease-in-out overflow-hidden mx-auto"
-              class:shadow-xl={!isNavigating}
-              class:shadow-none={isNavigating}
+              class={cn(
+                'relative bg-white rounded-2xl transition-all duration-600 ease-in-out overflow-hidden mx-auto',
+                !isNavigating ? 'shadow-xl' : 'shadow-none',
+              )}
               style={isNavigating ? 'width: 0; opacity: 0;' : 'width: 100%;'}
             >
               {#if isNavigating}
@@ -476,37 +479,37 @@ var(--dot-color);"
       <div
         class="absolute top-32 lg:-left-20 xl:left-0 w-[500px] h-[300px] opacity-60 hover:opacity-100 transition-all duration-300 hover:scale-105 rotate-[5deg] hidden lg:block z-10 scale-[0.7] xl:scale-[0.9]"
       >
-        <DiagramWidget type="google" />
+        <DiagramWidget data={presets.google} />
       </div>
 
       <div
         class="absolute top-10 lg:-right-40 xl:-right-20 w-[500px] h-[300px] opacity-60 hover:opacity-100 transition-all duration-300 hover:scale-105 rotate-[-20deg] hidden lg:block z-10 scale-[0.7] xl:scale-[0.9]"
       >
-        <DiagramWidget type="netflix" />
+        <DiagramWidget data={presets.netflix} />
       </div>
 
       <div
         class="absolute top-2/3 lg:-left-40 xl:-left-10 -translate-y-1/2 w-[500px] h-[300px] opacity-60 hover:opacity-100 transition-all duration-300 hover:scale-105 rotate-[10deg] hidden lg:block z-10 scale-[0.7] xl:scale-[0.9]"
       >
-        <DiagramWidget type="uber" />
+        <DiagramWidget data={presets.uber} />
       </div>
 
       <div
         class="absolute bottom-2 lg:-right-40 xl:-right-10 -translate-y-1/2 w-[500px] h-[300px] opacity-60 hover:opacity-100 transition-all duration-300 hover:scale-105 -rotate-3 hidden lg:block z-10 scale-[0.7] xl:scale-[0.9]"
       >
-        <DiagramWidget type="openai" />
+        <DiagramWidget data={presets.openai} />
       </div>
 
       <div
         class="absolute -bottom-20 lg:-left-40 xl:-left-10 w-[500px] h-[300px] opacity-60 hover:opacity-100 transition-all duration-300 hover:scale-105 -rotate-16 hidden lg:block z-10 scale-[0.7] xl:scale-[0.9]"
       >
-        <DiagramWidget type="amazon" />
+        <DiagramWidget data={presets.amazon} />
       </div>
 
       <div
         class="absolute -bottom-20 lg:-right-40 xl:-right-10 w-[500px] h-[300px] opacity-60 hover:opacity-100 transition-all duration-300 hover:scale-105 rotate-12 hidden lg:block z-10 scale-[0.7] xl:scale-[0.9]"
       >
-        <DiagramWidget type="x" />
+        <DiagramWidget data={presets.x} />
       </div>
     </section>
 
@@ -651,17 +654,22 @@ var(--dot-color);"
         >
           {#each pricingPlans as plan}
             <div
-              class="relative group h-full transition-all duration-300 {plan.title ===
-              'Scout'
-                ? 'scale-105 z-10'
-                : 'scale-100 hover:scale-[1.02]'}"
+              class={cn(
+                'relative group h-full transition-all duration-300',
+                plan.title === 'Scout'
+                  ? 'scale-105 z-10'
+                  : 'scale-100 hover:scale-[1.02]',
+              )}
             >
               <Card
-                class="relative flex flex-col rounded-3xl bg-white h-full transition-all duration-300 {plan.disabled
-                  ? 'border-slate-100 bg-slate-50/50'
-                  : plan.title === 'Scout'
-                    ? 'border-cyan-500/20 shadow-2xl shadow-cyan-500/10 ring-1 ring-cyan-500/20'
-                    : 'border-slate-200 hover:border-slate-300 hover:shadow-lg'}"
+                class={cn(
+                  'relative flex flex-col rounded-3xl bg-white h-full transition-all duration-300',
+                  plan.disabled
+                    ? 'border-slate-100 bg-slate-50/50'
+                    : plan.title === 'Scout'
+                      ? 'border-cyan-500/20 shadow-2xl shadow-cyan-500/10 ring-1 ring-cyan-500/20'
+                      : 'border-slate-200 hover:border-slate-300 hover:shadow-lg',
+                )}
               >
                 <CardHeader>
                   <div class="flex justify-center w-full text-center">
@@ -674,7 +682,10 @@ var(--dot-color);"
                         {plan.title}
                       </CardTitle>
                       <CardDescription
-                        class={`mt-2 text-sm font-medium mt-0 ${plan.subtitle ? 'mb-4' : 'm-0'}`}
+                        class={cn(
+                          'mt-2 text-sm font-medium mt-0',
+                          plan.subtitle ? 'mb-4' : 'm-0',
+                        )}
                       >
                         {plan.subtitle}
                       </CardDescription>
@@ -682,9 +693,10 @@ var(--dot-color);"
                   </div>
 
                   <div
-                    class={plan.originalPrice || plan.price || plan.annualPrice
-                      ? 'mt-6 space-y-2 flex flex-col items-center'
-                      : ''}
+                    class={cn(
+                      (plan.originalPrice || plan.price || plan.annualPrice) &&
+                        'mt-6 space-y-2 flex flex-col items-center',
+                    )}
                   >
                     {#if plan.originalPrice}
                       <div class="flex items-center gap-2">
@@ -720,24 +732,32 @@ var(--dot-color);"
 
                 <CardContent class="flex-1 pb-0">
                   <div
-                    class="h-px w-full bg-slate-100 mb-4 {plan.title === 'Scout'
-                      ? 'bg-gradient-to-r from-cyan-100 to-pink-100'
-                      : ''}"
+                    class={cn(
+                      'h-px w-full bg-slate-100 mb-4',
+                      plan.title === 'Scout' &&
+                        'bg-gradient-to-r from-cyan-100 to-pink-100',
+                    )}
                   ></div>
                   <ul class="space-y-1">
                     {#each plan.features as feature}
                       <li class="flex items-start">
                         <div
-                          class="mt-0.5 rounded-full p-1 {plan.title === 'Scout'
-                            ? 'bg-cyan-50 text-cyan-600'
-                            : 'bg-slate-100 text-slate-500'}"
+                          class={cn(
+                            'mt-0.5 rounded-full p-1',
+                            plan.title === 'Scout'
+                              ? 'bg-cyan-50 text-cyan-600'
+                              : 'bg-slate-100 text-slate-500',
+                          )}
                         >
                           <CheckCircle class="h-4 w-4" />
                         </div>
                         <span
-                          class="ml-3 text-sm {plan.title === 'Scout'
-                            ? 'text-slate-700 font-medium'
-                            : 'text-slate-600'}"
+                          class={cn(
+                            'ml-3 text-sm',
+                            plan.title === 'Scout'
+                              ? 'text-slate-700 font-medium'
+                              : 'text-slate-600',
+                          )}
                         >
                           {feature}
                         </span>
@@ -799,19 +819,24 @@ var(--dot-color);"
       <div class="container px-4 md:px-6">
         <div class="grid lg:grid-cols-2 gap-12 items-center">
           <!-- Left: Illustration - Desktop Only -->
-          <div class="hidden lg:flex justify-start items-center">
+          <div class="lg:flex justify-start items-center">
             <div class="relative">
               <div
                 class="absolute -inset-4 bg-gradient-to-r from-cyan-200/30 to-pink-200/30 rounded-full blur-3xl"
               ></div>
-              <div class="w-[600px] h-[350px] relative z-10">
-                <AnimatedDiagramWidget type="consultation" />
+              <div
+                class="m-auto w-[460px] h-[250px] md:w-[600px] md:h-[350px] relative z-10"
+              >
+                <AnimatedDiagramWidget
+                  class="scale-75 md:scale-100"
+                  data={presets.consultation}
+                />
               </div>
             </div>
           </div>
 
           <!-- Right: Text Content -->
-          <div class="space-y-6 text-left">
+          <div class="space-y-6 text-center lg:text-left">
             <div class="inline-block">
               <span
                 class="px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full text-sm font-medium text-slate-600 border border-slate-200"
@@ -829,18 +854,25 @@ var(--dot-color);"
                 together
               </span>
             </h2>
-            <p class="text-lg text-slate-600 max-w-xl leading-relaxed">
+            <p
+              class="text-lg text-slate-600 max-w-xl leading-relaxed m-auto lg:m-0"
+            >
               Connect with our expert consultants for personalized guidance on
               your project. From architecture to deployment, we're here to help
               you succeed.
             </p>
 
             <!-- Illustration - Mobile Only -->
-            <div class="lg:hidden flex justify-center py-8">
-              <div class="w-full h-[300px] relative z-10 overflow-hidden">
-                <AnimatedDiagramWidget type="consultation" />
+            <!-- <div class="lg:hidden flex justify-center py-8">
+              <div
+                class="sm:w-[320px] lg:w-[600px] h-[220px] relative z-10 overflow-hidden"
+              >
+                <AnimatedDiagramWidget
+                  data={presets.consultation}
+                  class="p-1"
+                />
               </div>
-            </div>
+            </div> -->
 
             <div class="inline-flex flex-col gap-3">
               <div
