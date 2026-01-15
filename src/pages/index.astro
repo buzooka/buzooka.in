@@ -20,9 +20,17 @@ const isProd = import.meta.env.PROD;
       name="description"
       content="Launch production-ready MVPs instantly with Buzooka. We automate codebase generation, cloud infrastructure, and CI/CD pipelines so you can focus on your product, not DevOps."
     />
-    <link rel="icon" type="image/png" href="/buzooka-icon.png" />
-    <link rel="shortcut icon" type="image/png" href="/buzooka-icon.png" />
-    <link rel="apple-touch-icon" href="/buzooka-icon.png" />
+    <link rel="icon" type="image/svg+xml" href="/buzooka-ai-icon.svg" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="256x256"
+      href="/buzooka-ai-icon.png"
+    />
+    <link rel="shortcut icon" href="/buzooka-ai-icon.png" />
+    <link rel="apple-touch-icon" sizes="256x256" href="/buzooka-ai-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#ffffff" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta
@@ -97,6 +105,38 @@ const isProd = import.meta.env.PROD;
         />
       )
     }
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Buzooka",
+        "url": "https://buzooka.in",
+        "description": "Buzooka is an AI-powered Startup Studio that automates codebase generation, cloud infrastructure, and CI/CD pipelines for MVPs.",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Web",
+        "offers": {
+          "@type": "Offer",
+          "price": "9.00",
+          "priceCurrency": "USD"
+        }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Buzooka",
+        "url": "https://buzooka.in",
+        "logo": "https://buzooka.in/buzooka-ai-icon.png",
+        "sameAs": [
+          "https://x.com/buzooka",
+          "https://www.linkedin.com/company/buzooka-in/",
+          "https://github.com/buzooka"
+        ]
+      }
+    </script>
   </head>
   <body>
     <LandingPage client:load />
