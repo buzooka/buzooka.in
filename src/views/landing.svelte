@@ -440,12 +440,13 @@ var(--dot-color);"
                     out:fade={{ duration: 200 }}
                   >
                     <div class="flex gap-2">
-                      <button
+                      <!-- <button
                         type="button"
                         class="p-2 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-lg transition-colors"
+                        aria-label="Attach file"
                       >
                         <Paperclip size={20} />
-                      </button>
+                      </button> -->
                       <MicButton
                         on:text={(e) => {
                           const transcript = e.detail;
@@ -531,27 +532,54 @@ var(--dot-color);"
           <Card class="rounded-2xl">
             <CardHeader>
               <div class="flex flex-wrap gap-6 mb-4">
-                <img alt="React" src="/react.svg" width="30" class="mb-2" />
+                <img
+                  alt="React"
+                  src="/react.svg"
+                  width="30"
+                  class="mb-2"
+                  loading="lazy"
+                />
                 <img
                   alt="Svelte"
                   src="/svelte-logo.svg"
                   width="28"
                   class="mb-2"
+                  loading="lazy"
                 />
-                <img alt="Node" src="/node_js.svg" width="30" class="mb-2" />
+                <img
+                  alt="Node"
+                  src="/node_js.svg"
+                  width="30"
+                  class="mb-2"
+                  loading="lazy"
+                />
                 <img
                   alt="Typescript"
                   src="/ts-logo.svg"
                   width="28"
                   class="mb-2"
+                  loading="lazy"
                 />
-                <img alt="Vue" src="/vue.svg" width="30" class="mb-2" />
-                <img alt="Python" src="/python.svg" width="30" class="mb-2" />
+                <img
+                  alt="Vue"
+                  src="/vue.svg"
+                  width="30"
+                  class="mb-2"
+                  loading="lazy"
+                />
+                <img
+                  alt="Python"
+                  src="/python.svg"
+                  width="30"
+                  class="mb-2"
+                  loading="lazy"
+                />
                 <img
                   alt="Fluttr"
                   src="/flutter-logo.svg"
                   width="26"
                   class="mb-2"
+                  loading="lazy"
                 />
               </div>
               <CardTitle>{features[0].title}</CardTitle>
@@ -564,16 +592,41 @@ var(--dot-color);"
           <Card class="rounded-2xl">
             <CardHeader>
               <div class="flex flex-wrap gap-6 mb-4">
-                <img alt="AWS" src="/aws.svg" width="30" class="mb-2" />
-                <img alt="GCP" src="/gcp.svg" width="30" class="mb-2" />
-                <img alt="Azure" src="/azure.svg" width="30" class="mb-2" />
+                <img
+                  alt="AWS"
+                  src="/aws.svg"
+                  width="30"
+                  class="mb-2"
+                  loading="lazy"
+                />
+                <img
+                  alt="GCP"
+                  src="/gcp.svg"
+                  width="30"
+                  class="mb-2"
+                  loading="lazy"
+                />
+                <img
+                  alt="Azure"
+                  src="/azure.svg"
+                  width="30"
+                  class="mb-2"
+                  loading="lazy"
+                />
                 <img
                   alt="Digital Ocean"
                   src="/do.svg"
                   width="26"
                   class="mb-2"
+                  loading="lazy"
                 />
-                <img alt="Netlify" src="/netlify.svg" width="30" class="mb-2" />
+                <img
+                  alt="Netlify"
+                  src="/netlify.svg"
+                  width="30"
+                  class="mb-2"
+                  loading="lazy"
+                />
               </div>
               <CardTitle>{features[1].title}</CardTitle>
             </CardHeader>
@@ -585,17 +638,54 @@ var(--dot-color);"
           <Card class="rounded-2xl">
             <CardHeader>
               <div class="flex flex-wrap gap-6 mb-4">
-                <img alt="Git" src="/git.svg" width="30" class="mb-2" />
-                <img alt="Linux" src="/ubuntu.svg" width="30" class="mb-2" />
-                <img alt="Docker" src="/docker.svg" width="30" class="mb-2" />
-                <img alt="Android" src="/android.svg" width="30" class="mb-2" />
-                <img alt="iOS" src="/ios.svg" width="30" class="mb-2" />
-                <img alt="MacOS" src="/macos.svg" width="30" class="mb-2" />
+                <img
+                  alt="Git"
+                  src="/git.svg"
+                  width="30"
+                  class="mb-2"
+                  loading="lazy"
+                />
+                <img
+                  alt="Linux"
+                  src="/ubuntu.svg"
+                  width="30"
+                  class="mb-2"
+                  loading="lazy"
+                />
+                <img
+                  alt="Docker"
+                  src="/docker.svg"
+                  width="30"
+                  class="mb-2"
+                  loading="lazy"
+                />
+                <img
+                  alt="Android"
+                  src="/android.svg"
+                  width="30"
+                  class="mb-2"
+                  loading="lazy"
+                />
+                <img
+                  alt="iOS"
+                  src="/ios.svg"
+                  width="30"
+                  class="mb-2"
+                  loading="lazy"
+                />
+                <img
+                  alt="MacOS"
+                  src="/macos.svg"
+                  width="30"
+                  class="mb-2"
+                  loading="lazy"
+                />
                 <img
                   alt="Windows"
                   src="/microsoft.svg"
                   width="30"
                   class="mb-2"
+                  loading="lazy"
                 />
               </div>
               <CardTitle>{features[2].title}</CardTitle>
@@ -716,7 +806,7 @@ var(--dot-color);"
                         <div class="flex items-baseline gap-1">
                           {#if plan.originalPrice}
                             <span
-                              class="text-lg text-slate-400 line-through font-medium"
+                              class="text-lg text-slate-500 line-through font-medium"
                               >${plan.originalPrice}</span
                             >
                           {/if}
@@ -1092,13 +1182,234 @@ var(--dot-color);"
   </main>
 
   <footer
-    class="flex flex-col sm:flex-row gap-2 py-6 w-full shrink-0 items-center px-4 md:px-6 bg-slate-950"
+    class="flex flex-col gap-8 py-12 w-full shrink-0 px-4 md:px-6 bg-slate-950"
   >
-    <p
-      class="text-xs text-slate-100 dark:text-gray-400 leading-normal text-center sm:text-left"
-    >
-      © 2025 bio.local.tech. All rights reserved.
-    </p>
+    <div class="container mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <!-- Company Info -->
+        <div class="space-y-4">
+          <a href="/" class="inline-block">
+            <img
+              alt="Buzooka"
+              src="/buzooka-ai-icon-light.svg"
+              height="40px"
+              width="40px"
+              class="h-10 w-10"
+            />
+          </a>
+          <p class="text-sm text-slate-400">
+            Launch production-ready MVPs instantly with AI-powered architecture.
+          </p>
+        </div>
+
+        <!-- Product Links -->
+        <div class="space-y-4">
+          <h3
+            class="text-sm font-semibold text-slate-100 uppercase tracking-wider"
+          >
+            Product
+          </h3>
+          <ul class="space-y-2">
+            <li>
+              <a
+                href="#features"
+                class="text-sm text-slate-400 hover:text-cyan-400 transition-colors"
+              >
+                Features
+              </a>
+            </li>
+            <li>
+              <a
+                href="#pricing"
+                class="text-sm text-slate-400 hover:text-cyan-400 transition-colors"
+              >
+                Pricing
+              </a>
+            </li>
+            <li>
+              <a
+                href="#schedule"
+                class="text-sm text-slate-400 hover:text-cyan-400 transition-colors"
+              >
+                Book Consultation
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://status.buzooka.in"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-sm text-slate-400 hover:text-cyan-400 transition-colors"
+              >
+                Status
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://dash.buzooka.in"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-sm text-slate-400 hover:text-cyan-400 transition-colors"
+              >
+                Dashboard
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Resources -->
+        <div class="space-y-4">
+          <h3
+            class="text-sm font-semibold text-slate-100 uppercase tracking-wider"
+          >
+            Resources
+          </h3>
+          <ul class="space-y-2">
+            <li>
+              <a
+                href="#faq"
+                class="text-sm text-slate-400 hover:text-cyan-400 transition-colors"
+              >
+                FAQ
+              </a>
+            </li>
+            <li>
+              <a
+                href="#hire"
+                class="text-sm text-slate-400 hover:text-cyan-400 transition-colors"
+              >
+                Hire Experts
+              </a>
+            </li>
+            <li>
+              <a
+                href="#contact"
+                class="text-sm text-slate-400 hover:text-cyan-400 transition-colors"
+              >
+                Contact
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://github.com/buzooka"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-sm text-slate-400 hover:text-cyan-400 transition-colors"
+              >
+                GitHub
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Legal -->
+        <div class="space-y-4">
+          <h3
+            class="text-sm font-semibold text-slate-100 uppercase tracking-wider"
+          >
+            Legal
+          </h3>
+          <ul class="space-y-2">
+            <li>
+              <a
+                href="/legal"
+                class="text-sm text-slate-400 hover:text-cyan-400 transition-colors"
+              >
+                Legal Center
+              </a>
+            </li>
+            <li>
+              <a
+                href="/terms"
+                class="text-sm text-slate-400 hover:text-cyan-400 transition-colors"
+              >
+                Terms & Conditions
+              </a>
+            </li>
+            <li>
+              <a
+                href="/privacy"
+                class="text-sm text-slate-400 hover:text-cyan-400 transition-colors"
+              >
+                Privacy Policy
+              </a>
+            </li>
+            <li>
+              <a
+                href="/refund"
+                class="text-sm text-slate-400 hover:text-cyan-400 transition-colors"
+              >
+                Refund Policy
+              </a>
+            </li>
+            <li>
+              <a
+                href="/cookies"
+                class="text-sm text-slate-400 hover:text-cyan-400 transition-colors"
+              >
+                Cookie Policy
+              </a>
+            </li>
+            <li>
+              <a
+                href="/data"
+                class="text-sm text-slate-400 hover:text-cyan-400 transition-colors"
+              >
+                Data Requests
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div
+        class="mt-8 pt-8 border-t border-slate-800 flex flex-col sm:flex-row justify-between items-center gap-4"
+      >
+        <p class="text-xs text-slate-400 text-center sm:text-left">
+          © 2025 bio.local.tech. All rights reserved.
+        </p>
+        <div class="flex gap-4">
+          <a
+            href="https://x.com/buzooka"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-slate-400 hover:text-cyan-400 transition-colors"
+            aria-label="X (Twitter)"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path
+                d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"
+              />
+            </svg>
+          </a>
+          <a
+            href="https://www.linkedin.com/company/buzooka-in/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-slate-400 hover:text-cyan-400 transition-colors"
+            aria-label="LinkedIn"
+          >
+            <Linkedin size={20} />
+          </a>
+          <a
+            href="https://github.com/buzooka"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-slate-400 hover:text-cyan-400 transition-colors"
+            aria-label="GitHub"
+          >
+            <Github size={20} />
+          </a>
+        </div>
+      </div>
+    </div>
   </footer>
 </div>
 

@@ -60,6 +60,7 @@
     class="p-2 rounded-lg transition-colors {isRecording
       ? 'text-red-500 bg-red-50 hover:bg-red-100'
       : 'text-slate-400 hover:text-slate-600 hover:bg-slate-100'}"
+    aria-label={isRecording ? 'Stop voice recording' : 'Start voice recording'}
   >
     <Mic size={20} class={isRecording ? 'animate-pulse' : ''} />
   </button>

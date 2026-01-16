@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Redirecting...</title>
+    <script>
+      // GitHub Pages redirect handler for www to non-www
+      (function () {
+        var currentHost = window.location.hostname;
+        var currentPath =
+          window.location.pathname +
+          window.location.search +
+          window.location.hash;
+
+        // If on www subdomain, redirect to non-www
+        if (currentHost.startsWith('www.')) {
+          var newHost = currentHost.replace('www.', '');
+          window.location.replace('https://' + newHost + currentPath);
+        } else {
+          // Otherwise redirect to home page
+          window.location.replace('https://buzooka.in/');
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <p>Redirecting...</p>
+  </body>
+</html>

@@ -247,7 +247,7 @@
           <div class="text-slate-500">
             <svelte:component this={node.icon} size={16} />
           </div>
-          <span class="text-sm font-semibold text-slate-800 truncate"
+          <span class="text-sm font-semibold text-slate-900 truncate"
             >{node.label}</span
           >
         </div>
