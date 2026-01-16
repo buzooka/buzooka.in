@@ -14,6 +14,9 @@
     Github,
     Globe,
     Loader2,
+    Facebook,
+    Youtube,
+    Instagram,
   } from 'lucide-svelte';
   import MicButton from '../components/MicButton.svelte';
   import { onMount } from 'svelte';
@@ -959,6 +962,30 @@ var(--dot-color);"
             aria-label="GitHub"
           >
             <Github size={24} />
+          </a>
+          <a
+            href="https://facebook.com/buzooka.in"
+            target="_blank"
+            class="p-4 bg-slate-100 rounded-full hover:bg-blue-600 hover:text-white transition-colors"
+            aria-label="Facebook"
+          >
+            <Facebook size={24} />
+          </a>
+          <a
+            href="https://www.youtube.com/@buzooka_in"
+            target="_blank"
+            class="p-4 bg-slate-100 rounded-full hover:bg-red-600 hover:text-white transition-colors"
+            aria-label="YouTube"
+          >
+            <Youtube size={24} />
+          </a>
+          <a
+            href="https://www.instagram.com/buzooka_in/"
+            target="_blank"
+            class="p-4 bg-slate-100 rounded-full hover:bg-gradient-to-br hover:from-purple-600 hover:via-pink-600 hover:to-orange-500 hover:text-white transition-colors"
+            aria-label="Instagram"
+          >
+            <Instagram size={24} />
           </a>
         </div>
       </div>
