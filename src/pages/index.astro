@@ -1,6 +1,7 @@
 ---
 import '$lib/styles/app.css';
 import LandingPage from '../views/landing.svelte';
+import { faqData } from '$lib/config/faq';
 
 // Welcome to Astro! Everything between these triple-dash code fences
 // is your "component frontmatter". It never runs in the browser.
@@ -15,10 +16,10 @@ const isProd = import.meta.env.PROD;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content="Buzooka 1.0.0" />
-    <title>Buzooka | Build & Launch your MVP in Days</title>
+    <title>Buzooka | Build & Launch Your MVP Product App in Record Time</title>
     <meta
       name="description"
-      content="Launch production-ready MVPs instantly with Buzooka. We automate codebase generation, cloud infrastructure, and CI/CD pipelines so you can focus on your product, not DevOps."
+      content="Launch production-ready MVPs instantly. Automate codebase generation, cloud infrastructure, and CI/CD pipelines for rapid product development."
     />
     <link
       id="favicon-svg"
@@ -61,11 +62,11 @@ const isProd = import.meta.env.PROD;
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
-      content="Buzooka | Build & Launch your MVP in Days"
+      content="Buzooka | Build & Launch Your MVP Product App in Record Time"
     />
     <meta
       name="twitter:description"
-      content="Launch production-ready MVPs instantly with Buzooka. We automate codebase generation, cloud infrastructure, and CI/CD pipelines."
+      content="Launch production-ready MVPs instantly. Automate codebase generation, cloud infrastructure, and CI/CD pipelines for rapid product development."
     />
     <meta name="twitter:site" content="@buzooka" />
     <meta name="twitter:image" content="https://buzooka.in/og-image.png" />
@@ -78,11 +79,11 @@ const isProd = import.meta.env.PROD;
     <meta property="og:type" content="website" />
     <meta
       property="og:title"
-      content="Buzooka | Build & Launch your MVP in Days"
+      content="Buzooka | Build & Launch Your MVP Product App in Record Time"
     />
     <meta
       property="og:description"
-      content="Launch production-ready MVPs instantly with Buzooka. We automate codebase generation, cloud infrastructure, and CI/CD pipelines."
+      content="Launch production-ready MVPs instantly. Automate codebase generation, cloud infrastructure, and CI/CD pipelines for rapid product development."
     />
     <meta property="og:url" content="https://buzooka.in/" />
     <meta property="og:site_name" content="Buzooka" />
@@ -163,6 +164,21 @@ const isProd = import.meta.env.PROD;
         ]
       }
     </script>
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: faqData.map((faq) => ({
+          '@type': 'Question',
+          name: faq.question,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: faq.answer,
+          },
+        })),
+      })}
+    />
   </head>
   <body>
     <LandingPage client:load />

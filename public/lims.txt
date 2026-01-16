@@ -1,0 +1,11 @@
+# Lims.txt - Crawl limits for Buzooka
+# This file helps search engines understand crawl rate preferences
+
+User-agent: *
+Crawl-delay: 1
+
+# Allow all pages
+Allow: /
+
+# Sitemap location
+Sitemap: https://buzooka.in/sitemap.xml
