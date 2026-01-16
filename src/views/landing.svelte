@@ -252,6 +252,11 @@ var(--dot-color);"
       >Book a Call</a
     >
     <a
+      href="#faq"
+      class="text-sm font-medium hover:underline underline-offset-4 py-3 hidden sm:block"
+      >FAQ</a
+    >
+    <a
       href="https://status.buzooka.in"
       target="_blank"
       class="group text-sm font-medium hover:underline underline-offset-4 py-3 hidden sm:flex items-center gap-1.5"
@@ -1355,7 +1360,7 @@ var(--dot-color);"
                 href="/data"
                 class="text-sm text-slate-400 hover:text-cyan-400 transition-colors"
               >
-                Data Requests
+                Data
               </a>
             </li>
           </ul>
@@ -1406,6 +1411,33 @@ var(--dot-color);"
             aria-label="GitHub"
           >
             <Github size={20} />
+          </a>
+          <a
+            href="https://instagram.com/buzookapanaka"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-slate-400 hover:text-cyan-400 transition-colors"
+            aria-label="Instagram"
+          >
+            <Instagram size={20} />
+          </a>
+          <a
+            href="https://facebook.com/buzooka"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-slate-400 hover:text-cyan-400 transition-colors"
+            aria-label="Facebook"
+          >
+            <Facebook size={20} />
+          </a>
+          <a
+            href="https://youtube.com/@buzooka"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-slate-400 hover:text-cyan-400 transition-colors"
+            aria-label="YouTube"
+          >
+            <Youtube size={20} />
           </a>
         </div>
       </div>
