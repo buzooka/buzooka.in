@@ -1,0 +1,146 @@
+---
+import '$lib/styles/app.css';
+
+const {
+  frontmatter,
+  title: propTitle,
+  description: propDescription,
+} = Astro.props;
+const title =
+  propTitle ||
+  frontmatter?.title ||
+  'Buzooka | Build & Launch your MVP in Days';
+const description =
+  propDescription ||
+  frontmatter?.description ||
+  'Launch production-ready MVPs instantly with Buzooka. We automate codebase generation, cloud infrastructure, and CI/CD pipelines so you can focus on your product, not DevOps.';
+const isProd = import.meta.env.PROD;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content="Buzooka 1.0.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link
+      id="favicon-svg"
+      rel="icon"
+      type="image/svg+xml"
+      href="/buzooka-ai-icon.svg"
+    />
+    <link
+      id="favicon-png"
+      rel="icon"
+      type="image/png"
+      sizes="256x256"
+      href="/buzooka-ai-icon.png"
+    />
+
+    <script is:inline>
+      const originalSvg = '/buzooka-ai-icon.svg';
+      const originalPng = '/buzooka-ai-icon.png';
+      const inactiveSvg = '/buzooka-ai-icon-dark.svg';
+      const inactivePng = '/buzooka-ai-icon-dark.svg';
+
+      document.addEventListener('visibilitychange', () => {
+        const svgLink = document.getElementById('favicon-svg');
+        const pngLink = document.getElementById('favicon-png');
+
+        if (document.hidden) {
+          if (svgLink) svgLink.href = inactiveSvg;
+          if (pngLink) pngLink.href = inactivePng;
+        } else {
+          if (svgLink) svgLink.href = originalSvg;
+          if (pngLink) pngLink.href = originalPng;
+        }
+      });
+    </script>
+    <link rel="shortcut icon" href="/buzooka-ai-icon.png" />
+    <link rel="apple-touch-icon" sizes="256x256" href="/buzooka-ai-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#ffffff" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:site" content="@buzooka" />
+    <meta name="twitter:image" content="https://buzooka.in/og-image.png" />
+
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content="https://buzooka.in/" />
+    <meta property="og:site_name" content="Buzooka" />
+    <meta property="og:image" content="https://buzooka.in/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <meta name="robots" content="max-image-preview:large" />
+    <link rel="canonical" href="https://buzooka.in/" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Mansalva&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DHWTZBR9RX"
+    ></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'G-DHWTZBR9RX');
+    </script>
+
+    {
+      isProd && (
+        <script
+          defer
+          src="https://cloud.umami.is/script.js"
+          data-website-id="f6382def-d5e7-46da-973e-55c22f5210b9"
+        />
+      )
+    }
+  </head>
+  <body class="bg-background text-foreground">
+    <main class="container mx-auto px-4 py-8 max-w-4xl">
+      <slot />
+    </main>
+  </body>
+</html>
+
+<style is:global>
+  main h1 {
+    @apply text-3xl font-bold mb-6 mt-8;
+  }
+  main h2 {
+    @apply text-2xl font-semibold mb-4 mt-8 border-b pb-2 border-border;
+  }
+  main h3 {
+    @apply text-xl font-semibold mb-3 mt-6;
+  }
+  main p {
+    @apply mb-4 leading-7 text-muted-foreground;
+  }
+  main ul {
+    @apply list-disc list-outside mb-6 ml-6 text-muted-foreground;
+  }
+  main li {
+    @apply mb-2 pl-2;
+  }
+  main strong {
+    @apply font-semibold text-foreground;
+  }
+  main a {
+    @apply text-primary underline underline-offset-4 decoration-primary/50 hover:decoration-primary;
+  }
+</style>
