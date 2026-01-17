@@ -1413,7 +1413,7 @@ var(--dot-color);"
             <Github size={20} />
           </a>
           <a
-            href="https://instagram.com/buzookapanaka"
+            href="https://instagram.com/buzooka_in"
             target="_blank"
             rel="noopener noreferrer"
             class="text-slate-400 hover:text-cyan-400 transition-colors"
@@ -1422,7 +1422,7 @@ var(--dot-color);"
             <Instagram size={20} />
           </a>
           <a
-            href="https://facebook.com/buzooka"
+            href="https://www.facebook.com/buzooka.in"
             target="_blank"
             rel="noopener noreferrer"
             class="text-slate-400 hover:text-cyan-400 transition-colors"
@@ -1431,7 +1431,7 @@ var(--dot-color);"
             <Facebook size={20} />
           </a>
           <a
-            href="https://youtube.com/@buzooka"
+            href="https://www.youtube.com/@buzooka_in"
             target="_blank"
             rel="noopener noreferrer"
             class="text-slate-400 hover:text-cyan-400 transition-colors"
