@@ -229,7 +229,7 @@ var(--dot-color);"
     >
       <img
         alt="Buzooka"
-        src="/buzooka-logo.svg"
+        src="/buzooka-logo-new.svg"
         height="44px"
         style="height: 44px;"
       />
@@ -272,7 +272,7 @@ var(--dot-color);"
       </div>
     </a>
     <a
-      href="https://dash.buzooka.in/login"
+      href="https://cloud.umami.is/q/79N5WNQj0"
       target="_blank"
       class="text-sm font-medium bg-slate-900 text-white px-4 py-2 rounded-lg hover:bg-slate-800 transition-colors"
     >
@@ -980,7 +980,7 @@ var(--dot-color);"
                 <Button
                   class="gap-2 bg-slate-900 text-white rounded-lg hover:bg-slate-800 h-14 px-8 text-base font-medium"
                   on:click={() =>
-                    window.open('https://cal.com/buzooka/30min', '_blank')}
+                    window.open('https://cloud.umami.is/q/mtpPVH3Xk', '_blank')}
                 >
                   Book Consultation Call<Calendar class="w-5 h-5" />
                 </Button>
