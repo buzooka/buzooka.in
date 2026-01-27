@@ -140,6 +140,16 @@ const isProd = import.meta.env.PROD;
       />
     </noscript>
 
+    <script is:inline>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js').catch((err) => {
+            console.error('ServiceWorker registration failed: ', err);
+          });
+        });
+      }
+    </script>
+
     <!-- Preload critical images -->
     <link
       rel="preload"
