@@ -470,7 +470,7 @@ var(--dot-color);"
                         size="icon"
                         class="px-3 h-10 w-auto rounded-lg bg-slate-900 transition-all duration-300 ease-in-out flex items-center justify-center create-btn"
                       >
-                        Generate Blueprint
+                        Create with Buzooka
                         <img
                           alt="Create"
                           src="/buzooka-ai-icon-light.svg"
