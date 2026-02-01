@@ -1,20 +1,12 @@
 ---
 import '$lib/styles/app.css';
+
 import Header from '../components/Header.astro';
 
 const {
-  frontmatter,
-  title: propTitle,
-  description: propDescription,
+  title = 'Blog | Buzooka',
+  description = 'Insights, updates, and stories from the Buzooka team.',
 } = Astro.props;
-const title =
-  propTitle ||
-  frontmatter?.title ||
-  'Buzooka | Build & Launch Your MVP Product App in Record Time';
-const description =
-  propDescription ||
-  frontmatter?.description ||
-  'Launch production-ready MVPs instantly. Automate codebase generation, cloud infrastructure, and CI/CD pipelines.';
 const isProd = import.meta.env.PROD;
 ---
 
@@ -81,7 +73,7 @@ const isProd = import.meta.env.PROD;
     <meta property="og:image:height" content="630" />
 
     <meta name="robots" content="max-image-preview:large" />
-    <link rel="canonical" href="https://buzooka.in/" />
+    <link rel="canonical" href="https://buzooka.in/blog" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -116,12 +108,7 @@ const isProd = import.meta.env.PROD;
     class="bg-background text-foreground min-h-screen flex flex-col font-sans antialiased"
   >
     <Header />
-    <slot name="hero" />
-    <main
-      class="container mx-auto px-4 py-12 max-w-4xl flex-1 animate-in fade-in slide-in-from-bottom-4 duration-500"
-    >
-      <slot />
-    </main>
+    <slot />
     <footer
       class="flex flex-col gap-4 sm:flex-row py-8 w-full shrink-0 items-center px-4 md:px-6 border-t mt-auto bg-gray-50/50"
     >
@@ -141,30 +128,3 @@ const isProd = import.meta.env.PROD;
     </footer>
   </body>
 </html>
-
-<style is:global>
-  main h1 {
-    @apply text-3xl font-bold mb-6 mt-8;
-  }
-  main h2 {
-    @apply text-2xl font-semibold mb-4 mt-8 border-b pb-2 border-border;
-  }
-  main h3 {
-    @apply text-xl font-semibold mb-3 mt-6;
-  }
-  main p {
-    @apply mb-4 leading-7 text-muted-foreground;
-  }
-  main ul {
-    @apply list-disc list-outside mb-6 ml-6 text-muted-foreground;
-  }
-  main li {
-    @apply mb-2 pl-2;
-  }
-  main strong {
-    @apply font-semibold text-foreground;
-  }
-  main a {
-    @apply text-primary underline underline-offset-4 decoration-primary/50 hover:decoration-primary;
-  }
-</style>

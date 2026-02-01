@@ -1003,7 +1003,7 @@ var(--dot-color);"
                   on:click={() =>
                     window.open('https://cloud.umami.is/q/mtpPVH3Xk', '_blank')}
                 >
-                  Book Consultation Call<Calendar class="w-5 h-5" />
+                  Book Demo Call<Calendar class="w-5 h-5" />
                 </Button>
               </div>
               <div class="flex items-center gap-2 text-sm text-slate-500">
@@ -1393,7 +1393,7 @@ var(--dot-color);"
         class="mt-8 pt-8 border-t border-slate-800 flex flex-col sm:flex-row justify-between items-center gap-4"
       >
         <p class="text-xs text-slate-400 text-center sm:text-left">
-          © 2025 bio.local.tech. All rights reserved.
+          © 2026 bio.local.tech. All rights reserved.
         </p>
         <div class="flex gap-4">
           <a
