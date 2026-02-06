@@ -3,6 +3,7 @@
   import { blur, crossfade, slide, fade } from 'svelte/transition';
   import DiagramWidget from '../components/DiagramWidget.svelte';
   import AnimatedDiagramWidget from '../components/AnimatedDiagramWidget.svelte';
+  import DeployAnythingWidget from '../components/DeployAnythingWidget.svelte';
   import { presets } from '$lib/config/presets';
   import { faqData } from '$lib/config/faq';
   import {
@@ -17,6 +18,8 @@
     Facebook,
     Youtube,
     Instagram,
+    ArrowRight,
+    ChevronDown,
   } from 'lucide-svelte';
   import MicButton from '../components/MicButton.svelte';
   import { onMount } from 'svelte';
@@ -29,10 +32,15 @@
     CardTitle,
     CardFooter,
   } from '$lib/components/ui/card';
+  import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
+  import { templates } from '../config/templates';
 
-  let promptText = '';
+  let selectedAnything = $state('Anything');
+  let selectedAnywhere = $state('Anywhere');
+
+  let promptText = $state('');
   let promptInput: HTMLTextAreaElement;
-  let placeholderText = 'Describe the product you want to architect';
+  let placeholderText = $state('Describe the product you want to architect');
 
   const placeholders = [
     'Describe the product you want to build',
@@ -45,7 +53,7 @@
 
   const features = [
     {
-      title: 'Instant Codebase Generation',
+      title: 'AI Ready Boilerplates',
       description:
         'Choose a template (React, Svelte, Node, Python, etc.) and generate a perfectly structured, production-ready codebase in minutes. Includes Mobile, Web, and Service layers.',
     },
@@ -138,7 +146,7 @@
     },
   ];
 
-  let id = 1;
+  let id = $state(1);
 
   const strategyItems = [
     'Strategy',
@@ -147,7 +155,7 @@
     'Culture',
     'Interests',
   ];
-  let currentStrategyIndex = 0;
+  let currentStrategyIndex = $state(0);
 
   onMount(() => {
     setInterval(() => {
@@ -194,7 +202,7 @@
     window.location.pathname = '/waitlist';
   };
 
-  let isNavigating = false;
+  let isNavigating = $state(false);
 
   const handleGenerateBlueprint = (e: SubmitEvent) => {
     e.preventDefault();
@@ -222,7 +230,7 @@ linear-gradient(90deg, var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), t
 linear-gradient(var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
 var(--dot-color);"
 >
-  <div class="flex flex-1">
+  <div class="flex">
     <a
       href="/"
       class="items-left justify-start relative top-[0px] sm:left-[12px] lg:left-[24px]"
@@ -290,238 +298,395 @@ var(--dot-color);"
 >
   <main class="flex-1">
     <section
-      class="relative h-auto mt-20 sm:mt-24 w-full py-12 md:py-24 lg:py-40"
+      class="w-full py-12 md:py-24 md:pb-0 from-white to-cyan-50/30 dark:from-slate-900 dark:to-slate-800/30 relative"
     >
-      <div class="container px-4 md:px-6 relative z-30">
-        <div class="flex flex-col items-center space-y-4 text-center">
-          <div class="space-y-6 mb-4">
-            <h1 class="text-sm uppercase font-mono font-medium text-slate-600">
-              <span class="font-bold">A Startup Studio</span> - Tools for Product
-              Development
-            </h1>
-            <h2
-              class="text-2xl font-sans sm:text-4xl md:text-5xl lg:text-5xl/none block w-full sm:w-[700px] mx-auto pt-0"
-            >
-              <span class="italic font-thin text-slate-600"
-                >Launch your <mark class="px-3">MVP</mark> ,</span
-              ><br />
-              <div
-                class="relative h-20 text-center flex items-center justify-center"
-              >
-                {#if id === 1}
-                  <span
-                    transition:blur={{
-                      duration: 200,
-                    }}
-                    class="leading-normal absolute font-mono text-4xl/2 sm:text-5xl/2 text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-pink-500"
-                  >
-                    the RIGHT way
-                  </span>
-                {/if}
-                {#if id === 2}
-                  <span
-                    transition:blur={{
-                      duration: 200,
-                    }}
-                    class="leading-normal absolute font-mono text-4xl/2 sm:text-5xl/2 text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-pink-500"
-                  >
-                    with REAL architecture
-                  </span>
-                {/if}
-                {#if id === 3}
-                  <span
-                    transition:blur={{
-                      duration: 200,
-                    }}
-                    class="leading-normal absolute font-mono text-4xl/2 sm:text-5xl/2 text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-pink-500"
-                  >
-                    with AI enabled repos
-                  </span>
-                {/if}
-                {#if id === 4}
-                  <span
-                    transition:blur={{
-                      duration: 200,
-                    }}
-                    class="leading-normal absolute font-mono text-4xl/2 sm:text-5xl/2 text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-pink-500"
-                  >
-                    Own the CODE
-                  </span>
-                {/if}
-                {#if id === 5}
-                  <span
-                    transition:blur={{
-                      duration: 200,
-                    }}
-                    class="leading-normal absolute font-mono text-4xl/2 sm:text-5xl/2 text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-pink-500"
-                  >
-                    Bring Your Own Cloud
-                  </span>
-                {/if}
-                {#if id === 6}
-                  <span
-                    transition:blur={{
-                      duration: 200,
-                    }}
-                    class="leading-normal absolute font-mono text-4xl/2 sm:text-5xl/2 text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-pink-500"
-                  >
-                    Make an impact!
-                  </span>
-                {/if}
-              </div>
-            </h2>
-
-            <h3
-              class="mx-auto italic font-thin max-w-[700px] text-slate-600 md:text-lg dark:text-gray-400 pt-4"
-            >
-              <span class="font-medium">Code</span>,
-              <span class="font-medium">Cloud</span>, and
-              <span class="font-medium">CI/CD</span> simplified.
-            </h3>
+      <div class="container px-4 md:px-6 relative">
+        <div class="flex flex-col items-center justify-center mb-4">
+          <div class="flex items-center gap-1.5">
+            <div class="flex items-center gap-1">
+              {#each Array(4) as _}
+                <span class="text-[24px]">⭐</span>
+              {/each}
+              <!-- <span class="relative text-[24px] inline-block">
+                <span
+                  class="absolute inset-0 brightness-[0.2] grayscale opacity-20"
+                  >⭐</span
+                >
+                <span class="text-[24px] inset-0 overflow-hidden w-[12px]"
+                  >⭐</span
+                >
+              </span> -->
+            </div>
+            <!-- <span
+              class="text-[10px] font-mono font-bold text-slate-500 mt-0.5 tracking-wider"
+              >4.5/5 RATING</span
+            > -->
           </div>
-          <div
-            class="w-full max-w-2xl mx-auto relative group text-left transition-transform duration-500 focus-within:scale-[1.02]"
+        </div>
+        <h1
+          class="text-[9px] sm:text-[11px] uppercase font-mono font-semibold text-slate-700 text-center mb-10 sm:mb-10"
+        >
+          <span
+            class="border border-slate-200 inline-flex items-center rounded-xl py-0.5 pt-1.5 px-3 bg-white shadow-sm"
+            ><span class="font-bold">A Startup Studio</span> - Tools for Product
+            Development</span
           >
-            <div
-              class="absolute -inset-0.5 bg-gradient-to-tr from-cyan-500 to-pink-500 rounded-2xl blur opacity-20 group-hover:opacity-40 transition duration-500"
-            ></div>
-            <div
-              class="absolute -inset-0.5 bg-gradient-to-bl from-cyan-300 to-pink-300 rounded-2xl blur opacity-0 group-focus-within:opacity-100 transition duration-500"
-            ></div>
-
-            <!-- Ripple Effects in Canvas -->
-            <div
-              class="absolute inset-0 -z-10 pointer-events-none flex items-center justify-center"
-            >
-              <div
-                class="absolute w-[120%] aspect-square border border-cyan-500/20 rounded-full opacity-0 group-focus-within:animate-ripple"
-              ></div>
-              <div
-                class="absolute w-[120%] aspect-square border border-pink-500/20 rounded-full opacity-0 group-focus-within:animate-ripple [animation-delay:1s]"
-              ></div>
-            </div>
-
-            <!-- Animated Border Beam -->
-            <div
-              class="absolute -inset-[3px] rounded-[18px] overflow-hidden pointer-events-none z-0 opacity-0 group-focus-within:animate-beam-lifecycle"
-            >
-              <div
-                class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[200%] h-[200%] bg-[conic-gradient(from_0deg,transparent_0,transparent_75%,#06b6d4_85%,#ec4899_95%,transparent_100%)] animate-border-spin"
-              ></div>
-            </div>
-
-            <div
-              class={cn(
-                'relative bg-white rounded-2xl transition-all duration-600 ease-in-out overflow-hidden mx-auto',
-                !isNavigating ? 'shadow-xl' : 'shadow-none',
-              )}
-              style={isNavigating ? 'width: 0; opacity: 0;' : 'width: 100%;'}
-            >
-              {#if isNavigating}
-                <div
-                  class="absolute inset-0 flex items-center justify-center pointer-events-none"
-                  in:fade={{ duration: 200, delay: 100 }}
-                >
-                  <Loader2 class="w-6 h-6 animate-spin text-slate-400" />
-                </div>
-              {/if}
-
-              {#if !isNavigating}
-                <form
-                  class="relative bg-transparent flex flex-col"
-                  transition:slide={{ duration: 600 }}
-                  on:submit={handleGenerateBlueprint}
-                >
-                  <textarea
-                    name="prompt"
-                    bind:this={promptInput}
-                    bind:value={promptText}
-                    placeholder={placeholderText}
-                    class="w-full min-h-[80px] focus:min-h-[160px] p-4 text-md bg-transparent border-0 focus:ring-0 resize-none placeholder:text-slate-400 text-slate-900 outline-none transition-all duration-300 ease-in-out"
-                    out:fade={{ duration: 200 }}
-                  ></textarea>
-
-                  <div
-                    class="flex justify-between items-center px-4 pb-4"
-                    out:fade={{ duration: 200 }}
+        </h1>
+        <div class="w-full max-w-5xl mx-auto">
+          <DeployAnythingWidget />
+        </div>
+        <div
+          class="flex flex-col items-center justify-center text-center mt-8 mb-10 sm:mb-16"
+        >
+          <h2
+            class="text-2xl font-sans sm:text-4xl md:text-5xl lg:text-5xl/none flex flex-wrap items-center justify-center gap-x-2 gap-y-4 mx-auto pt-0"
+          >
+            <span
+              class="italic font-thin text-4xl/2 sm:text-5xl/2 text-slate-600 leading-normal pr-2"
+              >Deploy
+            </span>
+            <span class="inline-flex flex-col items-left">
+              <DropdownMenu.Root>
+                <DropdownMenu.Trigger asChild let:builder>
+                  <span
+                    use:builder.action
+                    {...builder}
+                    class="inline-flex items-center px-0 py-0.5 border-b-[1px] border-slate-400/60 cursor-pointer hover:border-slate-400 hover:bg-slate-50/50 data-[state=open]:border-slate-400 data-[state=open]:bg-slate-50/50 transition-all group/anything"
                   >
-                    <div class="flex gap-2">
-                      <!-- <button
-                        type="button"
-                        class="p-2 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-lg transition-colors"
-                        aria-label="Attach file"
-                      >
-                        <Paperclip size={20} />
-                      </button> -->
-                      <MicButton
-                        on:text={(e) => {
-                          const transcript = e.detail;
-                          if (!transcript) return;
-                          promptText =
-                            promptText + (promptText ? ' ' : '') + transcript;
-                        }}
-                      />
-                    </div>
                     <span
-                      class="inline-block rounded-[10px] bg-gradient-to-tr from-cyan-500 to-pink-500 p-0.5 transition-colors ease-in hover:focus:bg-gradient-to-bl hover:focus:from-cyan-400 hover:focus:to-pink-400 dark:from-cyan-900 dark:to-pink-900 dark:hover:focus:from-cyan-700 dark:hover:focus:to-pink-700"
+                      transition:blur={{
+                        duration: 200,
+                      }}
+                      class="leading-tight font-mono text-3xl sm:text-5xl text-transparent bg-clip-text bg-pink-500 py-1"
                     >
-                      <Button
-                        type="submit"
-                        size="icon"
-                        class="px-3 h-10 w-auto rounded-lg bg-slate-900 transition-all duration-300 ease-in-out flex items-center justify-center create-btn"
-                      >
-                        Create with Buzooka
-                        <img
-                          alt="Create"
-                          src="/buzooka-ai-icon-light.svg"
-                          width="24"
-                          height="24"
-                          class="ml-1 create-btn-icon"
-                        />
-                      </Button>
+                      {selectedAnything !== 'Anything'
+                        ? templates.find((t) => t.value === selectedAnything)
+                            ?.label
+                        : 'Anything'}
                     </span>
-                  </div>
-                </form>
+                    <ChevronDown
+                      class="w-0 h-5 sm:h-7 text-slate-400 opacity-0 scale-0 group-hover/anything:w-5 group-hover/anything:sm:w-7 group-hover/anything:ml-1.5 group-hover/anything:opacity-100 group-hover/anything:scale-100 group-data-[state=open]/anything:w-5 group-data-[state=open]/anything:sm:w-7 group-data-[state=open]/anything:ml-1.5 group-data-[state=open]/anything:opacity-100 group-data-[state=open]/anything:scale-100 transition-all duration-300 ease-out"
+                    />
+                  </span>
+                </DropdownMenu.Trigger>
+                <DropdownMenu.Content class="w-72">
+                  {#each templates as template}
+                    <DropdownMenu.Item
+                      onclick={() => (selectedAnything = template.value)}
+                      class="flex flex-col items-start gap-0.5"
+                    >
+                      <span class="text-slate-900">{template.label}</span>
+                      <span
+                        class="text-[9px] text-slate-400 uppercase font-mono tracking-tight"
+                        >{template.type}</span
+                      >
+                    </DropdownMenu.Item>
+                  {/each}
+                </DropdownMenu.Content>
+              </DropdownMenu.Root>
+              {#if selectedAnything !== 'Anything'}
+                <span
+                  class="absolute mt-[70px] text-left text-[9px] sm:text-[10px] text-slate-800 uppercase font-mono mt-1 opacity-70 group-hover/anything:opacity-100 transition-opacity"
+                >
+                  {templates.find((t) => t.value === selectedAnything)?.type ||
+                    ''}
+                </span>
               {/if}
+            </span>
+            <span
+              class="italic font-thin text-4xl/2 sm:text-5xl/2 text-slate-600 leading-normal px-1"
+              >{selectedAnything !== 'Anything' ||
+              selectedAnywhere !== 'Anywhere'
+                ? 'to'
+                : ''}</span
+            >
+            <span class="inline-flex flex-col items-left">
+              <DropdownMenu.Root>
+                <DropdownMenu.Trigger asChild let:builder>
+                  <span
+                    use:builder.action
+                    {...builder}
+                    class="inline-flex items-center px-0 py-0.5 border-b-[1px] border-slate-400/60 cursor-pointer hover:border-slate-400 hover:bg-slate-50/50 data-[state=open]:border-slate-400 data-[state=open]:bg-slate-50/50 transition-all group/anywhere"
+                  >
+                    <span
+                      transition:blur={{
+                        duration: 200,
+                      }}
+                      class="leading-tight font-mono text-3xl sm:text-5xl text-transparent bg-clip-text bg-cyan-600 py-1"
+                    >
+                      {selectedAnywhere}
+                    </span>
+                    <ChevronDown
+                      class="w-0 h-5 sm:h-7 text-slate-400 opacity-0 scale-0 group-hover/anywhere:w-5 group-hover/anywhere:sm:w-7 group-hover/anywhere:ml-1.5 group-hover/anywhere:opacity-100 group-hover/anywhere:scale-100 group-data-[state=open]/anywhere:w-5 group-data-[state=open]/anywhere:sm:w-7 group-data-[state=open]/anywhere:ml-1.5 group-data-[state=open]/anywhere:opacity-100 group-data-[state=open]/anywhere:scale-100 transition-all duration-300 ease-out"
+                    />
+                  </span>
+                </DropdownMenu.Trigger>
+                <DropdownMenu.Content class="w-64">
+                  <DropdownMenu.Item
+                    onclick={() => (selectedAnywhere = 'Digital Ocean')}
+                    class="flex flex-col items-start gap-0.5"
+                  >
+                    <span class="text-slate-900">Digital Ocean</span>
+                    <span
+                      class="text-[9px] text-slate-400 uppercase font-mono tracking-tight"
+                      >Cloud Provider</span
+                    >
+                  </DropdownMenu.Item>
+                </DropdownMenu.Content>
+              </DropdownMenu.Root>
+              {#if selectedAnywhere !== 'Anywhere'}
+                <span
+                  class="absolute mt-[70px] text-left text-[9px] sm:text-[10px] text-slate-800 uppercase font-mono mt-1 opacity-70 group-hover/anywhere:opacity-100 transition-opacity"
+                >
+                  {selectedAnywhere === 'Anywhere' ? '' : 'Cloud Provider'}
+                </span>
+              {/if}
+            </span>
+          </h2>
+
+          <div
+            class="flex flex-col-reverse sm:flex-row gap-3 mt-12 sm:mt-16 items-center justify-center w-full max-w-[280px] sm:max-w-none mx-auto px-4 sm:px-0"
+            transition:fade={{ duration: 300, delay: 200 }}
+          >
+            <span class="w-full sm:w-auto p-0.5">
+              <Button
+                variant="outline"
+                size="lg"
+                class="w-full sm:w-auto px-8 bg-white/80 backdrop-blur-sm border-slate-300 hover:bg-white hover:border-slate-400 text-slate-700 font-medium shadow-sm h-11"
+                onclick={() => {
+                  document
+                    .getElementById('schedule')
+                    ?.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
+                Book a Call
+              </Button>
+            </span>
+            <span
+              class="group/special inline-block rounded-[8px] p-0.5 transition-colors ease-in cursor-pointer bg-gradient-to-tr from-cyan-500 to-pink-500 dark:from-cyan-900 dark:to-pink-900 hover:bg-gradient-to-bl hover:from-cyan-400 hover:to-pink-400 dark:hover:from-cyan-700 dark:hover:to-pink-700 w-full sm:w-auto"
+            >
+              <Button
+                size="lg"
+                class="w-full sm:w-auto cursor-pointer justify-center transition-colors ease-in hover:bg-muted-foreground create-btn px-8 h-11"
+                onclick={() =>
+                  window.open(
+                    `https://dash.buzooka.localhost/login${selectedAnything !== 'Anything' ? `?node=${encodeURIComponent(selectedAnything)}` : ''}`,
+                    '_blank',
+                  )}
+              >
+                Launch Now
+                <img
+                  alt="Launch"
+                  src="/buzooka-ai-icon-light.svg"
+                  width="24"
+                  height="24"
+                  class="ml-1 create-btn-icon"
+                />
+              </Button>
+            </span>
+          </div>
+
+          <!-- Micro-copy below CTA -->
+          <div
+            class="text-[10px] sm:text-xs text-slate-500 text-center mt-6 sm:mt-6 flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-6 uppercase font-mono tracking-tight"
+          >
+            <span class="flex items-center gap-1.5">
+              <svg
+                class="w-3.5 h-3.5 text-green-500"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              Connect nodes.
+            </span>
+
+            <span class="flex items-center gap-1.5">
+              <svg
+                class="w-3.5 h-3.5 text-green-500"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              Bring your own cloud.
+            </span>
+
+            <span class="flex items-center gap-1.5">
+              <svg
+                class="w-3.5 h-3.5 text-green-500"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              You own the code.
+            </span>
+          </div>
+
+          <!-- Powered by / Integrations Section -->
+          <div class="mt-14 sm:mt-16">
+            <p
+              class="text-xs uppercase tracking-wider text-slate-500 text-center mb-6 font-mono"
+            >
+              Powered by
+            </p>
+            <div
+              class="flex flex-wrap items-center justify-center gap-8 md:gap-12 duration-300"
+            >
+              <img
+                src="/react.svg"
+                alt="React"
+                class="h-6 md:h-8 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-50"
+                loading="lazy"
+              />
+              <img
+                src="/nextjs.svg"
+                alt="Next.js"
+                class="h-6 md:h-8 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-50"
+                loading="lazy"
+              />
+              <img
+                src="/node_js.svg"
+                alt="Node.js"
+                class="h-6 md:h-8 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-50"
+                loading="lazy"
+              />
+              <img
+                src="/postgres.svg"
+                alt="PostgreSQL"
+                class="h-6 md:h-8 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-50"
+                loading="lazy"
+              />
+              <img
+                src="/docker.svg"
+                alt="Docker"
+                class="h-6 md:h-8 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-50"
+                loading="lazy"
+              />
+              <img
+                src="/aws.svg"
+                alt="AWS"
+                class="h-5 md:h-7 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-50"
+                loading="lazy"
+              />
+              <img
+                src="/github.svg"
+                alt="GitHub"
+                class="h-6 md:h-8 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-50"
+                loading="lazy"
+              />
+              <img
+                src="/python.svg"
+                alt="Python"
+                class="h-6 md:h-8 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-50"
+                loading="lazy"
+              />
+              <img
+                src="/ts-logo.svg"
+                alt="TypeScript"
+                class="h-5 md:h-7 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-50"
+                loading="lazy"
+              />
+              <img
+                src="/svelte-logo.svg"
+                alt="Svelte"
+                class="h-6 md:h-8 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-50"
+                loading="lazy"
+              />
+              <img
+                src="/vue.svg"
+                alt="Vue"
+                class="h-6 md:h-8 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-50"
+                loading="lazy"
+              />
+              <img
+                src="/gcp.svg"
+                alt="Google Cloud"
+                class="h-6 md:h-8 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-50"
+                loading="lazy"
+              />
+              <img
+                src="/azure.svg"
+                alt="Azure"
+                class="h-6 md:h-8 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-50"
+                loading="lazy"
+              />
+              <img
+                src="/flutter-logo.svg"
+                alt="Flutter"
+                class="h-5 md:h-7 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-50"
+                loading="lazy"
+              />
+              <img
+                src="/netlify.svg"
+                alt="Netlify"
+                class="h-6 md:h-8 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-50"
+                loading="lazy"
+              />
+              <img
+                src="/openclaw-new.png"
+                alt="OpenClaw"
+                class="h-6 md:h-8 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-50"
+                loading="lazy"
+              />
             </div>
           </div>
         </div>
-      </div>
 
-      <div
-        class="absolute top-32 lg:-left-20 xl:left-0 w-[500px] h-[300px] opacity-60 hover:opacity-100 transition-all duration-300 hover:scale-105 rotate-[5deg] hidden lg:block z-10 scale-[0.7] xl:scale-[0.9]"
-      >
-        <DiagramWidget data={presets.google} />
-      </div>
-
-      <div
-        class="absolute top-10 lg:-right-40 xl:-right-20 w-[500px] h-[300px] opacity-60 hover:opacity-100 transition-all duration-300 hover:scale-105 rotate-[-20deg] hidden lg:block z-10 scale-[0.7] xl:scale-[0.9]"
-      >
-        <DiagramWidget data={presets.netflix} />
-      </div>
-
-      <div
-        class="absolute top-2/3 lg:-left-40 xl:-left-10 -translate-y-1/2 w-[500px] h-[300px] opacity-60 hover:opacity-100 transition-all duration-300 hover:scale-105 rotate-[10deg] hidden lg:block z-10 scale-[0.7] xl:scale-[0.9]"
-      >
-        <DiagramWidget data={presets.uber} />
-      </div>
-
-      <div
-        class="absolute bottom-2 lg:-right-40 xl:-right-10 -translate-y-1/2 w-[500px] h-[300px] opacity-60 hover:opacity-100 transition-all duration-300 hover:scale-105 -rotate-3 hidden lg:block z-10 scale-[0.7] xl:scale-[0.9]"
-      >
-        <DiagramWidget data={presets.openai} />
-      </div>
-
-      <div
-        class="absolute -bottom-20 lg:-left-40 xl:-left-10 w-[500px] h-[300px] opacity-60 hover:opacity-100 transition-all duration-300 hover:scale-105 -rotate-16 hidden lg:block z-10 scale-[0.7] xl:scale-[0.9]"
-      >
-        <DiagramWidget data={presets.amazon} />
-      </div>
-
-      <div
-        class="absolute -bottom-20 lg:-right-40 xl:-right-10 w-[500px] h-[300px] opacity-60 hover:opacity-100 transition-all duration-300 hover:scale-105 rotate-12 hidden lg:block z-10 scale-[0.7] xl:scale-[0.9]"
-      >
-        <DiagramWidget data={presets.x} />
+        <!-- Testimonial Card - Stuck to the left edge -->
+        <div class="hidden fixed bottom-4 left-4 max-w-sm z-20">
+          <div
+            class="bg-white/95 backdrop-blur-md rounded-xl shadow-xl border border-slate-300/60 p-6 hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] origin-left"
+          >
+            <div class="flex items-start gap-3">
+              <svg
+                class="w-8 h-8 text-cyan-500 flex-shrink-0"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"
+                />
+              </svg>
+              <div>
+                <p
+                  class="text-slate-700 font-medium text-sm mb-3 leading-relaxed"
+                >
+                  "Buzooka cut our time to market time by 60%. It had quality
+                  boilerplates, and easy deployments."
+                </p>
+                <div class="flex items-center gap-2">
+                  <div
+                    class="w-8 h-8 rounded-full bg-gradient-to-br from-cyan-400 to-pink-400 flex items-center justify-center text-white font-semibold text-xs"
+                  >
+                    VS
+                  </div>
+                  <div>
+                    <p class="text-slate-900 font-semibold text-xs">
+                      Vishnu Sankaran
+                    </p>
+                    <p class="text-slate-500 text-xs">
+                      Founder, bio.local.tech
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -536,7 +701,7 @@ var(--dot-color);"
           What?
         </h2>
         <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
-          <Card class="rounded-2xl">
+          <Card class="rounded-md">
             <CardHeader>
               <div class="flex flex-wrap gap-6 mb-4">
                 <img
@@ -603,7 +768,7 @@ var(--dot-color);"
             </CardContent>
           </Card>
 
-          <Card class="rounded-2xl">
+          <Card class="rounded-md">
             <CardHeader>
               <div class="flex flex-wrap gap-6 mb-4">
                 <img
@@ -654,7 +819,7 @@ var(--dot-color);"
             </CardContent>
           </Card>
 
-          <Card class="rounded-2xl">
+          <Card class="rounded-md">
             <CardHeader>
               <div class="flex flex-wrap gap-6 mb-4">
                 <img
@@ -724,17 +889,215 @@ var(--dot-color);"
       </div>
     </section>
 
-    <section class="w-full py-12 md:py-12 lg:py-16">
+    <section
+      class="relative h-auto mt-20 sm:mt-0 w-full py-12 md:pt-0 md:pb-32"
+    >
+      <div class="container px-4 md:px-6 relative z-30">
+        <div
+          class="m-auto w-[460px] h-[250px] md:w-[600px] md:h-[350px] relative z-10"
+        >
+          <AnimatedDiagramWidget
+            class="scale-75 md:scale-100"
+            data={presets.google}
+          />
+        </div>
+        <div class="flex flex-col items-center space-y-4 text-center">
+          <div class="space-y-6 mb-4">
+            <h2
+              class="text-2xl font-sans sm:text-4xl md:text-5xl lg:text-5xl/none block w-full max-w-[700px] mx-auto pt-0"
+            >
+              <span class="italic font-thin text-slate-600 leading-normal"
+                >Create <mark class="px-3 inline-block">system blueprints</mark>
+                with our Architect Agent</span
+              >
+            </h2>
+
+            <h3
+              class="mx-auto italic font-thin max-w-[700px] text-slate-600 md:text-lg dark:text-gray-400 pt-4"
+            >
+              <span class="font-medium">Code</span>,
+              <span class="font-medium">Cloud</span>, and
+              <span class="font-medium">CI/CD</span> simplified.
+            </h3>
+          </div>
+          <div
+            class="w-full max-w-2xl mx-auto relative group text-left transition-transform duration-500 focus-within:scale-[1.02]"
+          >
+            <div
+              class="absolute -inset-0.5 bg-gradient-to-tr from-cyan-500 to-pink-500 rounded-md blur opacity-20 group-hover:opacity-40 transition duration-500"
+            ></div>
+            <div
+              class="absolute -inset-0.5 bg-gradient-to-bl from-cyan-300 to-pink-300 rounded-md blur opacity-0 group-focus-within:opacity-100 transition duration-500"
+            ></div>
+
+            <!-- Ripple Effects in Canvas -->
+            <div
+              class="absolute inset-0 -z-10 pointer-events-none flex items-center justify-center"
+            >
+              <div
+                class="absolute w-[120%] aspect-square border border-cyan-500/20 rounded-full opacity-0 group-focus-within:animate-ripple"
+              ></div>
+              <div
+                class="absolute w-[120%] aspect-square border border-pink-500/20 rounded-full opacity-0 group-focus-within:animate-ripple [animation-delay:1s]"
+              ></div>
+            </div>
+
+            <!-- Animated Border Beam -->
+            <div
+              class="absolute -inset-[3px] rounded-[18px] overflow-hidden pointer-events-none z-0 opacity-0 group-focus-within:animate-beam-lifecycle"
+            >
+              <div
+                class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[200%] h-[200%] bg-[conic-gradient(from_0deg,transparent_0,transparent_75%,#06b6d4_85%,#ec4899_95%,transparent_100%)] animate-border-spin"
+              ></div>
+            </div>
+
+            <div
+              class={cn(
+                'relative bg-white rounded-lg transition-all duration-600 ease-in-out overflow-hidden mx-auto',
+                !isNavigating ? 'shadow-xl' : 'shadow-none',
+              )}
+              style={isNavigating ? 'width: 0; opacity: 0;' : 'width: 100%;'}
+            >
+              {#if isNavigating}
+                <div
+                  class="absolute inset-0 flex items-center justify-center pointer-events-none"
+                  in:fade={{ duration: 200, delay: 100 }}
+                >
+                  <Loader2 class="w-6 h-6 animate-spin text-slate-400" />
+                </div>
+              {/if}
+
+              {#if !isNavigating}
+                <form
+                  class="relative bg-transparent flex flex-col"
+                  transition:slide={{ duration: 600 }}
+                  onsubmit={handleGenerateBlueprint}
+                >
+                  <textarea
+                    name="prompt"
+                    bind:this={promptInput}
+                    bind:value={promptText}
+                    placeholder={placeholderText}
+                    class="w-full min-h-[80px] focus:min-h-[160px] p-4 text-base bg-transparent border-0 focus:ring-0 resize-none placeholder:text-slate-400 text-slate-900 outline-none transition-all duration-300 ease-in-out"
+                    out:fade={{ duration: 200 }}
+                  ></textarea>
+
+                  <div
+                    class="flex justify-between items-center px-4 pb-4"
+                    out:fade={{ duration: 200 }}
+                  >
+                    <div class="flex gap-2">
+                      <!-- <button
+                        type="button"
+                        class="p-2 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-lg transition-colors"
+                        aria-label="Attach file"
+                      >
+                        <Paperclip size={20} />
+                      </button> -->
+                      <MicButton
+                        on:text={(e) => {
+                          const transcript = e.detail;
+                          if (!transcript) return;
+                          promptText =
+                            promptText + (promptText ? ' ' : '') + transcript;
+                        }}
+                      />
+                    </div>
+                    <span
+                      class="inline-block rounded-[10px] bg-gradient-to-tr from-cyan-500 to-pink-500 p-0.5 transition-colors ease-in hover:focus:bg-gradient-to-bl hover:focus:from-cyan-400 hover:focus:to-pink-400 dark:from-cyan-900 dark:to-pink-900 dark:hover:focus:from-cyan-700 dark:hover:focus:to-pink-700"
+                    >
+                      <Button
+                        type="submit"
+                        size="icon"
+                        class="px-3 h-10 w-auto rounded-lg bg-slate-900 transition-all duration-300 ease-in-out flex items-center justify-center create-btn"
+                      >
+                        Create with Buzooka
+                        <img
+                          alt="Create"
+                          src="/buzooka-ai-icon-light.svg"
+                          width="24"
+                          height="24"
+                          class="ml-1 create-btn-icon"
+                        />
+                      </Button>
+                    </span>
+                  </div>
+                </form>
+              {/if}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- <div
+        class="absolute top-0 lg:left-[-100px] xl:left-0 w-[500px] h-[300px] opacity-60 hover:opacity-100 transition-all duration-300 hover:scale-105 rotate-[5deg] hidden lg:block z-10 scale-[0.5] lg:scale-[0.7] xl:scale-[0.9]"
+      >
+        <DiagramWidget data={presets.google} />
+      </div>
+
+      <div
+        class="absolute top-0 lg:-right-32 xl:-right-20 w-[500px] h-[300px] opacity-60 hover:opacity-100 transition-all duration-300 hover:scale-105 rotate-[-20deg] hidden lg:block z-10 scale-[0.5] lg:scale-[0.7] xl:scale-[0.9]"
+      >
+        <DiagramWidget data={presets.netflix} />
+      </div>
+
+      <div
+        class="absolute top-[300px] lg:-left-40 xl:-left-10 -translate-y-1/2 w-[500px] h-[300px] opacity-60 hover:opacity-100 transition-all duration-300 hover:scale-105 rotate-[10deg] hidden lg:block z-10 scale-[0.5] lg:scale-[0.7] xl:scale-[0.9]"
+      >
+        <DiagramWidget data={presets.uber} />
+      </div>
+
+      <div
+        class="absolute top-[300px] lg:-right-40 xl:-right-10 -translate-y-1/2 w-[500px] h-[300px] opacity-60 hover:opacity-100 transition-all duration-300 hover:scale-105 -rotate-3 hidden lg:block z-10 scale-[0.5] lg:scale-[0.7] xl:scale-[0.9]"
+      >
+        <DiagramWidget data={presets.openai} />
+      </div>
+
+      <div
+        class="absolute -bottom-20 lg:-left-40 xl:-left-10 w-[500px] h-[300px] opacity-60 hover:opacity-100 transition-all duration-300 hover:scale-105 -rotate-16 hidden lg:block z-10 scale-[0.5] lg:scale-[0.7] xl:scale-[0.9]"
+      >
+        <DiagramWidget data={presets.amazon} />
+      </div>
+
+      <div
+        class="absolute -bottom-20 lg:-right-40 xl:-right-10 w-[500px] h-[300px] opacity-60 hover:opacity-100 transition-all duration-300 hover:scale-105 rotate-12 hidden lg:block z-10 scale-[0.5] lg:scale-[0.7] xl:scale-[0.9]"
+      >
+        <DiagramWidget data={presets.x} />
+      </div> -->
+    </section>
+
+    <!-- <section class="w-full py-12 md:py-12 lg:py-16">
       <div class="container px-4 md:px-6">
         <p
           class="text-3xl font-thin text-slate-600 sm:text-4xl md:text-5xl text-center sm:text-left pl-0 sm:pl-8"
         >
           <span
-            class="leading-normal text-4xl sm:text-6xl text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-pink-500"
+            class="leading-[1.1] text-3xl sm:text-5xl md:text-6xl text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-pink-500 block"
           >
-            Minimize setup time.<br />Maximize development time.
+            Minimize setup time.<br /> Maximize development time.
           </span>
         </p>
+      </div>
+    </section> -->
+
+    <section
+      id="nudge-message"
+      class="w-full py-12 md:py-12 lg:py-16 text-white animated-gradient-bg"
+    >
+      <div class="container px-4 md:px-6">
+        <div class="flex flex-col items-center space-y-8 text-center">
+          <div class="space-y-1">
+            <h2
+              class="text-3xl italic font-thin text-white sm:text-4xl md:text-5xl text-left mb-0"
+            >
+              <span
+                class="leading-[1.1] text-3xl sm:text-5xl md:text-6xl text-white block"
+              >
+                Minimize setup time.<br /> Maximize development time.
+              </span>
+            </h2>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -749,7 +1112,7 @@ var(--dot-color);"
         </h2>
         <div class="grid gap-6 md:grid-cols-3">
           {#each audienceList as audience}
-            <Card class="rounded-2xl">
+            <Card class="rounded-md">
               <CardHeader>
                 <CardTitle>{audience.title}</CardTitle>
               </CardHeader>
@@ -899,7 +1262,7 @@ var(--dot-color);"
                     <div class="w-full p-[3px] rounded-xl animated-gradient-bg">
                       <Button
                         class="w-full h-[46px] rounded-[10px] bg-slate-900 hover:bg-slate-800 text-white border-0 font-medium transition-all duration-300"
-                        on:click={() => {
+                        onclick={() => {
                           window.open('https://dash.buzooka.in', '_blank');
                         }}
                       >
@@ -1000,7 +1363,7 @@ var(--dot-color);"
               >
                 <Button
                   class="gap-2 bg-slate-900 text-white rounded-lg hover:bg-slate-800 h-14 px-8 text-base font-medium"
-                  on:click={() =>
+                  onclick={() =>
                     window.open('https://cloud.umami.is/q/mtpPVH3Xk', '_blank')}
                 >
                   Book Demo Call<Calendar class="w-5 h-5" />
@@ -1120,7 +1483,7 @@ var(--dot-color);"
         <div class="max-w-3xl mx-auto space-y-4">
           {#each faqData as faq}
             <details
-              class="group bg-white rounded-2xl shadow-sm hover:shadow-md transition-all duration-300"
+              class="group bg-white rounded-md shadow-sm hover:shadow-md transition-all duration-300"
             >
               <summary
                 class="flex justify-between items-center cursor-pointer p-6 font-medium text-lg text-slate-900 hover:text-cyan-600 transition-colors"
@@ -1158,7 +1521,7 @@ var(--dot-color);"
           Competitively priced
         </p>
         <div class="grid gap-6 md:grid-cols-2">
-          <Card class="rounded-2xl">
+          <Card class="rounded-md">
             <CardHeader>
               <CardTitle class="font-normal">Architect on Demand</CardTitle>
             </CardHeader>
@@ -1169,7 +1532,7 @@ var(--dot-color);"
               </p>
             </CardContent>
           </Card>
-          <Card class="rounded-2xl">
+          <Card class="rounded-md">
             <CardHeader>
               <CardTitle class="font-normal">Developer on Demand</CardTitle>
             </CardHeader>
@@ -1187,20 +1550,36 @@ var(--dot-color);"
 
     <section
       id="join-squad"
-      class="w-full py-12 md:py-12 lg:py-16 bg-primary text-primary-foreground"
-      style="--dot-bg: hsl(217, 33%, 10%);--dot-color: #888;--dot-size: 1px;--dot-space: 22px; background:
-    linear-gradient(90deg, var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
-    linear-gradient(var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
-    var(--dot-color);"
+      class="w-full py-12 md:py-12 lg:py-16 bg-slate-950 text-white relative overflow-hidden"
     >
-      <div class="container px-4 md:px-6">
+      <!-- Background effects -->
+      <div
+        class="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"
+      ></div>
+
+      <div class="container px-4 md:px-6 relative z-10">
         <div class="flex flex-col items-center space-y-8 text-center">
-          <div class="space-y-1">
+          <div class="space-y-4 max-w-3xl mx-auto">
             <h2
-              class="text-3xl italic font-thin text-slate-300 sm:text-4xl md:text-5xl text-center mb-0"
+              class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-200 to-slate-400"
             >
               Go Further, Together
             </h2>
+            <p
+              class="mx-auto max-w-[700px] text-slate-400 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed"
+            >
+              Join hundreds of developers building the future with Buzooka. Stop
+              wrestling with config and start shipping.
+            </p>
+          </div>
+          <div class="flex flex-col gap-4 min-[400px]:flex-row justify-center">
+            <Button
+              class="h-12 px-8 rounded-full bg-white text-slate-950 hover:bg-slate-200 text-base font-bold transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:shadow-[0_0_25px_rgba(255,255,255,0.5)] hover:scale-105"
+              onclick={() => window.open('https://dash.buzooka.in', '_blank')}
+            >
+              Get Started Now
+              <ArrowRight class="ml-2 w-5 h-5" />
+            </Button>
           </div>
         </div>
       </div>
