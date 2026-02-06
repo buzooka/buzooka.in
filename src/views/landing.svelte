@@ -703,64 +703,6 @@ var(--dot-color);"
         <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
           <Card class="rounded-md">
             <CardHeader>
-              <div class="flex flex-wrap gap-6 mb-4">
-                <img
-                  alt="React"
-                  src="/react.svg"
-                  width="30"
-                  height="30"
-                  class="mb-2"
-                  loading="lazy"
-                />
-                <img
-                  alt="Svelte"
-                  src="/svelte-logo.svg"
-                  width="28"
-                  height="33"
-                  class="mb-2"
-                  loading="lazy"
-                />
-                <img
-                  alt="Node"
-                  src="/node_js.svg"
-                  width="30"
-                  height="30"
-                  class="mb-2"
-                  loading="lazy"
-                />
-                <img
-                  alt="Typescript"
-                  src="/ts-logo.svg"
-                  width="28"
-                  height="28"
-                  class="mb-2"
-                  loading="lazy"
-                />
-                <img
-                  alt="Vue"
-                  src="/vue.svg"
-                  width="30"
-                  height="30"
-                  class="mb-2"
-                  loading="lazy"
-                />
-                <img
-                  alt="Python"
-                  src="/python.svg"
-                  width="30"
-                  height="30"
-                  class="mb-2"
-                  loading="lazy"
-                />
-                <img
-                  alt="Fluttr"
-                  src="/flutter-logo.svg"
-                  width="26"
-                  height="26"
-                  class="mb-2"
-                  loading="lazy"
-                />
-              </div>
               <CardTitle>{features[0].title}</CardTitle>
             </CardHeader>
             <CardContent>
@@ -770,48 +712,6 @@ var(--dot-color);"
 
           <Card class="rounded-md">
             <CardHeader>
-              <div class="flex flex-wrap gap-6 mb-4">
-                <img
-                  alt="AWS"
-                  src="/aws.svg"
-                  width="30"
-                  height="18"
-                  class="mb-2"
-                  loading="lazy"
-                />
-                <img
-                  alt="GCP"
-                  src="/gcp.svg"
-                  width="30"
-                  height="30"
-                  class="mb-2"
-                  loading="lazy"
-                />
-                <img
-                  alt="Azure"
-                  src="/azure.svg"
-                  width="30"
-                  height="30"
-                  class="mb-2"
-                  loading="lazy"
-                />
-                <img
-                  alt="Digital Ocean"
-                  src="/do.svg"
-                  width="26"
-                  height="26"
-                  class="mb-2"
-                  loading="lazy"
-                />
-                <img
-                  alt="Netlify"
-                  src="/netlify.svg"
-                  width="30"
-                  height="30"
-                  class="mb-2"
-                  loading="lazy"
-                />
-              </div>
               <CardTitle>{features[1].title}</CardTitle>
             </CardHeader>
             <CardContent>
@@ -821,64 +721,6 @@ var(--dot-color);"
 
           <Card class="rounded-md">
             <CardHeader>
-              <div class="flex flex-wrap gap-6 mb-4">
-                <img
-                  alt="Git"
-                  src="/git.svg"
-                  width="30"
-                  height="30"
-                  class="mb-2"
-                  loading="lazy"
-                />
-                <img
-                  alt="Linux"
-                  src="/ubuntu.svg"
-                  width="30"
-                  height="30"
-                  class="mb-2"
-                  loading="lazy"
-                />
-                <img
-                  alt="Docker"
-                  src="/docker.svg"
-                  width="30"
-                  height="30"
-                  class="mb-2"
-                  loading="lazy"
-                />
-                <img
-                  alt="Android"
-                  src="/android.svg"
-                  width="30"
-                  height="30"
-                  class="mb-2"
-                  loading="lazy"
-                />
-                <img
-                  alt="iOS"
-                  src="/ios.svg"
-                  width="30"
-                  height="30"
-                  class="mb-2"
-                  loading="lazy"
-                />
-                <img
-                  alt="MacOS"
-                  src="/macos.svg"
-                  width="30"
-                  height="30"
-                  class="mb-2"
-                  loading="lazy"
-                />
-                <img
-                  alt="Windows"
-                  src="/microsoft.svg"
-                  width="30"
-                  height="30"
-                  class="mb-2"
-                  loading="lazy"
-                />
-              </div>
               <CardTitle>{features[2].title}</CardTitle>
             </CardHeader>
             <CardContent>
