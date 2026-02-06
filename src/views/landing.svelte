@@ -470,7 +470,7 @@ var(--dot-color);"
                 class="w-full sm:w-auto cursor-pointer justify-center transition-colors ease-in hover:bg-muted-foreground create-btn px-8 h-11"
                 onclick={() =>
                   window.open(
-                    `https://dash.buzooka.localhost/login${selectedAnything !== 'Anything' ? `?node=${encodeURIComponent(selectedAnything)}` : ''}`,
+                    `https://dash.buzooka.in/login${selectedAnything !== 'Anything' ? `?node=${encodeURIComponent(selectedAnything)}` : ''}`,
                     '_blank',
                   )}
               >
