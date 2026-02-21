@@ -10,12 +10,13 @@ const {
 const title =
   propTitle ||
   frontmatter?.title ||
-  'Buzooka | Build & Launch Your MVP Product App in Record Time';
+  'Buzooka | Architect, Generate, and Deploy Scalable MVPs to Your Own Cloud';
 const description =
   propDescription ||
   frontmatter?.description ||
   'Launch production-ready MVPs instantly. Automate codebase generation, cloud infrastructure, and CI/CD pipelines.';
 const isProd = import.meta.env.PROD;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <!doctype html>
@@ -74,14 +75,14 @@ const isProd = import.meta.env.PROD;
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:url" content="https://buzooka.in/" />
+    <meta property="og:url" content={canonicalURL} />
     <meta property="og:site_name" content="Buzooka" />
     <meta property="og:image" content="https://buzooka.in/og-image.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
 
     <meta name="robots" content="max-image-preview:large" />
-    <link rel="canonical" href="https://buzooka.in/" />
+    <link rel="canonical" href={canonicalURL} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -111,6 +112,43 @@ const isProd = import.meta.env.PROD;
         />
       )
     }
+
+    <!-- Global Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Buzooka",
+        "url": "https://buzooka.in",
+        "description": "Buzooka is an AI-powered Startup Studio that automates codebase generation, cloud infrastructure, and CI/CD pipelines for MVPs.",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Web",
+        "offers": {
+          "@type": "Offer",
+          "price": "9.00",
+          "priceCurrency": "USD"
+        }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Buzooka",
+        "url": "https://buzooka.in",
+        "logo": "https://buzooka.in/buzooka-ai-icon.png",
+        "sameAs": [
+          "https://x.com/buzooka",
+          "https://www.linkedin.com/company/buzooka-in/",
+          "https://github.com/buzooka",
+          "https://facebook.com/buzooka.in",
+          "https://www.youtube.com/@buzooka_in",
+          "https://www.instagram.com/buzooka_in/"
+        ]
+      }
+    </script>
+    </script>
+    <slot name="head" />
   </head>
   <body
     class="bg-background text-foreground min-h-screen flex flex-col font-sans antialiased"

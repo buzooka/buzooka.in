@@ -22,6 +22,25 @@ const activeTags = tagOrder.filter((tag) => allPostsTags.includes(tag as any));
 ---
 
 <BlogLayout title="Blog | Buzooka" description="Insights, updates, and stories from the Buzooka team.">
+  <script
+    slot="head"
+    type="application/ld+json"
+    set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'Blog',
+      'name': 'Buzooka Blog',
+      'description': 'Insights, updates, and stories from the Buzooka team.',
+      'url': 'https://buzooka.in/blog',
+      'publisher': {
+        '@type': 'Organization',
+        'name': 'Buzooka',
+        'logo': {
+          '@type': 'ImageObject',
+          'url': 'https://buzooka.in/buzooka-ai-icon.png'
+        }
+      }
+    })}
+  />
   <!-- Hero Section -->
   <section class="relative w-full py-8 md:py-8 bg-white/50 backdrop-blur-sm">
     <div class="container mx-auto px-4 md:px-6">

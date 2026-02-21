@@ -149,9 +149,9 @@
   export { className as class };
 </script>
 
-<div class={cn('relative w-full h-full bg-transparent p-8', className)}>
+<div class={cn('relative w-full h-full bg-transparent p-2 sm:p-8', className)}>
   <div
-    class="relative w-full h-full origin-left transform scale-[0.65] sm:scale-[0.72] lg:scale-[0.8]"
+    class="relative w-full h-full origin-left transform scale-[0.5] sm:scale-[0.72] lg:scale-[0.65]"
   >
     <svg
       class="absolute inset-0 w-[1000px] h-[500px] pointer-events-none"

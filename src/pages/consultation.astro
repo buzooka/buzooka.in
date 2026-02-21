@@ -1,0 +1,20 @@
+---
+import BlankLayout from '../layouts/BlankLayout.astro';
+import ConsultationView from '../views/consultation.svelte';
+import '../styles/app.css';
+---
+
+<BlankLayout title="Book a Consultation | Buzooka">
+  <script
+    slot="head"
+    type="application/ld+json"
+    set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'ContactPage',
+      'name': 'Book a Consultation',
+      'description': 'Schedule a call with Buzooka experts to discuss your MVP roadmap.',
+      'url': 'https://buzooka.in/consultation'
+    })}
+  />
+  <ConsultationView client:load />
+</BlankLayout>

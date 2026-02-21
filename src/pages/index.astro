@@ -1,5 +1,6 @@
 ---
-import '$lib/styles/app.css';
+import BlankLayout from '../layouts/BlankLayout.astro';
+import '../styles/app.css';
 import LandingPage from '../views/landing.svelte';
 import { faqData } from '$lib/config/faq';
 
@@ -8,218 +9,26 @@ import { faqData } from '$lib/config/faq';
 const isProd = import.meta.env.PROD;
 ---
 
-<!doctype html>
-<!-- Below is your "component template." It's just HTML, but with
-    some magic sprinkled in to help you build great templates. -->
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content="Buzooka 1.0.0" />
-    <title>Buzooka | Build & Launch Your MVP Product App in Record Time</title>
-    <meta
-      name="description"
-      content="Launch production-ready MVPs instantly. Automate codebase generation, cloud infrastructure, and CI/CD pipelines."
-    />
-    <link rel="icon" type="image/svg+xml" href="/buzooka-ai-icon.svg" />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="256x256"
-      href="/buzooka-ai-icon.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="192x192"
-      href="/buzooka-ai-icon-192.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="48x48"
-      href="/buzooka-ai-icon-48.png"
-    />
-    <link
-      id="favicon-svg"
-      rel="alternate icon"
-      type="image/svg+xml"
-      href="/buzooka-ai-icon.svg"
-    />
-    <link
-      id="favicon-png"
-      rel="alternate icon"
-      type="image/png"
-      sizes="256x256"
-      href="/buzooka-ai-icon.png"
-    />
-
-    <script is:inline>
-      const originalSvg = '/buzooka-ai-icon.svg';
-      const originalPng = '/buzooka-ai-icon.png';
-      const inactiveSvg = '/buzooka-ai-icon-dark.svg';
-      const inactivePng = '/buzooka-ai-icon-dark.svg'; // Using SVG for dark version too if PNG is missing
-
-      document.addEventListener('visibilitychange', () => {
-        const svgLink = document.getElementById('favicon-svg');
-        const pngLink = document.getElementById('favicon-png');
-
-        if (document.hidden) {
-          if (svgLink) svgLink.href = inactiveSvg;
-          if (pngLink) pngLink.href = inactivePng;
-        } else {
-          if (svgLink) svgLink.href = originalSvg;
-          if (pngLink) pngLink.href = originalPng;
-        }
-      });
-    </script>
-    <link rel="shortcut icon" href="/buzooka-ai-icon.png" />
-    <link rel="apple-touch-icon" sizes="256x256" href="/buzooka-ai-icon.png" />
-    <link rel="manifest" href="/site.webmanifest" />
-    <meta name="theme-color" content="#ffffff" />
-
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta
-      name="twitter:title"
-      content="Buzooka | Build & Launch Your MVP Product App in Record Time"
-    />
-    <meta
-      name="twitter:description"
-      content="Launch production-ready MVPs instantly. Automate codebase generation, cloud infrastructure, and CI/CD pipelines."
-    />
-    <meta name="twitter:site" content="@buzooka" />
-    <meta name="twitter:image" content="https://buzooka.in/og-image.png" />
-    <meta
-      name="twitter:image:alt"
-      content="Buzooka - Build and Launch your MVP in Days"
-    />
-    <meta name="twitter:creator" content="@buzooka" />
-    <meta property="og:locale" content="en_US" />
-    <meta property="og:type" content="website" />
-    <meta
-      property="og:title"
-      content="Buzooka | Build & Launch Your MVP Product App in Record Time"
-    />
-    <meta
-      property="og:description"
-      content="Launch production-ready MVPs instantly. Automate codebase generation, cloud infrastructure, and CI/CD pipelines."
-    />
-    <meta property="og:url" content="https://buzooka.in/" />
-    <meta property="og:site_name" content="Buzooka" />
-    <meta property="og:image" content="https://buzooka.in/og-image.png" />
-    <meta
-      property="og:image:alt"
-      content="Buzooka - Build and Launch your MVP in Days"
-    />
-    <meta
-      property="og:image:secure_url"
-      content="https://buzooka.in/og-image.png"
-    />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-
-    <!-- <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin /> -->
-
-    <meta name="robots" content="max-image-preview:large" />
-    <link rel="canonical" href="https://buzooka.in/" />
+<BlankLayout 
+  title="Buzooka | Build & Launch Your MVP Product App in Record Time"
+  description="Launch production-ready MVPs instantly. Automate codebase generation, cloud infrastructure, and CI/CD pipelines."
+>
+  <Fragment slot="head">
     <link rel="alternate" hreflang="en" href="https://buzooka.in/" />
     <link rel="alternate" hreflang="en-US" href="https://buzooka.in/" />
     <link rel="alternate" hreflang="x-default" href="https://buzooka.in/" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Mansalva&display=swap"
-      rel="stylesheet"
-      media="print"
-      onload="this.media='all'"
-    />
-    <noscript>
-      <link
-        href="https://fonts.googleapis.com/css2?family=Mansalva&display=swap"
-        rel="stylesheet"
-      />
-    </noscript>
-
+    
     <!-- Preload critical images -->
-    <link
-      rel="preload"
-      as="image"
-      href="/buzooka-logo-new.svg"
-      type="image/svg+xml"
-    />
+    <link rel="preload" as="image" href="/buzooka-logo-new.svg" type="image/svg+xml" />
     <link rel="preload" as="image" href="/og-image.png" type="image/png" />
-    <link
-      rel="preload"
-      as="image"
-      href="/buzooka-ai-icon.svg"
-      type="image/svg+xml"
-    />
+    <link rel="preload" as="image" href="/buzooka-ai-icon.svg" type="image/svg+xml" />
 
-    <!-- Google tag (gtag.js) -->
-    <script
-      async
-      defer
-      src="https://www.googletagmanager.com/gtag/js?id=G-DHWTZBR9RX"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag('js', new Date());
-
-      gtag('config', 'G-DHWTZBR9RX');
-    </script>
-
-    {
-      isProd && (
-        <script
-          defer
-          src="https://cloud.umami.is/script.js"
-          data-website-id="f6382def-d5e7-46da-973e-55c22f5210b9"
-        />
-      )
-    }
-
-    <!-- Structured Data -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "WebApplication",
-        "name": "Buzooka",
-        "url": "https://buzooka.in",
-        "description": "Buzooka is an AI-powered Startup Studio that automates codebase generation, cloud infrastructure, and CI/CD pipelines for MVPs.",
-        "applicationCategory": "DeveloperApplication",
-        "operatingSystem": "Web",
-        "offers": {
-          "@type": "Offer",
-          "price": "9.00",
-          "priceCurrency": "USD"
-        }
-      }
-    </script>
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "Buzooka",
-        "url": "https://buzooka.in",
-        "logo": "https://buzooka.in/buzooka-ai-icon.png",
-        "sameAs": [
-          "https://x.com/buzooka",
-          "https://www.linkedin.com/company/buzooka-in/",
-          "https://github.com/buzooka",
-          "https://facebook.com/buzooka.in",
-          "https://www.youtube.com/@buzooka_in",
-          "https://www.instagram.com/buzooka_in/"
-        ]
-      }
-    </script>
     <script
       type="application/ld+json"
       set:html={JSON.stringify({
         '@context': 'https://schema.org',
         '@type': 'FAQPage',
-        mainEntity: faqData.map((faq) => ({
+        mainEntity: [0, 1, 2, 5, 7].map((idx) => faqData[idx]).map((faq) => ({
           '@type': 'Question',
           name: faq.question,
           acceptedAnswer: {
@@ -229,8 +38,11 @@ const isProd = import.meta.env.PROD;
         })),
       })}
     />
-  </head>
-  <body>
-    <LandingPage client:load />
-  </body>
-</html>
+  </Fragment>
+
+  <LandingPage 
+    client:load 
+    faqs={[0, 1, 2, 5, 7].map((idx) => faqData[idx])} 
+  />
+</BlankLayout>
+

@@ -25,9 +25,9 @@ export const faqData: FAQItem[] = [
       'Yes! Buzooka follows a "Bring Your Own Cloud" (BYOC) approach. You can connect your existing DigitalOcean account (AWS, GCP, Azure - Coming Soon), and we\'ll provision the infrastructure directly in your account. This means you maintain full control over your cloud resources, billing, and data. You\'re never locked into our infrastructure, and you can see exactly what resources are being used.',
   },
   {
-    question: 'What\'s included in the Scout plan?',
+    question: "What's included in the Scout plan?",
     answer:
-      'The Scout plan includes unlimited projects, unlimited nodes, AI-powered architecture planning, repository generation with AI-friendly code, cloud provisioning automation, node deployments, and a free one-time consultation call. At $9/month (80% off the regular $49 price during prelaunch), it\'s perfect for solo developers, side projects, and early-stage MVPs. You get access to all core features needed to build and launch production-ready applications.',
+      "The Scout plan includes unlimited projects, unlimited nodes, AI-powered architecture planning, repository generation with AI-friendly code, cloud provisioning automation, node deployments, and a free one-time consultation call. At $9/month (80% off the regular $49 price during prelaunch), it's perfect for solo developers, side projects, and early-stage MVPs. You get access to all core features needed to build and launch production-ready applications.",
   },
   {
     question: 'How does Buzooka handle CI/CD and deployments?',
@@ -52,6 +52,23 @@ export const faqData: FAQItem[] = [
   {
     question: 'What kind of support does Buzooka provide?',
     answer:
-      'All Scout plan users get a free one-time consultation call to help you get started. We also offer on-demand architect and developer services for additional support. Our documentation covers common use cases, and we\'re building a community of founders and developers. For enterprise customers, we provide dedicated account managers and priority support. You can also book consultation calls to discuss your specific architecture needs or get help with feature development.',
+      "All Scout plan users get a free one-time consultation call to help you get started. We also offer on-demand architect and developer services for additional support. Our documentation covers common use cases, and we're building a community of founders and developers. For enterprise customers, we provide dedicated account managers and priority support. You can also book consultation calls to discuss your specific architecture needs or get help with feature development.",
   },
 ];
+
+export function generateFAQSchema(items: FAQItem[]): string {
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: items.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.answer,
+      },
+    })),
+  };
+
+  return JSON.stringify(schema);
+}

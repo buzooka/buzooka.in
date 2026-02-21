@@ -1,12 +1,7 @@
 ---
 import '$lib/styles/app.css';
 
-import Header from '../components/Header.astro';
-
-const {
-  title = 'Blog | Buzooka',
-  description = 'Insights, updates, and stories from the Buzooka team.',
-} = Astro.props;
+const { title = 'Buzooka', description = 'Launch production-ready MVPs instantly.' } = Astro.props;
 const isProd = import.meta.env.PROD;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
@@ -19,19 +14,15 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta name="generator" content="Buzooka 1.0.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <link
-      id="favicon-svg"
-      rel="icon"
-      type="image/svg+xml"
-      href="/buzooka-ai-icon.svg"
-    />
-    <link
-      id="favicon-png"
-      rel="icon"
-      type="image/png"
-      sizes="256x256"
-      href="/buzooka-ai-icon.png"
-    />
+    <link rel="canonical" href={canonicalURL} />
+    <link rel="icon" type="image/svg+xml" href="/buzooka-ai-icon.svg" />
+    <link rel="icon" type="image/png" sizes="256x256" href="/buzooka-ai-icon.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/buzooka-ai-icon-192.png" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/buzooka-ai-icon-48.png" />
+    <link id="favicon-svg" rel="alternate icon" type="image/svg+xml" href="/buzooka-ai-icon.svg" />
+    <link id="favicon-png" rel="alternate icon" type="image/png" sizes="256x256" href="/buzooka-ai-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#ffffff" />
 
     <script is:inline>
       const originalSvg = '/buzooka-ai-icon.svg';
@@ -54,56 +45,34 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     </script>
     <link rel="shortcut icon" href="/buzooka-ai-icon.png" />
     <link rel="apple-touch-icon" sizes="256x256" href="/buzooka-ai-icon.png" />
-    <link rel="manifest" href="/site.webmanifest" />
-    <meta name="theme-color" content="#ffffff" />
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={description} />
-    <meta name="twitter:site" content="@buzooka" />
-    <meta name="twitter:image" content="https://buzooka.in/og-image.png" />
-
-    <meta property="og:locale" content="en_US" />
+    <!-- SEO / Social -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:url" content={canonicalURL} />
-    <meta property="og:site_name" content="Buzooka" />
     <meta property="og:image" content="https://buzooka.in/og-image.png" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-
-    <meta name="robots" content="max-image-preview:large" />
-    <link rel="canonical" href={canonicalURL} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="https://buzooka.in/og-image.png" />
+    
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Mansalva&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Mansalva&display=swap" rel="stylesheet" />
 
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DHWTZBR9RX"
-    ></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DHWTZBR9RX"></script>
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
+      function gtag() { dataLayer.push(arguments); }
       gtag('js', new Date());
-
       gtag('config', 'G-DHWTZBR9RX');
     </script>
 
-    {
-      isProd && (
-        <script
-          defer
-          src="https://cloud.umami.is/script.js"
-          data-website-id="f6382def-d5e7-46da-973e-55c22f5210b9"
-        />
-      )
-    }
+    {isProd && (
+      <script defer src="https://cloud.umami.is/script.js" data-website-id="f6382def-d5e7-46da-973e-55c22f5210b9" />
+    )}
 
     <!-- Global Structured Data -->
     <script type="application/ld+json">
@@ -139,30 +108,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         ]
       }
     </script>
-    </script>
     <slot name="head" />
   </head>
-  <body
-    class="bg-background text-foreground min-h-screen flex flex-col font-sans antialiased"
-  >
-    <Header />
+  <body class="bg-background text-foreground min-h-screen flex flex-col font-sans antialiased">
     <slot />
-    <footer
-      class="flex flex-col gap-4 sm:flex-row py-8 w-full shrink-0 items-center px-4 md:px-6 border-t mt-auto bg-gray-50/50"
-    >
-      <p class="text-xs text-gray-500 dark:text-gray-400 font-medium">
-        © 2026 bio.local.tech. All rights reserved.
-      </p>
-      <nav class="sm:ml-auto flex gap-4 sm:gap-6">
-        <a
-          class="text-xs text-gray-500 hover:text-gray-900 hover:underline underline-offset-4 transition-colors"
-          href="#">Terms of Service</a
-        >
-        <a
-          class="text-xs text-gray-500 hover:text-gray-900 hover:underline underline-offset-4 transition-colors"
-          href="#">Privacy Policy</a
-        >
-      </nav>
-    </footer>
   </body>
 </html>

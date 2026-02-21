@@ -15,6 +15,31 @@ const { Content } = await post.render();
 ---
 
 <Layout title={post.data.title} description={post.data.description}>
+  <script
+    slot="head"
+    type="application/ld+json"
+    set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      'headline': post.data.title,
+      'description': post.data.description,
+      'image': post.data.heroImage ? `https://buzooka.in${post.data.heroImage}` : 'https://buzooka.in/og-image.png',
+      'datePublished': post.data.pubDate.toISOString(),
+      'author': {
+        '@type': 'Organization',
+        'name': 'Buzooka',
+        'url': 'https://buzooka.in'
+      },
+      'publisher': {
+        '@type': 'Organization',
+        'name': 'Buzooka',
+        'logo': {
+          '@type': 'ImageObject',
+          'url': 'https://buzooka.in/buzooka-ai-icon.png'
+        }
+      }
+    })}
+  />
   {
     post.data.heroImage ? (
       <div slot="hero" class="w-full relative">

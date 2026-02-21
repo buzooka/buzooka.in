@@ -1,0 +1,20 @@
+---
+import BlankLayout from '../layouts/BlankLayout.astro';
+import AboutView from '../views/about.svelte';
+import '../styles/app.css';
+---
+
+<BlankLayout title="About Us | Buzooka">
+  <script
+    slot="head"
+    type="application/ld+json"
+    set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'AboutPage',
+      'name': 'About Buzooka',
+      'description': 'Simplify the journey from idea to production-ready product with 20+ years of combined experience.',
+      'url': 'https://buzooka.in/about'
+    })}
+  />
+  <AboutView client:load />
+</BlankLayout>

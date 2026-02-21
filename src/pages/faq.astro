@@ -1,0 +1,26 @@
+---
+import BlankLayout from '../layouts/BlankLayout.astro';
+import FaqView from '../views/faq.svelte';
+import { faqData } from '$lib/config/faq';
+import '../styles/app.css';
+---
+
+<BlankLayout title="FAQ | Buzooka">
+  <script
+    slot="head"
+    type="application/ld+json"
+    set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: faqData.map((faq) => ({
+        '@type': 'Question',
+        name: faq.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: faq.answer,
+        },
+      })),
+    })}
+  />
+  <FaqView client:load faqs={faqData} />
+</BlankLayout>

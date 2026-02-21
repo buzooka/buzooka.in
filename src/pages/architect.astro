@@ -1,0 +1,28 @@
+---
+import BlankLayout from '../layouts/BlankLayout.astro';
+import ArchitectView from '../views/architect.svelte';
+import { faqData } from '$lib/config/faq';
+import '../styles/app.css';
+
+const architectFaqs = [0, 4, 6, 7, 8].map((idx) => faqData[idx]);
+---
+
+<BlankLayout title="System Architect | Buzooka">
+  <script
+    slot="head"
+    type="application/ld+json"
+    set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: architectFaqs.map((faq) => ({
+        '@type': 'Question',
+        name: faq.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: faq.answer,
+        },
+      })),
+    })}
+  />
+  <ArchitectView client:load faqs={architectFaqs} />
+</BlankLayout>
