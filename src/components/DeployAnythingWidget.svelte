@@ -115,7 +115,7 @@
       <!-- Inputs (Left) -->
       {#each inputs as input, i}
         <div
-          class="group absolute w-10 h-10 sm:w-12 sm:h-12 bg-white dark:bg-slate-800 rounded-lg border border-slate-100 dark:border-slate-700 flex items-center justify-center z-10 hover:scale-110 transition-transform"
+          class="group absolute w-10 h-10 sm:w-12 sm:h-12 bg-slate-100 rounded-lg border border-slate-100 dark:border-slate-700 flex items-center justify-center z-10 hover:scale-110 transition-transform"
           style="left: {(inputX / width) * 100}%; top: {((startY +
             i * spacing) /
             height) *
@@ -153,7 +153,7 @@
       <!-- Outputs (Right) -->
       {#each outputs as output, i}
         <div
-          class="group absolute w-10 h-10 sm:w-12 sm:h-12 bg-card rounded-lg border border-border flex items-center justify-center z-10 hover:scale-110 transition-transform"
+          class="group absolute w-10 h-10 sm:w-12 sm:h-12 bg-slate-100 rounded-lg border border-slate-100 dark:border-slate-700 flex items-center justify-center z-10 hover:scale-110 transition-transform"
           style="left: {(outputX / width) * 100}%; top: {((startY +
             i * spacing) /
             height) *

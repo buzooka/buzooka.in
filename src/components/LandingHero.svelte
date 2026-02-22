@@ -310,7 +310,7 @@
           <img
             src="/react.svg"
             alt="React"
-            class="h-6 md:h-8 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-50 dark:invert"
+            class="h-6 md:h-8 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-50"
             loading="lazy"
           />
           <img
@@ -322,19 +322,19 @@
           <img
             src="/node_js.svg"
             alt="Node.js"
-            class="h-6 md:h-8 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-50 dark:invert"
+            class="h-6 md:h-8 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-50"
             loading="lazy"
           />
           <img
             src="/postgres.svg"
             alt="PostgreSQL"
-            class="h-6 md:h-8 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-50 dark:invert"
+            class="h-6 md:h-8 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-50"
             loading="lazy"
           />
           <img
             src="/docker.svg"
             alt="Docker"
-            class="h-6 md:h-8 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-50 dark:invert"
+            class="h-6 md:h-8 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-50"
             loading="lazy"
           />
           <img
@@ -352,7 +352,7 @@
           <img
             src="/python.svg"
             alt="Python"
-            class="h-6 md:h-8 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-50 dark:invert"
+            class="h-6 md:h-8 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-50"
             loading="lazy"
           />
           <img
@@ -364,25 +364,25 @@
           <img
             src="/svelte-logo.svg"
             alt="Svelte"
-            class="h-6 md:h-8 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-50 dark:invert"
+            class="h-6 md:h-8 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-50"
             loading="lazy"
           />
           <img
             src="/vue.svg"
             alt="Vue"
-            class="h-6 md:h-8 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-50 dark:invert"
+            class="h-6 md:h-8 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-50"
             loading="lazy"
           />
           <img
             src="/gcp.svg"
             alt="Google Cloud"
-            class="h-6 md:h-8 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-50 dark:invert"
+            class="h-6 md:h-8 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-50"
             loading="lazy"
           />
           <img
             src="/azure.svg"
             alt="Azure"
-            class="h-6 md:h-8 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-50 dark:invert"
+            class="h-6 md:h-8 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-50"
             loading="lazy"
           />
           <img
@@ -394,13 +394,13 @@
           <img
             src="/netlify.svg"
             alt="Netlify"
-            class="h-6 md:h-8 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-50 dark:invert"
+            class="h-6 md:h-8 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-50"
             loading="lazy"
           />
           <img
             src="/openclaw-new.png"
             alt="OpenClaw"
-            class="h-6 md:h-8 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-50 dark:invert"
+            class="h-6 md:h-8 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-50"
             loading="lazy"
           />
         </div>
