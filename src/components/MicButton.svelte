@@ -58,8 +58,8 @@
     type="button"
     on:click={toggleRecording}
     class="p-2 rounded-lg transition-colors {isRecording
-      ? 'text-red-500 bg-red-50 hover:bg-red-100'
-      : 'text-slate-400 hover:text-slate-600 hover:bg-slate-100'}"
+      ? 'text-red-500 bg-red-50 dark:bg-red-950/30 hover:bg-red-100'
+      : 'text-muted-foreground hover:text-foreground hover:bg-muted'}"
     aria-label={isRecording ? 'Stop voice recording' : 'Start voice recording'}
   >
     <Mic size={20} class={isRecording ? 'animate-pulse' : ''} />

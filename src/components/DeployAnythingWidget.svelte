@@ -140,7 +140,7 @@
 
       <!-- Center (Buzooka) -->
       <div
-        class="absolute w-20 h-20 sm:w-24 sm:h-24 bg-white dark:bg-slate-800 rounded-full shadow-xl border-4 border-cyan-500/10 flex items-center justify-center z-20 animate-float"
+        class="absolute w-20 h-20 sm:w-24 sm:h-24 bg-card rounded-full shadow-xl border-4 border-primary/10 flex items-center justify-center z-20 animate-float"
         style="left: 50%; top: 50%; transform: translate(-50%, -50%);"
       >
         <img
@@ -153,7 +153,7 @@
       <!-- Outputs (Right) -->
       {#each outputs as output, i}
         <div
-          class="group absolute w-10 h-10 sm:w-12 sm:h-12 bg-white dark:bg-slate-800 rounded-lg border border-slate-100 dark:border-slate-700 flex items-center justify-center z-10 hover:scale-110 transition-transform"
+          class="group absolute w-10 h-10 sm:w-12 sm:h-12 bg-card rounded-lg border border-border flex items-center justify-center z-10 hover:scale-110 transition-transform"
           style="left: {(outputX / width) * 100}%; top: {((startY +
             i * spacing) /
             height) *
@@ -165,7 +165,7 @@
             class="w-6 h-6 sm:w-8 sm:h-8 object-contain"
           />
           <div
-            class="absolute -top-8 px-2 py-1 bg-slate-900 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none"
+            class="absolute -top-8 px-2 py-1 bg-popover text-popover-foreground border border-border text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none"
           >
             {output.name}
           </div>

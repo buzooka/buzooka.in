@@ -13,16 +13,11 @@
 </script>
 
 <LandingHeader activePage="architect" />
-<div class="flex flex-col min-h-screen overflow-x-clip"
-  style="--dot-bg: white;--dot-color: #888;--dot-size: 1px;--dot-space: 22px; background:
-linear-gradient(90deg, var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
-linear-gradient(var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
-var(--dot-color);"
->
+<div class="flex flex-col min-h-screen overflow-x-clip">
   <main class="flex-1">
     <ArchitectAgent />
     
-    <section class="py-16 md:py-24 bg-slate-50">
+    <section class="py-16 md:py-24 bg-muted/30 border-y">
       <div class="container px-4 md:px-6">
         <div class="max-w-3xl mx-auto text-center space-y-8">
           <h2 class="text-3xl font-bold tracking-tighter sm:text-4xl">Why use Buzooka Architect?</h2>

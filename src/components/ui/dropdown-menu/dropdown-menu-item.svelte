@@ -9,7 +9,7 @@
 
 <DropdownMenuPrimitive.Item
   class={cn(
-    'relative flex cursor-pointer select-none items-center rounded-lg px-3 py-2.5 text-sm font-medium outline-none transition-all duration-200 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 hover:bg-slate-100/80 hover:translate-x-0.5 active:scale-[0.98]',
+    'relative flex cursor-pointer select-none items-center rounded-lg px-3 py-2.5 text-sm font-medium outline-none transition-all duration-200 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 hover:bg-accent hover:text-accent-foreground hover:translate-x-0.5 active:scale-[0.98]',
     className,
   )}
   {...rest}

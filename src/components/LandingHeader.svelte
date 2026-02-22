@@ -15,8 +15,8 @@
 </script>
 
 <header
-  class="px-4 lg:px-6 h-14 flex items-center pt-[32px] pb-[29px] sticky top-0 z-50 bg-white/80 backdrop-blur-md"
-  style={showDots ? "--dot-bg: white;--dot-color: #888;--dot-size: 1px;--dot-space: 22px; background: linear-gradient(90deg, var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space), linear-gradient(var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space), var(--dot-color);" : ""}
+  class="px-4 lg:px-6 h-14 flex items-center pt-[32px] pb-[29px] sticky top-0 z-50 bg-background/60 backdrop-blur-md"
+  style={"--dot-size: 1px;--dot-space: 22px; background: linear-gradient(90deg, var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space), linear-gradient(var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space), var(--dot-color);"}
 >
   <div class="flex">
     <a

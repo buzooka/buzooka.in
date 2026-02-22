@@ -72,10 +72,10 @@
       </div>
     </div>
     <h1
-      class="text-[9px] sm:text-[11px] uppercase font-mono font-semibold text-slate-700 text-center mb-10 sm:mb-10"
+      class="text-[9px] sm:text-[11px] uppercase font-mono font-semibold text-foreground text-center mb-10 sm:mb-10"
     >
       <span
-        class="border border-slate-200 inline-flex items-center rounded-xl py-0.5 pt-1.5 px-3 bg-white shadow-sm"
+        class="border border-border inline-flex items-center rounded-xl py-0.5 pt-1.5 px-3 bg-card shadow-sm"
         >Build scalable, production-ready MVPs faster</span
       >
     </h1>
@@ -89,7 +89,7 @@
         class="text-2xl font-sans sm:text-4xl md:text-5xl lg:text-5xl/none flex flex-wrap items-center justify-center gap-x-2 gap-y-4 mx-auto pt-0"
       >
         <span
-          class="italic font-thin text-4xl/2 sm:text-5xl/2 text-slate-600 leading-normal pr-2"
+          class="italic font-thin text-4xl/2 sm:text-5xl/2 text-muted-foreground leading-normal pr-2"
           >Deploy
         </span>
         <span class="inline-flex flex-col items-left">
@@ -141,7 +141,7 @@
           {/if}
         </span>
         <span
-          class="italic font-thin text-4xl/2 sm:text-5xl/2 text-slate-600 leading-normal px-1"
+          class="italic font-thin text-4xl/2 sm:text-5xl/2 text-muted-foreground leading-normal px-1"
           >{selectedAnything !== 'Anything' ||
           selectedAnywhere !== 'Anywhere'
             ? 'to'
@@ -199,7 +199,7 @@
           <Button
             variant="outline"
             size="lg"
-            class="w-full sm:w-auto px-8 bg-white/80 backdrop-blur-sm border-slate-300 hover:bg-white hover:border-slate-400 text-slate-700 font-medium shadow-sm h-11"
+            class="w-full sm:w-auto px-8 bg-background/80 backdrop-blur-sm border-border hover:bg-muted text-foreground font-medium shadow-sm h-11"
             onclick={() => {
               document
                 .getElementById('schedule')
@@ -310,31 +310,31 @@
           <img
             src="/react.svg"
             alt="React"
-            class="h-6 md:h-8 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-50"
+            class="h-6 md:h-8 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-50 dark:invert"
             loading="lazy"
           />
           <img
             src="/nextjs.svg"
             alt="Next.js"
-            class="h-6 md:h-8 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-50"
+            class="h-6 md:h-8 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-50 dark:invert"
             loading="lazy"
           />
           <img
             src="/node_js.svg"
             alt="Node.js"
-            class="h-6 md:h-8 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-50"
+            class="h-6 md:h-8 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-50 dark:invert"
             loading="lazy"
           />
           <img
             src="/postgres.svg"
             alt="PostgreSQL"
-            class="h-6 md:h-8 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-50"
+            class="h-6 md:h-8 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-50 dark:invert"
             loading="lazy"
           />
           <img
             src="/docker.svg"
             alt="Docker"
-            class="h-6 md:h-8 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-50"
+            class="h-6 md:h-8 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-50 dark:invert"
             loading="lazy"
           />
           <img
@@ -346,13 +346,13 @@
           <img
             src="/github.svg"
             alt="GitHub"
-            class="h-6 md:h-8 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-50"
+            class="h-6 md:h-8 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-50 dark:invert"
             loading="lazy"
           />
           <img
             src="/python.svg"
             alt="Python"
-            class="h-6 md:h-8 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-50"
+            class="h-6 md:h-8 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-50 dark:invert"
             loading="lazy"
           />
           <img
@@ -364,25 +364,25 @@
           <img
             src="/svelte-logo.svg"
             alt="Svelte"
-            class="h-6 md:h-8 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-50"
+            class="h-6 md:h-8 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-50 dark:invert"
             loading="lazy"
           />
           <img
             src="/vue.svg"
             alt="Vue"
-            class="h-6 md:h-8 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-50"
+            class="h-6 md:h-8 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-50 dark:invert"
             loading="lazy"
           />
           <img
             src="/gcp.svg"
             alt="Google Cloud"
-            class="h-6 md:h-8 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-50"
+            class="h-6 md:h-8 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-50 dark:invert"
             loading="lazy"
           />
           <img
             src="/azure.svg"
             alt="Azure"
-            class="h-6 md:h-8 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-50"
+            class="h-6 md:h-8 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-50 dark:invert"
             loading="lazy"
           />
           <img
@@ -394,13 +394,13 @@
           <img
             src="/netlify.svg"
             alt="Netlify"
-            class="h-6 md:h-8 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-50"
+            class="h-6 md:h-8 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-50 dark:invert"
             loading="lazy"
           />
           <img
             src="/openclaw-new.png"
             alt="OpenClaw"
-            class="h-6 md:h-8 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-50"
+            class="h-6 md:h-8 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-50 dark:invert"
             loading="lazy"
           />
         </div>

@@ -61,7 +61,7 @@
 <section id="pricing" class="w-full py-12 md:py-12 lg:py-16">
   <div class="container px-4 md:px-6">
     <h2
-      class="text-3xl italic font-thin text-slate-600 sm:text-4xl md:text-5xl text-center mb-12"
+      class="text-3xl italic font-thin text-foreground sm:text-4xl md:text-5xl text-center mb-12"
     >
       Choose your pack!
     </h2>
@@ -79,12 +79,12 @@
         >
           <Card
             class={cn(
-              'relative flex flex-col rounded-3xl bg-white h-full transition-all duration-300',
+              'relative flex flex-col rounded-3xl bg-card h-full transition-all duration-300',
               plan.disabled
-                ? 'border-slate-100 bg-slate-50/50'
+                ? 'border-border bg-muted/50'
                 : plan.title === 'Scout'
                   ? 'border-cyan-500/20 shadow-2xl shadow-cyan-500/10 ring-1 ring-cyan-500/20'
-                  : 'border-slate-200 hover:border-slate-300 hover:shadow-lg',
+                  : 'border-border hover:border-accent hover:shadow-lg',
             )}
           >
             <CardHeader>
@@ -93,7 +93,7 @@
                   <CardTitle
                     class="text-2xl font-bold {plan.title === 'Scout'
                       ? 'text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-pink-600'
-                      : 'text-slate-900'}"
+                      : 'text-foreground'}"
                   >
                     {plan.title}
                   </CardTitle>
@@ -128,17 +128,17 @@
                     <div class="flex items-baseline gap-1">
                       {#if plan.originalPrice}
                         <span
-                          class="text-lg text-slate-500 line-through font-medium"
+                          class="text-lg text-muted-foreground line-through font-medium"
                           >${plan.originalPrice}</span
                         >
                       {/if}
                       <span
-                        class="text-5xl font-extrabold tracking-tight text-slate-900"
+                        class="text-5xl font-extrabold tracking-tight text-foreground"
                         >${plan.price}</span
                       >
                     </div>
                   {:else}
-                    <span class="text-3xl font-bold text-slate-900"
+                    <span class="text-3xl font-bold text-foreground"
                       >{plan.annualPrice}</span
                     >
                   {/if}
@@ -149,20 +149,20 @@
             <CardContent class="flex-1 pb-0">
               <div
                 class={cn(
-                  'h-px w-full bg-slate-100 mb-4',
+                  'h-px w-full bg-border mb-4',
                   plan.title === 'Scout' &&
-                    'bg-gradient-to-r from-cyan-100 to-pink-100',
+                    'bg-gradient-to-r from-cyan-100 to-pink-100 dark:from-cyan-900 dark:to-pink-900',
                 )}
               ></div>
               <ul class="space-y-1">
                 {#each plan.features as feature}
-                  <li class="flex items-start">
+                  <li class="flex items-center">
                     <div
                       class={cn(
                         'mt-0.5 rounded-full p-1',
                         plan.title === 'Scout'
-                          ? 'bg-cyan-50 text-cyan-600'
-                          : 'bg-slate-100 text-slate-500',
+                          ? 'bg-muted text-cyan-600'
+                          : 'bg-muted text-muted-foreground',
                       )}
                     >
                       <CheckCircle class="h-4 w-4" />
@@ -171,8 +171,8 @@
                       class={cn(
                         'ml-3 text-sm',
                         plan.title === 'Scout'
-                          ? 'text-slate-700 font-medium'
-                          : 'text-slate-600',
+                          ? 'text-foreground font-medium'
+                          : 'text-muted-foreground',
                       )}
                     >
                       {feature}
@@ -185,7 +185,7 @@
             <CardFooter class="pt-8">
               {#if plan.disabled}
                 <Button
-                  class="w-full h-12 rounded-xl border-slate-200 bg-slate-50 text-slate-400 hover:bg-slate-50 hover:text-slate-400 cursor-not-allowed"
+                  class="w-full h-12 rounded-xl border-border bg-muted/50 text-muted-foreground hover:bg-muted/80 hover:text-muted-foreground cursor-not-allowed"
                   variant="outline"
                   disabled
                 >

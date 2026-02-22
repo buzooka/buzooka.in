@@ -7,7 +7,7 @@
 
 <section
   id="schedule"
-  class="w-full py-16 md:py-20 lg:py-24 bg-gradient-to-r from-cyan-50 to-pink-50 dark:bg-gray-800 overflow-hidden"
+  class="w-full py-16 md:py-20 lg:py-24 bg-gradient-to-r from-cyan-50 to-pink-50 dark:from-background dark:to-background overflow-hidden border-y"
 >
   <div class="container px-4 md:px-6">
     <div class="grid lg:grid-cols-2 gap-12 items-center">
@@ -15,7 +15,7 @@
       <div class="lg:flex justify-start items-center">
         <div class="relative">
           <div
-            class="absolute -inset-4 bg-gradient-to-r from-cyan-200/30 to-pink-200/30 rounded-full blur-3xl"
+            class="absolute -inset-4 bg-gradient-to-r from-cyan-200/30 to-pink-200/30 dark:from-cyan-700/30 dark:to-pink-800/30 rounded-full blur-3xl"
           ></div>
           <div
             class="m-auto w-[460px] h-[250px] md:w-[600px] md:h-[350px] relative z-10"
@@ -31,13 +31,13 @@
       <div class="space-y-6 text-center lg:text-left">
         <div class="inline-block">
           <span
-            class="px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full text-sm font-medium text-slate-600 border border-slate-200"
+            class="px-4 py-2 bg-card/80 backdrop-blur-sm rounded-full text-sm font-medium text-muted-foreground border border-border"
           >
             Expert Guidance
           </span>
         </div>
         <h2
-          class="text-4xl italic font-thin text-slate-600 sm:text-5xl md:text-6xl leading-tight"
+          class="text-4xl italic font-thin text-foreground sm:text-5xl md:text-6xl leading-tight"
         >
           Let's build<br />
           <span
@@ -47,7 +47,7 @@
           </span>
         </h2>
         <p
-          class="text-lg text-slate-600 max-w-xl leading-relaxed m-auto lg:m-0"
+          class="text-lg text-muted-foreground max-w-xl leading-relaxed m-auto lg:m-0"
         >
           Connect with our expert consultants for personalized guidance on
           your project. From architecture to deployment, we're here to help
@@ -66,7 +66,7 @@
               Book Demo Call<Calendar class="w-5 h-5" />
             </Button>
           </div>
-          <div class="flex items-center gap-2 text-sm text-slate-500">
+          <div class="flex items-center gap-2 text-sm text-muted-foreground">
             <svg
               class="w-5 h-5 text-green-500"
               fill="currentColor"

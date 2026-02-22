@@ -33,7 +33,7 @@
 >
   <div class="container px-4 md:px-6">
     <h2
-      class="text-4xl italic font-thin text-slate-600 sm:text-5xl md:text-6xl text-left mb-12 h-20 flex items-center justify-start gap-4"
+      class="text-4xl italic font-thin text-foreground sm:text-5xl md:text-6xl text-left mb-12 h-20 flex items-center justify-start gap-4"
     >
       Talk
       <div
@@ -53,7 +53,7 @@
       <a
         href="https://x.com/buzooka"
         target="_blank"
-        class="p-4 bg-slate-100 rounded-full hover:bg-black hover:text-white transition-colors"
+        class="p-4 bg-muted rounded-full hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors"
         aria-label="X (formerly Twitter)"
       >
         <svg
@@ -71,7 +71,7 @@
       <a
         href="https://www.linkedin.com/company/buzooka-in/"
         target="_blank"
-        class="p-4 bg-slate-100 rounded-full hover:bg-blue-100 hover:text-blue-700 transition-colors"
+        class="p-4 bg-muted rounded-full hover:bg-blue-100 hover:text-blue-700 transition-colors"
         aria-label="LinkedIn"
       >
         <Linkedin size={24} />
@@ -79,7 +79,7 @@
       <a
         href="https://github.com/buzooka"
         target="_blank"
-        class="p-4 bg-slate-100 rounded-full hover:bg-slate-200 hover:text-slate-900 transition-colors"
+        class="p-4 bg-muted rounded-full hover:bg-muted-foreground hover:text-background transition-colors"
         aria-label="GitHub"
       >
         <Github size={24} />
@@ -87,7 +87,7 @@
       <a
         href="https://facebook.com/buzooka.in"
         target="_blank"
-        class="p-4 bg-slate-100 rounded-full hover:bg-blue-600 hover:text-white transition-colors"
+        class="p-4 bg-muted rounded-full hover:bg-blue-600 hover:text-white transition-colors"
         aria-label="Facebook"
       >
         <Facebook size={24} />
@@ -95,7 +95,7 @@
       <a
         href="https://www.youtube.com/@buzooka_in"
         target="_blank"
-        class="p-4 bg-slate-100 rounded-full hover:bg-red-600 hover:text-white transition-colors"
+        class="p-4 bg-muted rounded-full hover:bg-red-600 hover:text-white transition-colors"
         aria-label="YouTube"
       >
         <Youtube size={24} />
@@ -103,7 +103,7 @@
       <a
         href="https://www.instagram.com/buzooka_in/"
         target="_blank"
-        class="p-4 bg-slate-100 rounded-full hover:bg-gradient-to-br hover:from-purple-600 hover:via-pink-600 hover:to-orange-500 hover:text-white transition-colors"
+        class="p-4 bg-muted rounded-full hover:bg-gradient-to-br hover:from-purple-600 hover:via-pink-600 hover:to-orange-500 hover:text-white transition-colors"
         aria-label="Instagram"
       >
         <Instagram size={24} />

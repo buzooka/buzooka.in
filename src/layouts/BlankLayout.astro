@@ -22,7 +22,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <link id="favicon-svg" rel="alternate icon" type="image/svg+xml" href="/buzooka-ai-icon.svg" />
     <link id="favicon-png" rel="alternate icon" type="image/png" sizes="256x256" href="/buzooka-ai-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
-    <meta name="theme-color" content="#ffffff" />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#020617" media="(prefers-color-scheme: dark)" />
 
     <script is:inline>
       const originalSvg = '/buzooka-ai-icon.svg';
@@ -110,7 +111,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     </script>
     <slot name="head" />
   </head>
-  <body class="bg-background text-foreground min-h-screen flex flex-col font-sans antialiased">
+  <body class="bg-background text-foreground min-h-screen flex flex-col font-sans antialiased dotted-canvas">
     <slot />
   </body>
 </html>

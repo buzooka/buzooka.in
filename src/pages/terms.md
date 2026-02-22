@@ -1,6 +1,6 @@
 ---
 layout: ../layouts/Layout.astro
-title: Terms and Conditions | Buzooka
+title: Terms and Conditions | Buzooka | Architect, Generate, and Deploy Scalable MVPs to Your Own Cloud
 description: Terms and Conditions for using Buzooka.in
 ---
 

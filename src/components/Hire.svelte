@@ -9,17 +9,17 @@
 
 <section
   id="hire"
-  class="w-full py-12 md:py-12 lg:py-16 bg-gradient-to-r from-cyan-50 to-pink-50 dark:bg-gray-800"
+  class="w-full py-12 md:py-12 lg:py-16 bg-gradient-to-r from-cyan-50 to-pink-50 dark:from-background dark:to-background border-y"
 >
   <div class="container px-4 md:px-6">
     <h2
-      class="text-3xl italic font-thin text-slate-600 sm:text-4xl md:text-5xl text-center mb-4"
+      class="text-3xl italic font-thin text-foreground sm:text-4xl md:text-5xl text-center mb-4"
     >
       Need additional support?
     </h2>
 
     <p
-      class="text-sm text-gray-600 leading-normal mb-8 sm:text-sm text-center uppercase"
+      class="text-sm text-muted-foreground leading-normal mb-8 sm:text-sm text-center uppercase"
     >
       Competitively priced
     </p>

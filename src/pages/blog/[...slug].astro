@@ -107,7 +107,7 @@ const { Content } = await post.render();
     <div class="mb-8">
       <a
         href="/blog"
-        class="inline-flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-primary transition-colors group"
+        class="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-primary transition-colors group"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -127,7 +127,7 @@ const { Content } = await post.render();
       </a>
     </div>
     <div
-      class="prose-headings:font-bold prose-headings:tracking-tight prose-a:text-blue-600 hover:prose-a:text-blue-500 prose-img:rounded-xl prose-img:shadow-sm"
+      class="prose dark:prose-invert prose-headings:font-bold prose-headings:tracking-tight prose-a:text-primary hover:prose-a:text-primary/80 prose-img:rounded-xl prose-img:shadow-sm"
     >
       <Content />
     </div>

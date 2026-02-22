@@ -1,6 +1,6 @@
 ---
 layout: ../layouts/Layout.astro
-title: Refund Policy | Buzooka
+title: Refund Policy | Buzooka | Architect, Generate, and Deploy Scalable MVPs to Your Own Cloud
 description: Refund Policy for Buzooka.in
 ---
 

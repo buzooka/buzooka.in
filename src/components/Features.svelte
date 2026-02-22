@@ -27,15 +27,15 @@
 
 <section
   id="features"
-  class="w-full py-12 md:py-12 lg:py-16 bg-gradient-to-r from-cyan-50 to-pink-50 dark:bg-gray-800"
+  class="w-full py-12 md:py-12 lg:py-16 bg-gradient-to-r from-cyan-50 to-pink-50 dark:from-background dark:to-background border-y"
 >
   <div class="container px-4 md:px-6">
     <h2
-      class="text-3xl italic font-thin text-slate-600 sm:text-4xl md:text-5xl text-center mb-4"
+      class="text-3xl italic font-thin text-foreground sm:text-4xl md:text-5xl text-center mb-4"
     >
       What?
     </h2>
-    <p class="text-slate-500 text-center mb-12 max-w-2xl mx-auto">
+    <p class="text-muted-foreground text-center mb-12 max-w-2xl mx-auto">
       Scalabale production-grade foundations from day one
     </p>
     <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">

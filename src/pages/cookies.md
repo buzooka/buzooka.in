@@ -1,6 +1,6 @@
 ---
 layout: ../layouts/Layout.astro
-title: Cookie Policy | Buzooka
+title: Cookie Policy | Buzooka | Architect, Generate, and Deploy Scalable MVPs to Your Own Cloud
 description: Cookie Policy for Buzooka.in
 ---
 

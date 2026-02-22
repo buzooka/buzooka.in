@@ -1,6 +1,6 @@
 ---
 layout: ../layouts/Layout.astro
-title: Privacy Policy | Buzooka
+title: Privacy Policy | Buzooka | Architect, Generate, and Deploy Scalable MVPs to Your Own Cloud
 description: Privacy Policy for Buzooka.in
 ---
 

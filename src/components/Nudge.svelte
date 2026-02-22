@@ -61,6 +61,19 @@
     animation:
       gradient-rotate 12s ease infinite,
       gradient-move 8s ease infinite;
+    transition: background-color 0.5s ease;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .animated-gradient-bg {
+      background-color: #164e63;
+      background-image: radial-gradient(
+          circle,
+          rgba(255, 255, 255, 0.08) 1.5px,
+          transparent 1.5px
+        ),
+        linear-gradient(var(--gradient-angle), #164e63 0%, #831843 100%);
+    }
   }
 
   @keyframes gradient-rotate {

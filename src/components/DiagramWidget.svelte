@@ -57,14 +57,15 @@
           refY="3.5"
           orient="auto"
         >
-          <polygon points="0 0, 10 3.5, 0 7" fill="#94a3b8" />
+          <polygon points="0 0, 10 3.5, 0 7" fill="currentColor" class="text-muted-foreground" />
         </marker>
       </defs>
       {#each data.edges as edge}
         <path
           d={getPath(edge.source, edge.target)}
           fill="none"
-          stroke="#94a3b8"
+          stroke="currentColor"
+          class="text-muted-foreground"
           stroke-width="2"
           marker-end="url(#arrowhead)"
         />
@@ -73,24 +74,24 @@
 
     {#each data.nodes as node}
       <div
-        class="absolute w-[180px] rounded-lg border border-slate-200 bg-white shadow-md flex flex-col"
+        class="absolute w-[180px] rounded-lg border border-border bg-card shadow-md flex flex-col"
         style="left: {node.x}px; top: {node.y}px; z-index: 10;"
       >
         <!-- Handles -->
         <div
-          class="absolute -left-1.5 top-1/2 -mt-1.5 h-3 w-3 rounded-full border-2 border-slate-400 bg-white"
+          class="absolute -left-1.5 top-1/2 -mt-1.5 h-3 w-3 rounded-full border-2 border-muted bg-card"
         ></div>
         <div
-          class="absolute -right-1.5 top-1/2 -mt-1.5 h-3 w-3 rounded-full border-2 border-white bg-slate-400"
+          class="absolute -right-1.5 top-1/2 -mt-1.5 h-3 w-3 rounded-full border-2 border-card bg-muted"
         ></div>
 
         <div
-          class="flex items-center gap-2 border-b border-slate-200 p-3 bg-slate-50/50 rounded-t-lg"
+          class="flex items-center gap-2 border-b border-border p-3 bg-muted/30 rounded-t-lg"
         >
-          <div class="text-slate-500">
+          <div class="text-muted-foreground">
             <svelte:component this={node.icon} size={16} />
           </div>
-          <span class="text-sm font-semibold text-slate-900 truncate"
+          <span class="text-sm font-semibold text-foreground truncate"
             >{node.label}</span
           >
         </div>
@@ -98,14 +99,14 @@
         <div class="p-3 flex gap-2">
           <!-- Mock integration icons -->
           <div
-            class="h-4 w-4 rounded-full bg-slate-100 flex items-center justify-center"
+            class="h-4 w-4 rounded-full bg-muted flex items-center justify-center"
           >
-            <div class="h-2 w-2 rounded-full bg-slate-300"></div>
+            <div class="h-2 w-2 rounded-full bg-muted-foreground"></div>
           </div>
           <div
-            class="h-4 w-4 rounded-full bg-slate-100 flex items-center justify-center"
+            class="h-4 w-4 rounded-full bg-muted flex items-center justify-center"
           >
-            <div class="h-2 w-2 rounded-full bg-slate-300"></div>
+            <div class="h-2 w-2 rounded-full bg-muted-foreground"></div>
           </div>
         </div>
       </div>

@@ -32,23 +32,23 @@
 
 <section
   id="who-is-this-for"
-  class="w-full py-12 md:py-12 lg:py-16 bg-gradient-to-r from-cyan-50 to-pink-50 dark:bg-gray-800"
+  class="w-full py-12 md:py-12 lg:py-16 bg-gradient-to-r from-cyan-50 to-pink-50 dark:from-background dark:to-background border-y"
 >
   <div class="container px-4 md:px-6">
     <h2
-      class="text-3xl italic font-thin text-slate-600 sm:text-4xl md:text-5xl text-center mb-8"
+      class="text-3xl italic font-thin text-foreground sm:text-4xl md:text-5xl text-center mb-8"
     >
       Who is this for?
     </h2>
     <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-2">
       {#each audienceList as audience}
-        <Card class="rounded-2xl border-none shadow-sm hover:shadow-md transition-shadow duration-300 bg-white/60 backdrop-blur-sm px-6 py-6 md:px-8 md:py-8">
+        <Card class="rounded-2xl border border-border shadow-sm hover:shadow-md transition-shadow duration-300 bg-card/60 backdrop-blur-sm px-6 py-6 md:px-8 md:py-8">
           <CardHeader class="p-0 pb-0">
-            <CardTitle class="text-[17px] md:text-[19px] font-mono font-medium text-cyan-800 tracking-tight">{audience.title}</CardTitle>
+            <CardTitle class="text-[17px] md:text-[19px] font-mono font-medium text-primary tracking-tight">{audience.title}</CardTitle>
           </CardHeader>
           <CardContent class="p-0 space-y-4">
-            <p class="text-[14px] md:text-[15px] leading-relaxed text-slate-500">{audience.problem}</p>
-            <p class="text-[14px] md:text-[15px] leading-relaxed text-slate-700">{audience.solution}</p>
+            <p class="text-[14px] md:text-[15px] leading-relaxed text-muted-foreground">{audience.problem}</p>
+            <p class="text-[14px] md:text-[15px] leading-relaxed text-foreground">{audience.solution}</p>
           </CardContent>
         </Card>
       {/each}

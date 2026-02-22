@@ -67,14 +67,14 @@
         <h2
           class="text-2xl font-sans sm:text-4xl md:text-5xl lg:text-5xl/none block w-full max-w-[700px] mx-auto pt-0"
         >
-          <span class="italic font-thin text-slate-600 leading-normal"
-            >Create <mark class="px-3 inline-block">system blueprints</mark>
+          <span class="italic font-thin text-foreground leading-normal"
+            >Create <mark class="px-3 inline-block bg-yellow-300/80">system blueprints</mark>
             with our Architect Agent</span
           >
         </h2>
 
         <h3
-          class="mx-auto italic font-thin max-w-[700px] text-slate-600 md:text-lg dark:text-gray-400 pt-4"
+          class="mx-auto italic font-thin max-w-[700px] text-muted-foreground md:text-lg pt-4"
         >
           <span class="font-medium">Code</span>,
           <span class="font-medium">Cloud</span>, and
@@ -114,7 +114,7 @@
 
         <div
           class={cn(
-            'relative bg-white rounded-lg transition-all duration-600 ease-in-out overflow-hidden mx-auto',
+            'relative bg-card rounded-lg transition-all duration-600 ease-in-out overflow-hidden mx-auto',
             !isNavigating ? 'shadow-xl' : 'shadow-none',
           )}
           style={isNavigating ? 'width: 0; opacity: 0;' : 'width: 100%;'}
@@ -139,7 +139,7 @@
                 bind:this={promptInput}
                 bind:value={promptText}
                 placeholder={placeholderText}
-                class="w-full min-h-[80px] focus:min-h-[160px] p-4 text-base bg-transparent border-0 focus:ring-0 resize-none placeholder:text-slate-400 text-slate-900 outline-none transition-all duration-300 ease-in-out"
+                class="w-full min-h-[80px] focus:min-h-[160px] p-4 text-base bg-transparent border-0 focus:ring-0 resize-none placeholder:text-muted-foreground text-foreground outline-none transition-all duration-300 ease-in-out"
                 out:fade={{ duration: 200 }}
               ></textarea>
 
@@ -163,7 +163,7 @@
                   <Button
                     type="submit"
                     size="icon"
-                    class="px-3 h-10 w-auto rounded-lg bg-slate-900 transition-all duration-300 ease-in-out flex items-center justify-center create-btn"
+                    class="px-3 h-10 w-auto rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 ease-in-out flex items-center justify-center create-btn"
                   >
                     Create with Buzooka
                     <img

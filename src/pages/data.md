@@ -1,6 +1,6 @@
 ---
 layout: ../layouts/Layout.astro
-title: Data Deletion & Privacy Request Form | Buzooka
+title: Data Deletion & Privacy Request Form | Buzooka | Architect, Generate, and Deploy Scalable MVPs to Your Own Cloud
 description: Data Deletion & Privacy Request Form for Buzooka.in
 ---
 
