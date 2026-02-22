@@ -98,7 +98,7 @@
               <span
                 use:builder.action
                 {...builder}
-                class="inline-flex items-center px-0 py-0.5 border-b-[1px] border-slate-400/60 cursor-pointer hover:border-slate-400 hover:bg-slate-50/50 data-[state=open]:border-slate-400 data-[state=open]:bg-slate-50/50 transition-all group/anything"
+                class="inline-flex items-center px-0 py-0.5 border-b-[1px] border-slate-400/60 cursor-pointer hover:border-slate-400 hover:bg-background/50 data-[state=open]:border-slate-400 data-[state=open]:bg-background/50 transition-all group/anything"
               >
                 <span
                   transition:blur={{
@@ -122,9 +122,9 @@
                   onclick={() => (selectedAnything = template.value)}
                   class="flex flex-col items-start gap-0.5"
                 >
-                  <span class="text-slate-900">{template.label}</span>
+                  <span class="text-primary">{template.label}</span>
                   <span
-                    class="text-[9px] text-slate-400 uppercase font-mono tracking-tight"
+                    class="text-[9px] text-muted-foreground uppercase font-mono tracking-tight"
                     >{template.type}</span
                   >
                 </DropdownMenu.Item>
@@ -153,7 +153,7 @@
               <span
                 use:builder.action
                 {...builder}
-                class="inline-flex items-center px-0 py-0.5 border-b-[1px] border-slate-400/60 cursor-pointer hover:border-slate-400 hover:bg-slate-50/50 data-[state=open]:border-slate-400 data-[state=open]:bg-slate-50/50 transition-all group/anywhere"
+                class="inline-flex items-center px-0 py-0.5 border-b-[1px] border-slate-400/60 cursor-pointer hover:border-slate-400 hover:bg-background/50 data-[state=open]:border-slate-400 data-[state=open]:bg-background/50 transition-all group/anywhere"
               >
                 <span
                   transition:blur={{
@@ -173,9 +173,9 @@
                 onclick={() => (selectedAnywhere = 'Digital Ocean')}
                 class="flex flex-col items-start gap-0.5"
               >
-                <span class="text-slate-900">Digital Ocean</span>
+                <span class="text-primary">Digital Ocean</span>
                 <span
-                  class="text-[9px] text-slate-400 uppercase font-mono tracking-tight"
+                  class="text-[9px] text-muted-foreground uppercase font-mono tracking-tight"
                   >Cloud Provider</span
                 >
               </DropdownMenu.Item>
@@ -214,7 +214,7 @@
         >
           <Button
             size="lg"
-            class="w-full sm:w-auto cursor-pointer justify-center transition-colors ease-in hover:bg-muted-foreground create-btn px-8 h-11"
+            class="w-full sm:w-auto cursor-pointer justify-center transition-colors ease-in hover:bg-black dark:hover:bg-white create-btn px-8 h-11"
             onclick={() =>
               window.open(
                 `https://dash.buzooka.in/login?utm_source=hero&action=create${selectedAnything !== 'Anything' ? `&node=${encodeURIComponent(selectedAnything)}` : ''}`,
@@ -227,7 +227,7 @@
               src="/buzooka-ai-icon-light.svg"
               width="24"
               height="24"
-              class="ml-1 create-btn-icon"
+              class="ml-1 create-btn-icon dark:invert"
             />
           </Button>
         </span>

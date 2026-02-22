@@ -93,7 +93,7 @@
     <a
       href="https://dash.buzooka.in/login?utm_source=header"
       target="_blank"
-      class="text-sm font-medium bg-slate-900 text-white px-4 py-2 rounded-lg hover:bg-slate-800 transition-colors"
+      class="text-sm font-medium bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-slate-800 transition-colors"
     >
       Log In
     </a>

@@ -171,7 +171,7 @@
                       src="/buzooka-ai-icon-light.svg"
                       width="24"
                       height="24"
-                      class="ml-1 create-btn-icon"
+                      class="ml-1 create-btn-icon dark:invert"
                     />
                   </Button>
                 </span>
