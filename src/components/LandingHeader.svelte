@@ -28,6 +28,15 @@
         src="/buzooka-logo-new.svg"
         width="165"
         height="44"
+        class="dark:hidden"
+        style="height: 44px;"
+      />
+      <img
+        alt="Buzooka"
+        src="/buzooka-logo-new-dark.svg"
+        width="165"
+        height="44"
+        class="hidden dark:block"
         style="height: 44px;"
       />
     </a>
