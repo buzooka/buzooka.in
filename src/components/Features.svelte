@@ -36,7 +36,7 @@
       What?
     </h2>
     <p class="text-muted-foreground text-center mb-12 max-w-2xl mx-auto">
-      Scalabale production-grade foundations from day one
+      Scalable production-grade foundations from day one
     </p>
     <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
       {#each features as feature}
