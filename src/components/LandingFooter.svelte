@@ -118,7 +118,7 @@
     
     <div class="mt-12 pt-8 border-t border-slate-900 flex flex-col sm:flex-row justify-between items-center gap-4">
       <p class="text-xs text-slate-500">
-        © 2026 bio.local.tech. All rights reserved.
+        © 2026 Biolocal Technologies (OPC) Private Limited. All rights reserved.
       </p>
     </div>
   </div>
